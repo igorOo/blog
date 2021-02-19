@@ -1,0 +1,98 @@
+<div class="sh-header sh-header-3 sh-sticky-header sh-header-disabled-border" style="top: 0;">
+    <div class="container">
+        <div class="sh-table">
+            <div class="sh-table-cell sh-header-nav-container">
+                <nav id="header-navigation" class="header-standard-position">
+                    <div class="sh-nav-container">
+                        <ul id="menu-header" class="sh-nav sf-js-enabled" style="touch-action: pan-y;">
+                            <li class="menu-item menu-item-type-custom menu-item-object-custom"
+                                *ngFor="let item of menu"
+                                [ngClass]="{'menu-item-has-children': item.children != undefined}">
+                                <a [href]="item.url[0]" class="sf-with-ul">{{ item.label }}</a>
+                                <ul class="sub-menu" *ngIf="item.children != undefined">
+                                    <li class="menu-item menu-item-type-custom menu-item-object-custom"
+                                        *ngFor="let subitem of item.children"
+                                    >
+                                        <a [href]="'/'+item.url[0]+'/category/'+subitem.translit">{{subitem.name}}</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            <div class="sh-table-cell sh-header-meta-container">
+                <nav class="header-standard-position">
+                    <div class="sh-nav-container">
+                        <ul class="sh-nav sf-js-enabled">
+                            <li class="menu-item sh-nav-menu sh-nav-special"><a href="#"> <i
+                                class="icon-menu sh-nav-menu-icon-closed"
+                                data-attr-closed="icon-menu" data-attr-opened="ti-close"></i>
+                            </a></li>
+                            <li class="menu-item sh-nav-search sh-nav-special"><a href="#"><i
+                                class="icon icon-magnifier"></i></a></li>
+                            <li class="menu-item menu-item-has-children sh-nav-share sh-nav-special"><a
+                                href="#" class="sf-with-ul">
+                                <div><i class="icon icon-share"></i></div>
+                            </a>
+                                <ul class="sub-menu sh-nav-share-ul">
+                                    <li class="sh-share-item sh-share-item-facebook menu-item"><a
+                                        href="https://www.facebook.com/people/@/shufflehound"
+                                        target="_blank"> <i class="fa fa-facebook"></i> </a></li>
+                                    <li class="sh-share-item sh-share-item-twitter menu-item"><a
+                                        href="https://twitter.com/TheShufflehound" target="_blank">
+                                        <i class="fa fa-twitter"></i> </a></li>
+                                    <li class="sh-share-item sh-share-item-instagram menu-item"><a
+                                        href="http://gillion.shufflehound.com/" target="_blank"> <i
+                                        class="fa fa-instagram"></i> </a></li>
+                                    <li class="sh-share-item sh-share-item-pinterest menu-item"><a
+                                        href="http://gillion.shufflehound.com/" target="_blank"> <i
+                                        class="fa fa-pinterest"></i> </a></li>
+                                </ul>
+                            </li>
+                            <li class="menu-item menu-item-has-children sh-nav-readmore sh-nav-special">
+                                <a href="https://gillion.shufflehound.com/?read-it-later"
+                                   class="sf-with-ul">
+                                    <div><i class="ti-bookmark"></i> <span
+                                        class="sh-read-later-total">0</span></div>
+                                </a>
+                                <ul class="sub-menu sh-read-later-list ps-container ps-theme-default"
+                                    style="display: none;"
+                                    data-ps-id="eed9a2fe-8ffb-f399-355c-0429a4210386">
+                                    <li class="sh-read-later-item menu-item text-center"><a
+                                        href="https://gillion.shufflehound.com/?read-it-later">
+                                        Login to add posts to your read later list </a></li>
+                                    <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;">
+                                        <div class="ps-scrollbar-x" tabindex="0"
+                                             style="left: 0px; width: 0px;"></div>
+                                    </div>
+                                    <div class="ps-scrollbar-y-rail" style="top: 0px; right: 0px;">
+                                        <div class="ps-scrollbar-y" tabindex="0"
+                                             style="top: 0px; height: 0px;"></div>
+                                    </div>
+                                </ul>
+                            </li>
+                            <li class="user-profile menu-item menu-has-children">
+                                <a href="/profile" class="sf-with-ul">
+                                    <div>
+                                        <i class="ti-user"></i>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <div class="sh-header-search-side">
+        <div class="sh-header-search-side-container">
+            <form method="get" class="sh-header-search-form" action="https://gillion.shufflehound.com/">
+                <input type="text" name="s" class="sh-header-search-side-input"
+                       placeholder="Enter a keyword to search...">
+                <div class="sh-header-search-side-close"><i class="ti-close"></i></div>
+                <div class="sh-header-search-side-icon"><i class="ti-search"></i></div>
+            </form>
+        </div>
+    </div>
+</div>

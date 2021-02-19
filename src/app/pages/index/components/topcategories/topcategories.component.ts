@@ -1,3 +1,4 @@
+import { TopPost } from './../../interfaces/TopPost';
 import {Component, Input, OnInit, OnChanges, SimpleChanges, DoCheck} from '@angular/core';
 import {TopCategoriesListInterface} from "../../interfaces/TopCategoriesListInterface";
 
@@ -8,7 +9,20 @@ import {TopCategoriesListInterface} from "../../interfaces/TopCategoriesListInte
 })
 export class TopcategoriesComponent implements OnInit, OnChanges, DoCheck {
     public randomList: any[] = [];
-    public firstPost = null;
+    public firstPost:TopPost = {
+        id:0,
+        name: '',
+        translit: '',
+        main_image: '',
+        date_edit: '',
+        type: 0,
+        category: '',
+        cat_translit: '',
+        first_name: '',
+        last_name: '',
+        category_id: 0,
+        url: '',
+    };
     public list: any[] = [];
     public categories: TopCategoriesListInterface[] = [];
 

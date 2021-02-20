@@ -55296,6 +55296,10 @@ body.woocommerce-edit-address .woocommerce-MyAccount-content p {
     top: 40px;
     right: 0;
 }
+
+.post-style-cover .loading-style::after{
+    background: unset !important;
+}
 @media (min-width: 1024px) {
     .woocommerce #content div.product div.summary,
     .woocommerce div.product div.summary,

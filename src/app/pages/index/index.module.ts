@@ -9,6 +9,9 @@ import {TopsliderComponent} from './components/topslider/topslider.component';
 import {SlickCarouselModule} from 'ngx-slick-carousel';
 import {CommonModule} from "@angular/common";
 import { TopcategoriesComponent } from './components/topcategories/topcategories.component';
+import { FirstPostComponent } from './components/topcategories/components/first-post/first-post.component';
+import {LoaderComponent} from "../../shared/components/loader/loader.component";
+import { SmallpostComponent } from './components/topcategories/components/smallpost/smallpost.component'
 
 @NgModule({
     declarations: [
@@ -16,7 +19,10 @@ import { TopcategoriesComponent } from './components/topcategories/topcategories
         IndexComponent,
         MainmenuComponent,
         TopsliderComponent,
-        TopcategoriesComponent
+        TopcategoriesComponent,
+        FirstPostComponent,
+        LoaderComponent,
+        SmallpostComponent
     ],
     imports: [
         IndexRoutingModule,

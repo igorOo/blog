@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {TopPost} from "../../../../interfaces/TopPost";
+
 
 @Component({
   selector: 'app-first-post',
@@ -6,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./first-post.component.scss']
 })
 export class FirstPostComponent implements OnInit {
+    @Input() firstPost!: TopPost;
+    @Input() loading: boolean = true;
 
   constructor() { }
 

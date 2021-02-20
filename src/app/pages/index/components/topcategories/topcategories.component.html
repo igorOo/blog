@@ -2,7 +2,7 @@
     class="sh-categories blog-posts-categories-QNHyEmJIRO sh-categories-style2 style4">
     <div class="sh-categories-tabs">
         <div class="sh-categories-title">
-            <h2> Топ категорий 222 </h2>
+            <h2> Топ категорий </h2>
         </div>
         <div class="sh-categories-line" style="width: 99%;">
             <div class="sh-categories-line-container"></div>
@@ -10,348 +10,21 @@
         <div class="sh-categories-names">
             <ul class="nav nav-tab sh-tabs-stying sh-heading-font"
                 role="tablist">
-                <li role="presentation" class="active">
+                <li role="presentation" class="active" (click)="generateRandomList()">
                     <a href="#tab-QNHyEmJIRO-0" role="tab" data-toggle="tab"> Все </a>
                 </li>
-                <li role="presentation" *ngFor="let item of categories">
-                    <a [href]="'/news/category/'+ item.cat_translit" role="tab" data-toggle="tab"> {{ item.category }} </a>
+                <li role="presentation" *ngFor="let item of categories" (click)="changeTab($event, item.category_id)">
+                    <a [href]="'/news/category/'+ item.cat_translit" role="tab"
+                       data-toggle="tab"> {{ item.category }} </a>
                 </li>
             </ul>
         </div>
     </div>
     <div class="tab-content">
-        <div role="tabpanel" class="tab-pane fade in active"
-             id="tab-QNHyEmJIRO-0">
+        <div role="tabpanel" class="tab-pane fade in active" id="tab-QNHyEmJIRO-0">
             <div class="row">
-                <div class="col-md-7">
-                    <article id="post-cover-large-53"
-                             class="post-item post-style-cover post-53 post type-post status-publish format-standard has-post-thumbnail hentry category-lifestyle category-places tag-building tag-stairs tag-travel">
-                        <div class="post-container">
-                            <div class="sh-ratio">
-                                <div class="sh-ratio-container">
-                                    <div class="sh-ratio-content"
-                                         [style]="'background-image: url('+ firstPost.main_image +');'">
-                                        <div
-                                            class="post-cover-container">
-                                            <div
-                                                class="post-categories-container">
-                                                <div
-                                                    class="post-categories">
-                                                    <a href="https://gillion.shufflehound.com/category/lifestyle/">
-                                                        {{ firstPost.category }}
-                                                    </a>
-                                                </div>
-                                            </div> <a
-                                            [href]="firstPost.url"
-                                            class="post-title">
-                                            <h2> 
-                                                {{ firstPost.name }}
-                                                <span
-                                                    class="post-read-later post-read-later-guest tooltipstered"
-                                                    href="#login-register"
-                                                    data-type="add"
-                                                    data-id="53"><i
-                                                    class="fa fa-bookmark-o"></i></span>
-                                            </h2>
-                                        </a>
-                                            <div class="post-meta">
-                                                <div
-                                                    class="post-meta-content">
-                                                  <span
-                                                      class="post-auhor-date post-auhor-date-full">
-                                                    <a
-                                                        href="https://gillion.shufflehound.com/author/gillionshufflehound/">
-                                                      <img alt=""
-                                                           src="assets/images/f88c13d62ba761a92211e266c22dbb1f_002.jpg"
-                                                           srcset="assets/images/f88c13d62ba761a92211e266c22dbb1f_002.jpg 2x"
-                                                           class="avatar avatar-28 photo post-author-image"
-                                                           width="28"
-                                                           height="28">
-                                                    </a>
-                                                     <span>
-                                                        <a href="https://gillion.shufflehound.com/author/gillionshufflehound/"
-                                                                class="post-author">
-                                                            Gillion
-                                                        </a>
-                                                    </span>,
-                                                    <a [href]="firstPost.url"
-                                                       class="post-date">
-                                                      4 years ago
-                                                    </a> </span> <a
-                                                    href="https://gillion.shufflehound.com/2017/02/08/white-stairway-architectural-marvel/#comments"
-                                                    class="post-comments">
-                                                    <i
-                                                        class="icon icon-bubble"></i>
-                                                    1 </a> <span
-                                                    class="post-readtime">
-                                                    <i
-                                                        class="icon icon-clock"></i>
-                                                    3 min
-                                                    <span>read</span>
-                                                  </span> <span
-                                                    class="responsive-post-read-later">
-                                                    &nbsp;<span
-                                                    class="post-read-later post-read-later-guest tooltipstered"
-                                                    href="#login-register"
-                                                    data-type="add"
-                                                    data-id="53"><i
-                                                    class="fa fa-bookmark-o"></i></span>
-                                                  </span>
-                                                </div>
-                                            </div>
-                                        </div> <a
-                                        href="https://gillion.shufflehound.com/2017/02/08/white-stairway-architectural-marvel/"
-                                        class="post-cover-link"></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-                <div class="col-md-5 sh-categories-list ps-container ps-theme-default">
-                    <div class="blog-mini-post blog-mini-post-large blog-mini-post-layout1"
-                         *ngFor="let item of randomList">
-                        <a [href]="item.url"
-                           class="blog-mini-post-thumb sh-post-review-mini"
-                           [style]="'background-image: url('+ item.main_image +');'">
-                            <div class="post-review-svg">
-                                <div class="sh-pie" data-score="9.0"
-                                     data-offset="12.4"> 
-                                     <svg width="46"
-                                                              height="46" class="sh-pie-svg">
-                                    <circle r="21" cx="23" cy="23"
-                                            fill="transparent"
-                                            stroke-dasharray="128"
-                                            stroke-dashoffset="0"
-                                            style="stroke: rgba(247,200,40,0.6);stroke-dashoffset: 124px;">
-                                    </circle>
-                                </svg></div>
-                            </div>
-                            <div class="post-review post-review-standard"
-                                 style="background-color: #f7c828">
-                                <div class="post-review-score">
-                                    9<span>.0</span></div>
-                            </div>
-                            <div class="post-overlay-small"></div>
-                        </a>
-                        <div class="blog-mini-post-content">
-                            <div
-                                class="blog-mini-post-content-container">
-                                <a
-                                    [href]="item.url">
-                                    <h5 class="post-title">
-                                        {{ item.name }} 
-                                        <span
-                                            class="post-read-later post-read-later-guest tooltipstered"
-                                            href="#login-register"
-                                            data-type="add"
-                                            data-id="59"><i
-                                            class="fa fa-bookmark-o"></i></span>
-                                    </h5>
-                                </a>
-                                <div class="post-meta">
-                                    <div class="post-meta-content">
-                                            <span class="post-auhor-date">
-                                                <span *ngIf="item.author != undefined">
-                                                    <a [href]="item.profile" class="post-author">
-                                                        {{item.author}}
-                                                    </a>
-                                                </span>,
-                                                <a [href]="item.date" class="post-date" *ngIf="item.date != undefined">
-                                                   4 years ago 
-                                                 </a> 
-                                            </span>
-                                        <span class="post-readtime">
-                                            <i class="icon icon-clock"></i>
-                                              2 min <span>read</span>
-                                            </span> <span
-                                        class="responsive-post-read-later">
-                                              &nbsp;<span
-                                        class="post-read-later post-read-later-guest tooltipstered"
-                                        href="#login-register"
-                                        data-type="add"
-                                        data-id="59"><i
-                                        class="fa fa-bookmark-o"></i></span>
-                                            </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div
-                        class="blog-mini-post blog-mini-post-large blog-mini-post-layout1">
-                        <a href="https://gillion.shufflehound.com/2017/01/31/health-tips-and-benefits-of-healthy-lifestyle-you-should-consider/"
-                           class="blog-mini-post-thumb sh-post-review-mini"
-                           style="background-image: url( https://cdn.gillion.shufflehound.com/wp-content/uploads/2017/01/7-220x220.jpg);">
-                            <div class="post-overlay-small"></div>
-                        </a>
-                        <div class="blog-mini-post-content">
-                            <div
-                                class="blog-mini-post-content-container">
-                                <a
-                                    href="https://gillion.shufflehound.com/2017/01/31/health-tips-and-benefits-of-healthy-lifestyle-you-should-consider/">
-                                    <h5 class="post-title"> Health Tips
-                                        And Benefits Of Healthy
-                                        Lifestyle You Should
-                                        Consider&nbsp;<span
-                                            class="post-read-later post-read-later-guest tooltipstered"
-                                            href="#login-register"
-                                            data-type="add"
-                                            data-id="69"><i
-                                            class="fa fa-bookmark-o"></i></span>
-                                    </h5>
-                                </a>
-                                <div class="post-meta">
-                                    <div class="post-meta-content">
-                                            <span class="post-auhor-date">
-                                              <span> <a
-                                                  href="https://gillion.shufflehound.com/author/gillionshufflehound/"
-                                                  class="post-author">Gillion</a></span>,
-                                              <a href="https://gillion.shufflehound.com/2017/01/31/health-tips-and-benefits-of-healthy-lifestyle-you-should-consider/"
-                                                 class="post-date"> 4
-                                                years ago </a> </span>
-                                        <span class="post-readtime"> <i
-                                            class="icon icon-clock"></i>
-                                              3 min <span>read</span>
-                                            </span> <span
-                                        class="responsive-post-read-later">
-                                              &nbsp;<span
-                                        class="post-read-later post-read-later-guest tooltipstered"
-                                        href="#login-register"
-                                        data-type="add"
-                                        data-id="69"><i
-                                        class="fa fa-bookmark-o"></i></span>
-                                            </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div
-                        class="blog-mini-post blog-mini-post-large blog-mini-post-layout1">
-                        <a href="https://gillion.shufflehound.com/2017/01/31/new-coffee-place-you-have-to-visit/"
-                           class="blog-mini-post-thumb sh-post-review-mini"
-                           style="background-image: url( https://cdn.gillion.shufflehound.com/wp-content/uploads/2017/01/9-1-220x220.jpg);">
-                            <div class="post-overlay-small"></div>
-                        </a>
-                        <div class="blog-mini-post-content">
-                            <div
-                                class="blog-mini-post-content-container">
-                                <a
-                                    href="https://gillion.shufflehound.com/2017/01/31/new-coffee-place-you-have-to-visit/">
-                                    <h5 class="post-title"> New Coffee
-                                        Place You Have To
-                                        Visit&nbsp;<span
-                                            class="post-read-later post-read-later-guest tooltipstered"
-                                            href="#login-register"
-                                            data-type="add"
-                                            data-id="1494"><i
-                                            class="fa fa-bookmark-o"></i></span>
-                                    </h5>
-                                </a>
-                                <div class="post-meta">
-                                    <div class="post-meta-content">
-                                            <span class="post-auhor-date">
-                                              <span> <a
-                                                  href="https://gillion.shufflehound.com/author/gillionshufflehound/"
-                                                  class="post-author">Gillion</a></span>,
-                                              <a href="https://gillion.shufflehound.com/2017/01/31/new-coffee-place-you-have-to-visit/"
-                                                 class="post-date"> 4
-                                                years ago </a> </span>
-                                        <span class="post-readtime"> <i
-                                            class="icon icon-clock"></i>
-                                              3 min <span>read</span>
-                                            </span> <span
-                                        class="responsive-post-read-later">
-                                              &nbsp;<span
-                                        class="post-read-later post-read-later-guest tooltipstered"
-                                        href="#login-register"
-                                        data-type="add"
-                                        data-id="1494"><i
-                                        class="fa fa-bookmark-o"></i></span>
-                                            </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div
-                        class="blog-mini-post blog-mini-post-large blog-mini-post-layout1">
-                        <a href="https://gillion.shufflehound.com/2017/01/27/whatre-people-buzzing-about-your-content-should-join-the-conversation/"
-                           class="blog-mini-post-thumb sh-post-review-mini"
-                           style="background-image: url( https://cdn.gillion.shufflehound.com/wp-content/uploads/2017/01/8-1-220x220.jpg);">
-                            <div class="post-review-svg">
-                                <div class="sh-pie" data-score="8.1"
-                                     data-offset="23.56"> <svg width="46"
-                                                               height="46" class="sh-pie-svg">
-                                    <circle r="21" cx="23" cy="23"
-                                            fill="transparent"
-                                            stroke-dasharray="128"
-                                            stroke-dashoffset="0"
-                                            style="stroke: rgba(231,78,84,0.6);stroke-dashoffset: 124px;">
-                                    </circle>
-                                </svg></div>
-                            </div>
-                            <div class="post-review post-review-standard"
-                                 style="background-color: #e74e54; background: linear-gradient(to bottom, #e74e54 0%,#e82930 100%);">
-                                <div class="post-review-score">
-                                    8<span>.1</span></div>
-                            </div>
-                            <div class="post-overlay-small"></div>
-                        </a>
-                        <div class="blog-mini-post-content">
-                            <div
-                                class="blog-mini-post-content-container">
-                                <a
-                                    href="https://gillion.shufflehound.com/2017/01/27/whatre-people-buzzing-about-your-content-should-join-the-conversation/">
-                                    <h5 class="post-title"> What’re
-                                        People Buzzing About? Your
-                                        Content Should Join The
-                                        Conversation&nbsp;<span
-                                            class="post-read-later post-read-later-guest tooltipstered"
-                                            href="#login-register"
-                                            data-type="add"
-                                            data-id="85"><i
-                                            class="fa fa-bookmark-o"></i></span>
-                                    </h5>
-                                </a>
-                                <div class="post-meta">
-                                    <div class="post-meta-content">
-                                            <span class="post-auhor-date">
-                                              <span> <a
-                                                  href="https://gillion.shufflehound.com/author/gillionshufflehound/"
-                                                  class="post-author">Gillion</a></span>,
-                                              <a href="https://gillion.shufflehound.com/2017/01/27/whatre-people-buzzing-about-your-content-should-join-the-conversation/"
-                                                 class="post-date"> 4
-                                                years ago </a> </span>
-                                        <span class="post-readtime"> <i
-                                            class="icon icon-clock"></i>
-                                              3 min <span>read</span>
-                                            </span> <span
-                                        class="responsive-post-read-later">
-                                              &nbsp;<span
-                                        class="post-read-later post-read-later-guest tooltipstered"
-                                        href="#login-register"
-                                        data-type="add"
-                                        data-id="85"><i
-                                        class="fa fa-bookmark-o"></i></span>
-                                            </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="ps-scrollbar-x-rail"
-                         style="left: 0px; bottom: 0px;">
-                        <div class="ps-scrollbar-x" tabindex="0"
-                             style="left: 0px; width: 0px;"></div>
-                    </div>
-                    <div class="ps-scrollbar-y-rail"
-                         style="top: 0px; right: 0px;">
-                        <div class="ps-scrollbar-y" tabindex="0"
-                             style="top: 0px; height: 0px;"></div>
-                    </div>
-                </div>
+                <app-first-post [firstPost]="firstPost" [loading]="loading"></app-first-post>
+                <app-smallpost [list]="randomList" [loading]="loading"></app-smallpost>
             </div>
         </div>
         <div role="tabpanel" class="tab-pane fade"
@@ -374,20 +47,21 @@
                                                     <a
                                                         href="https://gillion.shufflehound.com/category/fashion/">Fashion</a>
                                                 </div>
-                                            </div> <a
-                                            href="https://gillion.shufflehound.com/2017/01/01/the-single-most-important-thing-you-need-to-know-about-success/"
-                                            class="post-title">
-                                            <h2> The Single Most
-                                                Important Thing You
-                                                Need To Know About
-                                                Success&nbsp;<span
-                                                    class="post-read-later post-read-later-guest tooltipstered"
-                                                    href="#login-register"
-                                                    data-type="add"
-                                                    data-id="406"><i
-                                                    class="fa fa-bookmark-o"></i></span>
-                                            </h2>
-                                        </a>
+                                            </div>
+                                            <a
+                                                href="https://gillion.shufflehound.com/2017/01/01/the-single-most-important-thing-you-need-to-know-about-success/"
+                                                class="post-title">
+                                                <h2> The Single Most
+                                                    Important Thing You
+                                                    Need To Know About
+                                                    Success&nbsp;<span
+                                                        class="post-read-later post-read-later-guest tooltipstered"
+                                                        href="#login-register"
+                                                        data-type="add"
+                                                        data-id="406"><i
+                                                        class="fa fa-bookmark-o"></i></span>
+                                                </h2>
+                                            </a>
                                             <div class="post-meta">
                                                 <div
                                                     class="post-meta-content">
@@ -429,9 +103,10 @@
                                                   </span>
                                                 </div>
                                             </div>
-                                        </div> <a
-                                        href="https://gillion.shufflehound.com/2017/01/01/the-single-most-important-thing-you-need-to-know-about-success/"
-                                        class="post-cover-link"></a>
+                                        </div>
+                                        <a
+                                            href="https://gillion.shufflehound.com/2017/01/01/the-single-most-important-thing-you-need-to-know-about-success/"
+                                            class="post-cover-link"></a>
                                     </div>
                                 </div>
                             </div>
@@ -665,19 +340,20 @@
                                                     <a
                                                         href="https://gillion.shufflehound.com/category/cars/">Cars</a>
                                                 </div>
-                                            </div> <a
-                                            href="https://gillion.shufflehound.com/2017/01/26/amazing-car-paint-jobs-we-seen-so-far/"
-                                            class="post-title">
-                                            <h2> Amazing Car Paint
-                                                Jobs We Seen So
-                                                Far&nbsp;<span
-                                                    class="post-read-later post-read-later-guest tooltipstered"
-                                                    href="#login-register"
-                                                    data-type="add"
-                                                    data-id="1513"><i
-                                                    class="fa fa-bookmark-o"></i></span>
-                                            </h2>
-                                        </a>
+                                            </div>
+                                            <a
+                                                href="https://gillion.shufflehound.com/2017/01/26/amazing-car-paint-jobs-we-seen-so-far/"
+                                                class="post-title">
+                                                <h2> Amazing Car Paint
+                                                    Jobs We Seen So
+                                                    Far&nbsp;<span
+                                                        class="post-read-later post-read-later-guest tooltipstered"
+                                                        href="#login-register"
+                                                        data-type="add"
+                                                        data-id="1513"><i
+                                                        class="fa fa-bookmark-o"></i></span>
+                                                </h2>
+                                            </a>
                                             <div class="post-meta">
                                                 <div
                                                     class="post-meta-content">
@@ -719,9 +395,10 @@
                                                   </span>
                                                 </div>
                                             </div>
-                                        </div> <a
-                                        href="https://gillion.shufflehound.com/2017/01/26/amazing-car-paint-jobs-we-seen-so-far/"
-                                        class="post-cover-link"></a>
+                                        </div>
+                                        <a
+                                            href="https://gillion.shufflehound.com/2017/01/26/amazing-car-paint-jobs-we-seen-so-far/"
+                                            class="post-cover-link"></a>
                                     </div>
                                 </div>
                             </div>
@@ -881,15 +558,17 @@
                            style="background-image: url( https://cdn.gillion.shufflehound.com/wp-content/uploads/2018/06/c-1-220x220.jpg);">
                             <div class="post-review-svg">
                                 <div class="sh-pie" data-score="7.9"
-                                     data-offset="26.04"> <svg width="46"
-                                                               height="46" class="sh-pie-svg">
-                                    <circle r="21" cx="23" cy="23"
-                                            fill="transparent"
-                                            stroke-dasharray="128"
-                                            stroke-dashoffset="0"
-                                            style="stroke: rgba(45,45,45,0.6);stroke-dashoffset: 124px;">
-                                    </circle>
-                                </svg></div>
+                                     data-offset="26.04">
+                                    <svg width="46"
+                                         height="46" class="sh-pie-svg">
+                                        <circle r="21" cx="23" cy="23"
+                                                fill="transparent"
+                                                stroke-dasharray="128"
+                                                stroke-dashoffset="0"
+                                                style="stroke: rgba(45,45,45,0.6);stroke-dashoffset: 124px;">
+                                        </circle>
+                                    </svg>
+                                </div>
                             </div>
                             <div class="post-review post-review-standard"
                                  style="background-color: #2d2d2d; background: linear-gradient(to bottom, #2d2d2d 0%,#595959 100%);">
@@ -972,20 +651,21 @@
                                                     <a
                                                         href="https://gillion.shufflehound.com/category/cars/">Cars</a>
                                                 </div>
-                                            </div> <a
-                                            href="https://gillion.shufflehound.com/2016/06/04/what-you-need-to-know-about-new-speed-limit-restrictions/"
-                                            class="post-title">
-                                            <h2> What You Need To
-                                                Know About New Speed
-                                                Limit
-                                                Restrictions&nbsp;<span
-                                                    class="post-read-later post-read-later-guest tooltipstered"
-                                                    href="#login-register"
-                                                    data-type="add"
-                                                    data-id="1518"><i
-                                                    class="fa fa-bookmark-o"></i></span>
-                                            </h2>
-                                        </a>
+                                            </div>
+                                            <a
+                                                href="https://gillion.shufflehound.com/2016/06/04/what-you-need-to-know-about-new-speed-limit-restrictions/"
+                                                class="post-title">
+                                                <h2> What You Need To
+                                                    Know About New Speed
+                                                    Limit
+                                                    Restrictions&nbsp;<span
+                                                        class="post-read-later post-read-later-guest tooltipstered"
+                                                        href="#login-register"
+                                                        data-type="add"
+                                                        data-id="1518"><i
+                                                        class="fa fa-bookmark-o"></i></span>
+                                                </h2>
+                                            </a>
                                             <div class="post-meta">
                                                 <div
                                                     class="post-meta-content">
@@ -1027,9 +707,10 @@
                                                   </span>
                                                 </div>
                                             </div>
-                                        </div> <a
-                                        href="https://gillion.shufflehound.com/2016/06/04/what-you-need-to-know-about-new-speed-limit-restrictions/"
-                                        class="post-cover-link"></a>
+                                        </div>
+                                        <a
+                                            href="https://gillion.shufflehound.com/2016/06/04/what-you-need-to-know-about-new-speed-limit-restrictions/"
+                                            class="post-cover-link"></a>
                                     </div>
                                 </div>
                             </div>
@@ -1263,19 +944,20 @@
                                                     <a
                                                         href="https://gillion.shufflehound.com/category/lifestyle/">Lifestyle</a>
                                                 </div>
-                                            </div> <a
-                                            href="https://gillion.shufflehound.com/2017/02/08/white-stairway-architectural-marvel/"
-                                            class="post-title">
-                                            <h2> White Stairway.
-                                                Architectural
-                                                marvel!&nbsp;<span
-                                                    class="post-read-later post-read-later-guest tooltipstered"
-                                                    href="#login-register"
-                                                    data-type="add"
-                                                    data-id="53"><i
-                                                    class="fa fa-bookmark-o"></i></span>
-                                            </h2>
-                                        </a>
+                                            </div>
+                                            <a
+                                                href="https://gillion.shufflehound.com/2017/02/08/white-stairway-architectural-marvel/"
+                                                class="post-title">
+                                                <h2> White Stairway.
+                                                    Architectural
+                                                    marvel!&nbsp;<span
+                                                        class="post-read-later post-read-later-guest tooltipstered"
+                                                        href="#login-register"
+                                                        data-type="add"
+                                                        data-id="53"><i
+                                                        class="fa fa-bookmark-o"></i></span>
+                                                </h2>
+                                            </a>
                                             <div class="post-meta">
                                                 <div
                                                     class="post-meta-content">
@@ -1317,9 +999,10 @@
                                                   </span>
                                                 </div>
                                             </div>
-                                        </div> <a
-                                        href="https://gillion.shufflehound.com/2017/02/08/white-stairway-architectural-marvel/"
-                                        class="post-cover-link"></a>
+                                        </div>
+                                        <a
+                                            href="https://gillion.shufflehound.com/2017/02/08/white-stairway-architectural-marvel/"
+                                            class="post-cover-link"></a>
                                     </div>
                                 </div>
                             </div>
@@ -1335,15 +1018,17 @@
                            style="background-image: url( https://cdn.gillion.shufflehound.com/wp-content/uploads/2017/01/6-1-220x220.jpg);">
                             <div class="post-review-svg">
                                 <div class="sh-pie" data-score="9.0"
-                                     data-offset="12.4"> <svg width="46"
-                                                              height="46" class="sh-pie-svg">
-                                    <circle r="21" cx="23" cy="23"
-                                            fill="transparent"
-                                            stroke-dasharray="128"
-                                            stroke-dashoffset="0"
-                                            style="stroke: rgba(247,200,40,0.6);stroke-dashoffset: 124px;">
-                                    </circle>
-                                </svg></div>
+                                     data-offset="12.4">
+                                    <svg width="46"
+                                         height="46" class="sh-pie-svg">
+                                        <circle r="21" cx="23" cy="23"
+                                                fill="transparent"
+                                                stroke-dasharray="128"
+                                                stroke-dashoffset="0"
+                                                style="stroke: rgba(247,200,40,0.6);stroke-dashoffset: 124px;">
+                                        </circle>
+                                    </svg>
+                                </div>
                             </div>
                             <div class="post-review post-review-standard"
                                  style="background-color: #f7c828">
@@ -1497,15 +1182,17 @@
                            style="background-image: url( https://cdn.gillion.shufflehound.com/wp-content/uploads/2017/01/8-1-220x220.jpg);">
                             <div class="post-review-svg">
                                 <div class="sh-pie" data-score="8.1"
-                                     data-offset="23.56"> <svg width="46"
-                                                               height="46" class="sh-pie-svg">
-                                    <circle r="21" cx="23" cy="23"
-                                            fill="transparent"
-                                            stroke-dasharray="128"
-                                            stroke-dashoffset="0"
-                                            style="stroke: rgba(231,78,84,0.6);stroke-dashoffset: 124px;">
-                                    </circle>
-                                </svg></div>
+                                     data-offset="23.56">
+                                    <svg width="46"
+                                         height="46" class="sh-pie-svg">
+                                        <circle r="21" cx="23" cy="23"
+                                                fill="transparent"
+                                                stroke-dasharray="128"
+                                                stroke-dashoffset="0"
+                                                style="stroke: rgba(231,78,84,0.6);stroke-dashoffset: 124px;">
+                                        </circle>
+                                    </svg>
+                                </div>
                             </div>
                             <div class="post-review post-review-standard"
                                  style="background-color: #e74e54; background: linear-gradient(to bottom, #e74e54 0%,#e82930 100%);">

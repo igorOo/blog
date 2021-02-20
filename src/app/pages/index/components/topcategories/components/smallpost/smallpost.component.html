@@ -1,1 +1,55 @@
-<p>smallpost works!</p>
+<div class="col-md-5 sh-categories-list ps-container ps-theme-default">
+    <div *ngIf="!loading">
+        <div class="blog-mini-post blog-mini-post-large blog-mini-post-layout1"
+             *ngFor="let item of list">
+            <a [href]="item.url"
+               class="blog-mini-post-thumb sh-post-review-mini"
+               [style]="'background-image: url('+ item.main_image +');'">
+                <div class="post-overlay-small"></div>
+            </a>
+            <div class="blog-mini-post-content">
+                <div
+                    class="blog-mini-post-content-container">
+                    <a
+                        [href]="item.url">
+                        <h5 class="post-title">
+                            {{ item.name }}
+                            <span
+                                class="post-read-later post-read-later-guest tooltipstered"><i
+                                class="fa fa-bookmark-o"></i></span>
+                        </h5>
+                    </a>
+                    <div class="post-meta">
+                        <div class="post-meta-content">
+                                                <span class="post-auhor-date">
+                                                    <span *ngIf="item.author != undefined">
+                                                        <a [href]="item.url" class="post-author">
+                                                            {{item.author}}
+                                                        </a>,
+                                                    </span>
+                                                    <a [href]="item.url" class="post-date"
+                                                       *ngIf="item.date_create != undefined">
+                                                       {{ item.date_create }}
+                                                    </a>
+                                                </span>
+                            <span class="post-readtime" *ngIf="item.time_read != undefined">
+                                                <i class="icon icon-clock"></i>
+                                                2 min <span>read</span>
+                                            </span>
+                            <span class="responsive-post-read-later">
+                                                <span class="post-read-later post-read-later-guest tooltipstered">
+                                                    <i class="fa fa-bookmark-o"></i>
+                                                </span>
+                                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="loading">
+        <div class="blog-mini-post blog-mini-post-large blog-mini-post-layout1" *ngFor="let item of [1,2,3,4]">
+            <app-loader [image]="true" [heightImage]="108" [widthImage]="108" [inline]="true" [lines]="3"></app-loader>
+        </div>
+    </div>
+</div>

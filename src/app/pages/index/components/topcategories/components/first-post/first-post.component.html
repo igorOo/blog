@@ -1,1 +1,68 @@
-<p>first-post works!</p>
+<div class="col-md-7">
+    <article class="post-item post-style-cover post type-post status-publish format-standard has-post-thumbnail hentry category-lifestyle category-places tag-building tag-stairs tag-travel">
+        <div class="post-container" [ngClass]="{'loading-style':loading}">
+            <div class="sh-ratio">
+                <div class="sh-ratio-container" *ngIf="!loading">
+                    <div class="sh-ratio-content" [style]="'background-image: url('+ firstPost.main_image +');'">
+                        <div class="post-cover-container">
+                            <div class="post-categories-container">
+                                <div class="post-categories">
+                                    <a href="https://gillion.shufflehound.com/category/lifestyle/">
+                                        {{ firstPost.category }}
+                                    </a>
+                                </div>
+                            </div>
+                            <a [href]="firstPost.url" class="post-title">
+                                <h2> {{ firstPost.name }} </h2>
+                            </a>
+                            <div class="post-meta">
+                                <div class="post-meta-content">
+                                      <span class="post-auhor-date post-auhor-date-full">
+                                        <a href="https://gillion.shufflehound.com/author/gillionshufflehound/"
+                                           *ngIf="firstPost.author != undefined">
+                                          <img alt=""
+                                               src="assets/images/f88c13d62ba761a92211e266c22dbb1f_002.jpg"
+                                               srcset="assets/images/f88c13d62ba761a92211e266c22dbb1f_002.jpg 2x"
+                                               class="avatar avatar-28 photo post-author-image"
+                                               width="28"
+                                               height="28">
+                                        </a>
+                                         <span *ngIf="firstPost.author != undefined">
+                                            <a href="https://gillion.shufflehound.com/author/gillionshufflehound/"
+                                               class="post-author">
+                                                Gillion
+                                            </a>,
+                                        </span>
+                                        <a [href]="firstPost.url" class="post-date">
+                                          {{ firstPost.date_create }}
+                                        </a> </span>
+                                    <a [href]="firstPost.url +'#comments'" class="post-comments"
+                                       *ngIf="firstPost.count_comment != undefined">
+                                        <i class="icon icon-bubble"></i>
+
+                                    </a>
+                                    <span class="post-readtime" *ngIf="firstPost.time_read != undefined">
+                                        <i class="icon icon-clock"></i>
+                                        3 min
+                                        <span>read</span>
+                                    </span>
+                                    <span class="responsive-post-read-later">
+                                        <span class="post-read-later post-read-later-guest tooltipstered">
+                                            <i class="fa fa-bookmark-o"></i>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <a [href]="firstPost.url" class="post-cover-link"></a>
+                    </div>
+                </div>
+                <div class="sh-radio-container" *ngIf="loading">
+                    <div class="sh-ratio-content">
+                        <app-loader [image]="true" [heightImage]="530" [widthImage]="370"></app-loader>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+</div>

@@ -37,25 +37,24 @@ export class TopcategoriesComponent implements OnInit, OnChanges, DoCheck {
     }
 
     ngOnInit(): void {
-        this.tops.subscribe((result: any) => {
-            if (result["tops"] != undefined) {
-                for (const key in result["tops"]) {
-                    let item = result['tops'][key];
-                    this.list.push(item);
-                    let cat: TopCategoriesListInterface = {
-                        category: result['tops'][key][0].category,
-                        category_id: result['tops'][key][0].category_id,
-                        cat_translit: result['tops'][key][0].cat_translit,
-                    };
-                    this.categories.push(cat)
-                }
-                this.generateRandomList()
-                this.loading = false
-            }
-        })
+
     }
 
     ngOnChanges(changes: SimpleChanges): void{
+        if (changes.tops.currentValue){
+            for (const key in changes.tops.currentValue['tops']) {
+                let item = changes.tops.currentValue['tops'][key];
+                this.list.push(item);
+                let cat: TopCategoriesListInterface = {
+                    category: changes.tops.currentValue['tops'][key][0].category,
+                    category_id: changes.tops.currentValue['tops'][key][0].category_id,
+                    cat_translit: changes.tops.currentValue['tops'][key][0].cat_translit,
+                };
+                this.categories.push(cat)
+            }
+            this.generateRandomList()
+            this.loading = false
+        }
 
     }
 

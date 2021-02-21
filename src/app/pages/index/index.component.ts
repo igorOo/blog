@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import TopCategoriesInterface from "./interfaces/TopCategoriesInterface";
 import {TopCategoriesListInterface} from "./interfaces/TopCategoriesListInterface";
 import { Observable } from 'rxjs';
+import {TopPost} from "./interfaces/TopPost";
 
 
 @Component({
@@ -13,14 +14,23 @@ import { Observable } from 'rxjs';
 export class IndexComponent implements OnInit {
 
     public tops: any = null;
+    public gadgets: Array<TopPost> = [];
     public categList: TopCategoriesListInterface[] =[];
 
     constructor(private http: HttpClient) {
     }
 
     ngOnInit(): void {
-        this.tops = this.http.get("http://techno.loc/api/v1/posts/mainpage");
-            
+        this.http.get("http://techno.loc/api/v1/posts/mainpage")
+            .subscribe((result: any) => {
+                if (result["tops"] != undefined) {
+                    this.tops = result['tops'];
+                }
+                if(result["gadgets"] != undefined){
+                    this.gadgets = result["gadgets"]
+                }
+            })
+
     }
 
 }

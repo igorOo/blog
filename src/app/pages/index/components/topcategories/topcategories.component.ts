@@ -9,7 +9,9 @@ import {TopCategoriesListInterface} from "../../interfaces/TopCategoriesListInte
 })
 export class TopcategoriesComponent implements OnInit, OnChanges, DoCheck {
     public loading:boolean = true;
+    public currentTab: number = 1;
     public randomList: any[] = [];
+    public initedRandomList: Array<TopPost> = []
     public firstPost:TopPost = {
         id:0,
         name: '',
@@ -25,6 +27,7 @@ export class TopcategoriesComponent implements OnInit, OnChanges, DoCheck {
         url: '',
         author: '',
     };
+    public initedFirstPost: TopPost = this.firstPost
     public list: any[] = [];
     public categories: TopCategoriesListInterface[] = [];
 
@@ -48,8 +51,6 @@ export class TopcategoriesComponent implements OnInit, OnChanges, DoCheck {
                 }
                 this.generateRandomList()
                 this.loading = false
-                console.log(this.list)
-                console.log(this.categories)
             }
         })
     }
@@ -74,6 +75,7 @@ export class TopcategoriesComponent implements OnInit, OnChanges, DoCheck {
                 this.randomList.push(item[4])
             }
         })
+        this.currentTab = category
     }
 
     generateRandomList(){
@@ -85,6 +87,7 @@ export class TopcategoriesComponent implements OnInit, OnChanges, DoCheck {
             if (i == 0){
                 // @ts-ignore
                 this.firstPost = this.list[parentRand][childRand]
+                this.initedFirstPost = this.firstPost
                 continue
             }
             let inner = false
@@ -102,5 +105,13 @@ export class TopcategoriesComponent implements OnInit, OnChanges, DoCheck {
                 i--
             }
         }
+        this.initedRandomList = this.randomList
+    }
+
+    changeAllTab(e: Event){
+        e.preventDefault()
+        this.randomList = this.initedRandomList
+        this.firstPost = this.initedFirstPost
+        this.currentTab = 1
     }
 }

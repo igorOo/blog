@@ -2,4 +2,19 @@
     h2{
         border-color: #41c9e5;
     }
+    .blog-style-mini1.columns3 {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+
+        .slider-item-loader{
+            width: 33.33%;
+        }
+    }
+    .sh-carousel-style2 .sh-carousel-buttons-styling .sh-carousel-prev,
+    .sh-carousel-style2 .sh-carousel-buttons-styling .slick-prev {
+        left: 0;
+        height: 22px;
+        transform: translateY(2px);
+    }
 }

@@ -55370,3 +55370,14 @@ body.woocommerce-edit-address .woocommerce-MyAccount-content p {
         font-size: 11px;
     }
 }
+.slick-prev, .slick-next {
+    color: unset !important;
+    transform: unset !important;
+}
+
+.slick-prev{
+    left: 0 !important;
+}
+.slick-next{
+    right: 0 !important;
+}

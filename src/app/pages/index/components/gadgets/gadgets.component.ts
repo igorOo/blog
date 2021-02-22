@@ -7,7 +7,14 @@ import {TopPost} from "../../interfaces/TopPost";
     styleUrls: ['./gadgets.component.scss']
 })
 export class GadgetsComponent implements OnInit {
-    public loading: boolean = false
+    public loading: boolean = true
+    public slideConfig = {
+        "slidesToShow": 3,
+        "slidesToScroll": 1,
+        "autoplay": false,
+        "prevArrow": '',
+        "nextArrow": ''
+    };
     @Input() list: Array<TopPost> = []
 
     constructor() {
@@ -19,8 +26,12 @@ export class GadgetsComponent implements OnInit {
     ngOnChanges(changes: SimpleChanges): void{
         if (changes.list.currentValue){
             this.list = changes.list.currentValue
+            if (this.list.length){
+                this.loading = false
+            }
         }
         console.log(this.list)
     }
+
 
 }

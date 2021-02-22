@@ -42,13 +42,13 @@ export class TopcategoriesComponent implements OnInit, OnChanges, DoCheck {
 
     ngOnChanges(changes: SimpleChanges): void{
         if (changes.tops.currentValue){
-            for (const key in changes.tops.currentValue['tops']) {
-                let item = changes.tops.currentValue['tops'][key];
+            for (const key in changes.tops.currentValue) {
+                let item = changes.tops.currentValue[key];
                 this.list.push(item);
                 let cat: TopCategoriesListInterface = {
-                    category: changes.tops.currentValue['tops'][key][0].category,
-                    category_id: changes.tops.currentValue['tops'][key][0].category_id,
-                    cat_translit: changes.tops.currentValue['tops'][key][0].cat_translit,
+                    category: changes.tops.currentValue[key][0].category,
+                    category_id: changes.tops.currentValue[key][0].category_id,
+                    cat_translit: changes.tops.currentValue[key][0].cat_translit,
                 };
                 this.categories.push(cat)
             }

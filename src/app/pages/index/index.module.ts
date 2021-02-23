@@ -12,7 +12,8 @@ import { TopcategoriesComponent } from './components/topcategories/topcategories
 import { FirstPostComponent } from './components/topcategories/components/first-post/first-post.component';
 import {LoaderComponent} from "../../shared/components/loader/loader.component";
 import { SmallpostComponent } from './components/topcategories/components/smallpost/smallpost.component';
-import { GadgetsComponent } from './components/gadgets/gadgets.component'
+import { GadgetsComponent } from './components/gadgets/gadgets.component';
+import { IntandprogsComponent } from './components/intAndProgs/intandprogs/intandprogs.component'
 
 @NgModule({
     declarations: [
@@ -24,7 +25,8 @@ import { GadgetsComponent } from './components/gadgets/gadgets.component'
         FirstPostComponent,
         LoaderComponent,
         SmallpostComponent,
-        GadgetsComponent
+        GadgetsComponent,
+        IntandprogsComponent
     ],
     imports: [
         IndexRoutingModule,

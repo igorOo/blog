@@ -15,6 +15,7 @@ export class IndexComponent implements OnInit {
 
     public tops: any = null;
     public gadgets: Array<TopPost> = [];
+    public interandprogs: Array<TopPost> = []
     public categList: TopCategoriesListInterface[] =[];
 
     constructor(private http: HttpClient) {
@@ -28,6 +29,9 @@ export class IndexComponent implements OnInit {
                 }
                 if(result["gadgets"] != undefined){
                     this.gadgets = result["gadgets"]
+                }
+                if (result["interandprogs"] != undefined){
+                    this.interandprogs = result["interandprogs"]
                 }
             })
 

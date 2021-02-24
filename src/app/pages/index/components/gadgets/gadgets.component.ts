@@ -30,7 +30,6 @@ export class GadgetsComponent implements OnInit {
                 this.loading = false
             }
         }
-        console.log(this.list)
     }
 
 

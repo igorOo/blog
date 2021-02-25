@@ -14,6 +14,7 @@ import {LoaderComponent} from "../../shared/components/loader/loader.component";
 import { SmallpostComponent } from './components/topcategories/components/smallpost/smallpost.component';
 import { GadgetsComponent } from './components/gadgets/gadgets.component';
 import { IntandprogsComponent } from './components/intAndProgs/intandprogs/intandprogs.component'
+import FilterForPipe from "../../pipes/filterFor.pipe";
 
 @NgModule({
     declarations: [
@@ -26,7 +27,8 @@ import { IntandprogsComponent } from './components/intAndProgs/intandprogs/intan
         LoaderComponent,
         SmallpostComponent,
         GadgetsComponent,
-        IntandprogsComponent
+        IntandprogsComponent,
+        FilterForPipe,
     ],
     imports: [
         IndexRoutingModule,

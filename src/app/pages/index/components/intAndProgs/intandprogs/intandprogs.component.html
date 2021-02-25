@@ -32,89 +32,90 @@
         <div class="tab-pane fade in active" id="tab-ORlXknfHDN-0" role="tabpanel">
             <div class="row">
                 <div class="col-md-6 col-sm-6">
-                    <div class="blog-mini-post-generic sh-widget-posts-slider-item sh-widget-posts-slider-item-large sh-widget-posts-slider-style1">
-                        <div class="post-thumbnail">
-                            <img
-                            alt=""
-                            class="attachment-gillion-landscape-small size-gillion-landscape-small wp-post-image"
-                            height="265" src="assets/images/13-1-420x265.jpg" width="420"> <a
-                            class="post-overlay"
-                            href="https://gillion.shufflehound.com/2017/01/04/how-to-photograph-a-model-like-a-professional/">
-                            <div class="post-overlay-content">
-                                <span></span> <span></span>
-                                <span></span>
-                            </div>
-                        </a>
-                            <div class="post-categories-container"><a
-                                class="post-format-icon"
-                                href="https://gillion.shufflehound.com/2017/01/04/how-to-photograph-a-model-like-a-professional/"><i
-                                class="ti-control-play"></i></a>
-                                <div class="post-categories"><a
-                                    href="https://gillion.shufflehound.com/category/fashion/">Fashion</a>
+                    <div *ngFor="let item of activeList | filterFor">
+                        <div *ngIf="item.key == 0"
+                            class="blog-mini-post-generic sh-widget-posts-slider-item sh-widget-posts-slider-item-large sh-widget-posts-slider-style1">
+                            <div class="post-thumbnail">
+                                <img alt=""
+                                     class="attachment-gillion-landscape-small size-gillion-landscape-small wp-post-image"
+                                     height="265" src="assets/images/13-1-420x265.jpg" width="420">
+                                <a class="post-overlay" ref="https://gillion.shufflehound.com/2017/01/04/how-to-photograph-a-model-like-a-professional/">
+                                    <div class="post-overlay-content">
+                                        <span></span> <span></span>
+                                        <span></span>
+                                    </div>
+                                </a>
+                                <div class="post-categories-container"><a
+                                    class="post-format-icon"
+                                    href="https://gillion.shufflehound.com/2017/01/04/how-to-photograph-a-model-like-a-professional/"><i
+                                    class="ti-control-play"></i></a>
+                                    <div class="post-categories"><a
+                                        href="https://gillion.shufflehound.com/category/fashion/">Fashion</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <a
-                            href="https://gillion.shufflehound.com/2017/01/04/how-to-photograph-a-model-like-a-professional/">
-                            <h5 class="post-title"> How To Photograph A
-                                Model Like A Professional&nbsp;<span
+                            <a href="https://gillion.shufflehound.com/2017/01/04/how-to-photograph-a-model-like-a-professional/">
+                                <h5 class="post-title"> How To Photograph A
+                                    Model Like A Professional&nbsp;<span
+                                        class="post-read-later post-read-later-guest tooltipstered"
+                                        data-id="488"
+                                        data-type="add" href="#login-register"><i
+                                        class="fa fa-bookmark-o"></i></span>
+                                </h5>
+                            </a>
+                            <div class="post-meta">
+                                <div class="post-meta-content"> <span
+                                    class="post-auhor-date"> <span> <a
+                                    class="post-author"
+                                    href="https://gillion.shufflehound.com/author/gillionshufflehound/">Gillion</a></span>,
+                                          <a class="post-date"
+                                             href="https://gillion.shufflehound.com/2017/01/04/how-to-photograph-a-model-like-a-professional/"> 4 years ago
+                                          </a> </span> <a
+                                    class="post-comments"
+                                    href="https://gillion.shufflehound.com/2017/01/04/how-to-photograph-a-model-like-a-professional/#comments">
+                                    <i
+                                        class="icon icon-bubble"></i> 0
+                                </a> <span
+                                    class="responsive-post-read-later">
+                                          &nbsp;<span
                                     class="post-read-later post-read-later-guest tooltipstered"
                                     data-id="488"
                                     data-type="add" href="#login-register"><i
                                     class="fa fa-bookmark-o"></i></span>
-                            </h5>
-                        </a>
-                        <div class="post-meta">
-                            <div class="post-meta-content"> <span
-                                class="post-auhor-date"> <span> <a
-                                class="post-author"
-                                href="https://gillion.shufflehound.com/author/gillionshufflehound/">Gillion</a></span>,
-                                          <a class="post-date"
-                                             href="https://gillion.shufflehound.com/2017/01/04/how-to-photograph-a-model-like-a-professional/"> 4 years ago
-                                          </a> </span> <a
-                                class="post-comments"
-                                href="https://gillion.shufflehound.com/2017/01/04/how-to-photograph-a-model-like-a-professional/#comments"> <i
-                                class="icon icon-bubble"></i> 0
-                            </a> <span
-                                class="responsive-post-read-later">
-                                          &nbsp;<span
-                                class="post-read-later post-read-later-guest tooltipstered"
-                                data-id="488"
-                                data-type="add" href="#login-register"><i
-                                class="fa fa-bookmark-o"></i></span>
                                         </span></div>
+                            </div>
+                            <div class="post-content">
+                                <p>Lorem
+                                    ipsum dolor sit amet, consectetur
+                                    adipiscing elit. Nam laoreet, nunc et
+                                    accumsan cursus, neque eros sodales
+                                    lectus, in fermentum…</p>
+                            </div>
                         </div>
-                        <div class="post-content">
-                            <p>Lorem
-                                ipsum dolor sit amet, consectetur
-                                adipiscing elit. Nam laoreet, nunc et
-                                accumsan cursus, neque eros sodales
-                                lectus, in fermentum…</p>
-                        </div>
-                    </div>
-                    <div class="blog-mini-post blog-mini-post-small blog-mini-post-layout1">
-                        <a class="blog-mini-post-thumb sh-post-review-mini"
-                           href="https://gillion.shufflehound.com/2017/01/02/grey-fashion-trends-you-dint-know-that-existed/"
-                           style="background-image: url( https://cdn.gillion.shufflehound.com/wp-content/uploads/2017/01/15-220x220.jpg);">
-                            <div class="post-overlay-small"></div>
-                        </a>
-                        <div class="blog-mini-post-content">
-                            <div
-                                class="blog-mini-post-content-container">
-                                <a
-                                    href="https://gillion.shufflehound.com/2017/01/02/grey-fashion-trends-you-dint-know-that-existed/">
-                                    <h5 class="post-title"> Grey Fashion
-                                        Trends You Din’t Know That
-                                        Existed&nbsp;<span
-                                            class="post-read-later post-read-later-guest tooltipstered"
-                                            data-id="1489"
-                                            data-type="add"
-                                            href="#login-register"><i
-                                            class="fa fa-bookmark-o"></i></span>
-                                    </h5>
-                                </a>
-                                <div class="post-meta">
-                                    <div class="post-meta-content">
+                        <div *ngIf="item.key > 0 && item.key <= 1"
+                            class="blog-mini-post blog-mini-post-small blog-mini-post-layout1">
+                            <a class="blog-mini-post-thumb sh-post-review-mini"
+                               href="https://gillion.shufflehound.com/2017/01/02/grey-fashion-trends-you-dint-know-that-existed/"
+                               style="background-image: url( https://cdn.gillion.shufflehound.com/wp-content/uploads/2017/01/15-220x220.jpg);">
+                                <div class="post-overlay-small"></div>
+                            </a>
+                            <div class="blog-mini-post-content">
+                                <div
+                                    class="blog-mini-post-content-container">
+                                    <a
+                                        href="https://gillion.shufflehound.com/2017/01/02/grey-fashion-trends-you-dint-know-that-existed/">
+                                        <h5 class="post-title"> Grey Fashion
+                                            Trends You Din’t Know That
+                                            Existed&nbsp;<span
+                                                class="post-read-later post-read-later-guest tooltipstered"
+                                                data-id="1489"
+                                                data-type="add"
+                                                href="#login-register"><i
+                                                class="fa fa-bookmark-o"></i></span>
+                                        </h5>
+                                    </a>
+                                    <div class="post-meta">
+                                        <div class="post-meta-content">
                                             <span class="post-auhor-date">
                                               <span> <a
                                                   class="post-author"
@@ -122,23 +123,26 @@
                                               <a class="post-date"
                                                  href="https://gillion.shufflehound.com/2017/01/02/grey-fashion-trends-you-dint-know-that-existed/"> 4
                                                 years ago </a> </span>
-                                        <span class="post-readtime"> <i
-                                            class="icon icon-clock"></i>
+                                            <span class="post-readtime"> <i
+                                                class="icon icon-clock"></i>
                                               3 min <span>read</span>
                                             </span> <span
-                                        class="responsive-post-read-later">
+                                            class="responsive-post-read-later">
                                               &nbsp;<span
-                                        class="post-read-later post-read-later-guest tooltipstered"
-                                        data-id="1489"
-                                        data-type="add"
-                                        href="#login-register"><i
-                                        class="fa fa-bookmark-o"></i></span>
+                                            class="post-read-later post-read-later-guest tooltipstered"
+                                            data-id="1489"
+                                            data-type="add"
+                                            href="#login-register"><i
+                                            class="fa fa-bookmark-o"></i></span>
                                             </span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+
                     <div class="blog-mini-post blog-mini-post-small blog-mini-post-layout1">
                         <a class="blog-mini-post-thumb sh-post-review-mini"
                            href="https://gillion.shufflehound.com/2017/01/01/the-single-most-important-thing-you-need-to-know-about-success/"
@@ -186,9 +190,9 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-6 col-sm-6">
-                    <div class="blog-mini-post-generic sh-widget-posts-slider-item sh-widget-posts-slider-item-large sh-widget-posts-slider-style1">
+
+                    <div
+                        class="blog-mini-post-generic sh-widget-posts-slider-item sh-widget-posts-slider-item-large sh-widget-posts-slider-style1">
                         <div class="post-thumbnail"><img
                             alt=""
                             class="attachment-gillion-landscape-small size-gillion-landscape-small wp-post-image"
@@ -229,8 +233,9 @@
                                              href="https://gillion.shufflehound.com/2017/01/02/inspiring-songs-vol-1-different-heaven-safe-and-sound/"> 4 years ago
                                           </a> </span> <a
                                 class="post-comments"
-                                href="https://gillion.shufflehound.com/2017/01/02/inspiring-songs-vol-1-different-heaven-safe-and-sound/#comments"> <i
-                                class="icon icon-bubble"></i> 0
+                                href="https://gillion.shufflehound.com/2017/01/02/inspiring-songs-vol-1-different-heaven-safe-and-sound/#comments">
+                                <i
+                                    class="icon icon-bubble"></i> 0
                             </a> <span
                                 class="responsive-post-read-later">
                                           &nbsp;<span

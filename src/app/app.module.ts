@@ -6,7 +6,6 @@ import {AppComponent} from './app.component';
 import {AuthInterceptor} from "./auth.interceptor";
 import {BrowserModule} from "@angular/platform-browser";
 
-
 const httpInterceptorHandlers: Provider = [
     {
         provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true
@@ -16,7 +15,7 @@ const httpInterceptorHandlers: Provider = [
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
     ],
     imports: [
         BrowserModule.withServerTransition({appId: 'serverApp'}),

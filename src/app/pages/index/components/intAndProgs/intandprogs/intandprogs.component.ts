@@ -1,6 +1,7 @@
 import {Component, Input, OnInit, OnChanges, SimpleChanges} from '@angular/core';
 import {TopPost} from "../../../interfaces/TopPost";
 import {TopCategoriesListInterface} from "../../../interfaces/TopCategoriesListInterface";
+import filterForPipe from "../../../../../pipes/filterFor.pipe"
 
 @Component({
     selector: 'app-intandprogs',
@@ -23,6 +24,11 @@ export class IntandprogsComponent implements OnInit {
     ngOnChanges(changes: SimpleChanges): void{
         if (Object.keys(changes.list.currentValue).length){
             for (const key in changes.list.currentValue) {
+                changes.list.currentValue[key].map((item: TopPost, index:number) => {
+                    if (index<3){
+                        this.activeList.push(item)
+                    }
+                })
                 // let item = changes.list.currentValue[key];
                 // this.list.push(item)
                 let cat: TopCategoriesListInterface = {
@@ -33,6 +39,7 @@ export class IntandprogsComponent implements OnInit {
                 this.categories.push(cat)
             }
             this.loading = false
+            console.log(this.activeList)
         }
     }
 

@@ -32,7 +32,7 @@
         <div class="tab-pane fade in active" id="tab-ORlXknfHDN-0" role="tabpanel">
             <div class="row">
                 <div class="col-md-6 col-sm-6">
-                    <div *ngFor="let item of activeList | filterFor">
+                    <div *ngFor="let item of activeList | keyvalue | filterFor:0:2 ">
                         <div *ngIf="item.key == 0"
                             class="blog-mini-post-generic sh-widget-posts-slider-item sh-widget-posts-slider-item-large sh-widget-posts-slider-style1">
                             <div class="post-thumbnail">
@@ -92,7 +92,7 @@
                                     lectus, in fermentum…</p>
                             </div>
                         </div>
-                        <div *ngIf="item.key > 0 && item.key <= 1"
+                        <div *ngIf="item.key > 0"
                             class="blog-mini-post blog-mini-post-small blog-mini-post-layout1">
                             <a class="blog-mini-post-thumb sh-post-review-mini"
                                href="https://gillion.shufflehound.com/2017/01/02/grey-fashion-trends-you-dint-know-that-existed/"
@@ -141,56 +141,8 @@
                             </div>
                         </div>
                     </div>
-
-
-                    <div class="blog-mini-post blog-mini-post-small blog-mini-post-layout1">
-                        <a class="blog-mini-post-thumb sh-post-review-mini"
-                           href="https://gillion.shufflehound.com/2017/01/01/the-single-most-important-thing-you-need-to-know-about-success/"
-                           style="background-image: url( https://cdn.gillion.shufflehound.com/wp-content/uploads/2017/01/16-1-220x220.jpg);">
-                            <div class="post-overlay-small"></div>
-                        </a>
-                        <div class="blog-mini-post-content">
-                            <div
-                                class="blog-mini-post-content-container">
-                                <a
-                                    href="https://gillion.shufflehound.com/2017/01/01/the-single-most-important-thing-you-need-to-know-about-success/">
-                                    <h5 class="post-title"> The Single
-                                        Most Important Thing You Need To
-                                        Know About Success&nbsp;<span
-                                            class="post-read-later post-read-later-guest tooltipstered"
-                                            data-id="406"
-                                            data-type="add"
-                                            href="#login-register"><i
-                                            class="fa fa-bookmark-o"></i></span>
-                                    </h5>
-                                </a>
-                                <div class="post-meta">
-                                    <div class="post-meta-content">
-                                            <span class="post-auhor-date">
-                                              <span> <a
-                                                  class="post-author"
-                                                  href="https://gillion.shufflehound.com/author/gillionshufflehound/">Gillion</a></span>,
-                                              <a class="post-date"
-                                                 href="https://gillion.shufflehound.com/2017/01/01/the-single-most-important-thing-you-need-to-know-about-success/"> 4
-                                                years ago </a> </span>
-                                        <span class="post-readtime"> <i
-                                            class="icon icon-clock"></i>
-                                              3 min <span>read</span>
-                                            </span> <span
-                                        class="responsive-post-read-later">
-                                              &nbsp;<span
-                                        class="post-read-later post-read-later-guest tooltipstered"
-                                        data-id="406"
-                                        data-type="add"
-                                        href="#login-register"><i
-                                        class="fa fa-bookmark-o"></i></span>
-                                            </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+                </div>
+                <div class="col-md-6">
                     <div
                         class="blog-mini-post-generic sh-widget-posts-slider-item sh-widget-posts-slider-item-large sh-widget-posts-slider-style1">
                         <div class="post-thumbnail"><img

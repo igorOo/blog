@@ -4,6 +4,10 @@
     background-size: 400%;
     height: 15px;
     margin-bottom: 5px;
+
+    .loader-line-box{
+        width: 100%;
+    }
 }
 
 .loader-image{
@@ -12,11 +16,14 @@
     background-size: 400%;
     margin: 10px auto;
 }
-
+.loader-item{
+    flex-direction: column;
+}
 .loader-item.inline-mode {
     display: flex;
     justify-content: flex-start;
     margin-bottom: 0;
+    flex-direction: row;
 
     .loader-image{
         margin: unset;

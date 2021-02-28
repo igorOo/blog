@@ -10,7 +10,7 @@ import filterForPipe from "../../../../../pipes/filterFor.pipe"
 })
 export class IntandprogsComponent implements OnInit {
     @Input() list: any[] = []
-    private loading: boolean = false
+    private loading: boolean = true
     public categories: Array<TopCategoriesListInterface> = []
     public activeList: Array<TopPost> = []
     public currentTab: number = 1;
@@ -39,7 +39,6 @@ export class IntandprogsComponent implements OnInit {
                 this.categories.push(cat)
             }
             this.loading = false
-            console.log(this.activeList)
         }
     }
 

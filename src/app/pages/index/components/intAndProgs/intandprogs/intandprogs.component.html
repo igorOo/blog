@@ -30,7 +30,7 @@
     </div>
     <div class="tab-content">
         <div class="tab-pane fade in active" id="tab-ORlXknfHDN-0" role="tabpanel">
-            <div class="row">
+            <div class="row" *ngIf="activeList.length else loadingTmp">
                 <div class="col-md-6 col-sm-6">
                     <div *ngFor="let item of activeList | keyvalue | filterFor:0:2 ">
                         <div *ngIf="item.key == 0"
@@ -234,15 +234,47 @@
     </div>
 </div>
 
-<ng-template #loading>
+<ng-template #loadingTmp>
     <div class="row">
         <div class="col-md-6 col-sm-6">
             <div class="blog-mini-post-generic sh-widget-posts-slider-item sh-widget-posts-slider-item-large sh-widget-posts-slider-style1">
-
+                <app-loader
+                    [image]="true"
+                    [heightImage]="265"
+                    [widthImage]="420"
+                    [inline]="false"
+                    [lines]="3"
+                ></app-loader>
+            </div>
+            <div class="blog-mini-post blog-mini-post-small blog-mini-post-layout1" *ngFor="let item of [1,2]">
+                <app-loader
+                    [image]="true"
+                    [heightImage]="80"
+                    [widthImage]="80"
+                    [inline]="true"
+                    [lines]="3"
+                ></app-loader>
             </div>
         </div>
         <div class="col-md-6 col-sm-6">
-
+            <div class="blog-mini-post-generic sh-widget-posts-slider-item sh-widget-posts-slider-item-large sh-widget-posts-slider-style1">
+                <app-loader
+                    [image]="true"
+                    [heightImage]="265"
+                    [widthImage]="420"
+                    [inline]="false"
+                    [lines]="3"
+                ></app-loader>
+            </div>
+            <div class="blog-mini-post blog-mini-post-small blog-mini-post-layout1" *ngFor="let item of [1,2]">
+                <app-loader
+                    [image]="true"
+                    [heightImage]="80"
+                    [widthImage]="80"
+                    [inline]="true"
+                    [lines]="3"
+                ></app-loader>
+            </div>
         </div>
     </div>
 </ng-template>

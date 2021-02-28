@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
 
 import {IndexRoutingModule} from './index-routing.module';
 import {LayoutComponent} from './../../layout/layout.component';
@@ -37,7 +37,10 @@ import FilterForPipe from "../../pipes/filterFor.pipe";
     ],
     exports: [IndexRoutingModule],
     providers: [],
-    bootstrap: [IndexComponent]
+    bootstrap: [IndexComponent],
+    schemas: [
+        NO_ERRORS_SCHEMA
+    ]
 })
 export class IndexModule {
 }

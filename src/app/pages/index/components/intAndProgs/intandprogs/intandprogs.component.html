@@ -38,8 +38,8 @@
                             <div class="post-thumbnail">
                                 <img alt=""
                                      class="attachment-gillion-landscape-small size-gillion-landscape-small wp-post-image"
-                                     height="265" src="assets/images/13-1-420x265.jpg" width="420">
-                                <a class="post-overlay" ref="https://gillion.shufflehound.com/2017/01/04/how-to-photograph-a-model-like-a-professional/">
+                                     height="265" [src]="item.value.main_image" width="420">
+                                <a class="post-overlay" [href]="item.value.url">
                                     <div class="post-overlay-content">
                                         <span></span> <span></span>
                                         <span></span>
@@ -47,93 +47,81 @@
                                 </a>
                                 <div class="post-categories-container"><a
                                     class="post-format-icon"
-                                    href="https://gillion.shufflehound.com/2017/01/04/how-to-photograph-a-model-like-a-professional/"><i
+                                    [href]="item.value.url"><i
                                     class="ti-control-play"></i></a>
-                                    <div class="post-categories"><a
-                                        href="https://gillion.shufflehound.com/category/fashion/">Fashion</a>
+                                    <div class="post-categories">
+                                        <a [href]="'/news/category/'+ item.value.cat_translit">{{item.value.category}}</a>
                                     </div>
                                 </div>
                             </div>
-                            <a href="https://gillion.shufflehound.com/2017/01/04/how-to-photograph-a-model-like-a-professional/">
-                                <h5 class="post-title"> How To Photograph A
-                                    Model Like A Professional&nbsp;<span
-                                        class="post-read-later post-read-later-guest tooltipstered"
-                                        data-id="488"
-                                        data-type="add" href="#login-register"><i
-                                        class="fa fa-bookmark-o"></i></span>
+                            <a [href]="item.value.url">
+                                <h5 class="post-title">
+                                    {{item.value.name}}
+                                    <span class="post-read-later post-read-later-guest tooltipstered">
+                                        <i class="fa fa-bookmark-o"></i></span>
                                 </h5>
                             </a>
                             <div class="post-meta">
-                                <div class="post-meta-content"> <span
-                                    class="post-auhor-date"> <span> <a
-                                    class="post-author"
-                                    href="https://gillion.shufflehound.com/author/gillionshufflehound/">Gillion</a></span>,
-                                          <a class="post-date"
-                                             href="https://gillion.shufflehound.com/2017/01/04/how-to-photograph-a-model-like-a-professional/"> 4 years ago
-                                          </a> </span> <a
-                                    class="post-comments"
-                                    href="https://gillion.shufflehound.com/2017/01/04/how-to-photograph-a-model-like-a-professional/#comments">
-                                    <i
-                                        class="icon icon-bubble"></i> 0
-                                </a> <span
-                                    class="responsive-post-read-later">
-                                          &nbsp;<span
-                                    class="post-read-later post-read-later-guest tooltipstered"
-                                    data-id="488"
-                                    data-type="add" href="#login-register"><i
-                                    class="fa fa-bookmark-o"></i></span>
-                                        </span></div>
+                                <div class="post-meta-content">
+                                    <span class="post-auhor-date">
+                                        <span *ngIf="item.value.author != undefined">
+                                            <a class="post-author" href="https://gillion.shufflehound.com/author/gillionshufflehound/">Gillion</a>,
+                                        </span>
+                                        <a class="post-date" [href]="item.value.url">
+                                            {{ item.value.date_create }}
+                                        </a>
+                                    </span>
+                                    <a class="post-comments" [href]="item.value.url+'#comments'">
+                                        <i class="icon icon-bubble"></i>
+                                        {{item.value.count_comment}}
+                                    </a>
+                                    <span class="responsive-post-read-later">
+                                        <span class="post-read-later post-read-later-guest tooltipstered">
+                                              <i class="fa fa-bookmark-o"></i>
+                                        </span>
+                                    </span>
+                                </div>
                             </div>
                             <div class="post-content">
-                                <p>Lorem
-                                    ipsum dolor sit amet, consectetur
-                                    adipiscing elit. Nam laoreet, nunc et
-                                    accumsan cursus, neque eros sodales
-                                    lectus, in fermentum…</p>
+                                <div [innerHTML]="item.value.preview"></div>
                             </div>
                         </div>
-                        <div *ngIf="item.key > 0"
-                            class="blog-mini-post blog-mini-post-small blog-mini-post-layout1">
+                        <div *ngIf="item.key > 0" class="blog-mini-post blog-mini-post-small blog-mini-post-layout1">
                             <a class="blog-mini-post-thumb sh-post-review-mini"
-                               href="https://gillion.shufflehound.com/2017/01/02/grey-fashion-trends-you-dint-know-that-existed/"
-                               style="background-image: url( https://cdn.gillion.shufflehound.com/wp-content/uploads/2017/01/15-220x220.jpg);">
+                               [href]="item.value.url"
+                               [style]="'background-image: url('+ item.value.main_image +');'">
                                 <div class="post-overlay-small"></div>
                             </a>
                             <div class="blog-mini-post-content">
                                 <div
                                     class="blog-mini-post-content-container">
-                                    <a
-                                        href="https://gillion.shufflehound.com/2017/01/02/grey-fashion-trends-you-dint-know-that-existed/">
-                                        <h5 class="post-title"> Grey Fashion
-                                            Trends You Din’t Know That
-                                            Existed&nbsp;<span
-                                                class="post-read-later post-read-later-guest tooltipstered"
-                                                data-id="1489"
-                                                data-type="add"
-                                                href="#login-register"><i
-                                                class="fa fa-bookmark-o"></i></span>
+                                    <a [href]="item.value.url">
+                                        <h5 class="post-title">
+                                            {{item.value.name}}
+                                            <span class="post-read-later post-read-later-guest tooltipstered">
+                                                <i class="fa fa-bookmark-o"></i></span>
                                         </h5>
                                     </a>
                                     <div class="post-meta">
                                         <div class="post-meta-content">
                                             <span class="post-auhor-date">
-                                              <span> <a
-                                                  class="post-author"
-                                                  href="https://gillion.shufflehound.com/author/gillionshufflehound/">Gillion</a></span>,
-                                              <a class="post-date"
-                                                 href="https://gillion.shufflehound.com/2017/01/02/grey-fashion-trends-you-dint-know-that-existed/"> 4
-                                                years ago </a> </span>
-                                            <span class="post-readtime"> <i
-                                                class="icon icon-clock"></i>
-                                              3 min <span>read</span>
-                                            </span> <span
-                                            class="responsive-post-read-later">
-                                              &nbsp;<span
-                                            class="post-read-later post-read-later-guest tooltipstered"
-                                            data-id="1489"
-                                            data-type="add"
-                                            href="#login-register"><i
-                                            class="fa fa-bookmark-o"></i></span>
+                                                <span *ngIf="item.value.author != undefined">
+                                                    <a class="post-author" href="https://gillion.shufflehound.com/author/gillionshufflehound/">
+                                                        Gillion
+                                                    </a>,
+                                                </span>
+                                                <a class="post-date" [href]="item.value.url">
+                                                    {{ item.value.date_create }}
+                                                </a>
+                                            </span>
+                                            <span class="post-readtime" *ngIf="item.value.time_read != undefined">
+                                                <i class="icon icon-clock"></i>
+                                                3 min <span>read</span>
+                                            </span>
+                                            <span class="responsive-post-read-later">
+                                                <span class="post-read-later post-read-later-guest tooltipstered">
+                                                    <i class="fa fa-bookmark-o"></i>
+                                                </span>
                                             </span>
                                         </div>
                                     </div>
@@ -143,158 +131,98 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div
-                        class="blog-mini-post-generic sh-widget-posts-slider-item sh-widget-posts-slider-item-large sh-widget-posts-slider-style1">
-                        <div class="post-thumbnail"><img
-                            alt=""
-                            class="attachment-gillion-landscape-small size-gillion-landscape-small wp-post-image"
-                            height="265" src="assets/images/14-420x265.jpg" width="420"> <a
-                            class="post-overlay"
-                            href="https://gillion.shufflehound.com/2017/01/02/inspiring-songs-vol-1-different-heaven-safe-and-sound/">
-                            <div class="post-overlay-content">
-                                <span></span> <span></span>
-                                <span></span>
-                            </div>
-                        </a>
-                            <div class="post-categories-container"><a
-                                class="post-format-icon"
-                                href="https://gillion.shufflehound.com/2017/01/02/inspiring-songs-vol-1-different-heaven-safe-and-sound/"><i
-                                class="ti-headphone"></i></a>
-                                <div class="post-categories"><a
-                                    href="https://gillion.shufflehound.com/category/beauty/">Beauty</a>
-                                </div>
-                            </div>
-                        </div>
-                        <a
-                            href="https://gillion.shufflehound.com/2017/01/02/inspiring-songs-vol-1-different-heaven-safe-and-sound/">
-                            <h5 class="post-title"> Inspiring Songs
-                                Vol.1 – Different Heaven – Safe And
-                                Sound&nbsp;<span
-                                    class="post-read-later post-read-later-guest tooltipstered"
-                                    data-id="496"
-                                    data-type="add" href="#login-register"><i
-                                    class="fa fa-bookmark-o"></i></span>
-                            </h5>
-                        </a>
-                        <div class="post-meta">
-                            <div class="post-meta-content"> <span
-                                class="post-auhor-date"> <span> <a
-                                class="post-author"
-                                href="https://gillion.shufflehound.com/author/gillionshufflehound/">Gillion</a></span>,
-                                          <a class="post-date"
-                                             href="https://gillion.shufflehound.com/2017/01/02/inspiring-songs-vol-1-different-heaven-safe-and-sound/"> 4 years ago
-                                          </a> </span> <a
-                                class="post-comments"
-                                href="https://gillion.shufflehound.com/2017/01/02/inspiring-songs-vol-1-different-heaven-safe-and-sound/#comments">
-                                <i
-                                    class="icon icon-bubble"></i> 0
-                            </a> <span
-                                class="responsive-post-read-later">
-                                          &nbsp;<span
-                                class="post-read-later post-read-later-guest tooltipstered"
-                                data-id="496"
-                                data-type="add" href="#login-register"><i
-                                class="fa fa-bookmark-o"></i></span>
-                                        </span></div>
-                        </div>
-                        <div class="post-content">
-                            <p>Lorem
-                                ipsum dolor sit amet, consectetur
-                                adipiscing elit. Nam laoreet, nunc et
-                                accumsan cursus, neque eros sodales
-                                lectus, in fermentum…</p>
-                        </div>
-                    </div>
-                    <div
-                        class="blog-mini-post blog-mini-post-small blog-mini-post-layout1">
-                        <a class="blog-mini-post-thumb sh-post-review-mini"
-                           href="https://gillion.shufflehound.com/2017/01/02/website-that-you-should-check-out/"
-                           style="background-image: url( https://cdn.gillion.shufflehound.com/wp-content/uploads/2017/01/17-1-220x220.jpg);">
-                            <div class="post-overlay-small"></div>
-                        </a>
-                        <div class="blog-mini-post-content">
-                            <div
-                                class="blog-mini-post-content-container">
-                                <a
-                                    href="https://gillion.shufflehound.com/2017/01/02/website-that-you-should-check-out/">
-                                    <h5 class="post-title"> Website that
-                                        you should check out&nbsp;<span
-                                            class="post-read-later post-read-later-guest tooltipstered"
-                                            data-id="476"
-                                            data-type="add"
-                                            href="#login-register"><i
-                                            class="fa fa-bookmark-o"></i></span>
-                                    </h5>
+                    <div *ngFor="let item of activeList | keyvalue | filterFor:3:5 ">
+                        <div *ngIf="item.key == 3"
+                             class="blog-mini-post-generic sh-widget-posts-slider-item sh-widget-posts-slider-item-large sh-widget-posts-slider-style1">
+                            <div class="post-thumbnail">
+                                <img alt=""
+                                     class="attachment-gillion-landscape-small size-gillion-landscape-small wp-post-image"
+                                     height="265" [src]="item.value.main_image" width="420">
+                                <a class="post-overlay" [href]="item.value.url">
+                                    <div class="post-overlay-content">
+                                        <span></span> <span></span>
+                                        <span></span>
+                                    </div>
                                 </a>
-                                <div class="post-meta">
-                                    <div class="post-meta-content">
-                                            <span class="post-auhor-date">
-                                              <span> <a
-                                                  class="post-author"
-                                                  href="https://gillion.shufflehound.com/author/gillionshufflehound/">Gillion</a></span>,
-                                              <a class="post-date"
-                                                 href="https://gillion.shufflehound.com/2017/01/02/website-that-you-should-check-out/"> 4
-                                                years ago </a> </span>
-                                        <span class="post-readtime"> <i
-                                            class="icon icon-clock"></i>
-                                              3 min <span>read</span>
-                                            </span> <span
-                                        class="responsive-post-read-later">
-                                              &nbsp;<span
-                                        class="post-read-later post-read-later-guest tooltipstered"
-                                        data-id="476"
-                                        data-type="add"
-                                        href="#login-register"><i
-                                        class="fa fa-bookmark-o"></i></span>
-                                            </span>
+                                <div class="post-categories-container"><a
+                                    class="post-format-icon"
+                                    [href]="item.value.url"><i
+                                    class="ti-control-play"></i></a>
+                                    <div class="post-categories">
+                                        <a [href]="'/news/category/'+ item.value.cat_translit">{{item.value.category}}</a>
                                     </div>
                                 </div>
                             </div>
+                            <a [href]="item.value.url">
+                                <h5 class="post-title">
+                                    {{item.value.name}}
+                                    <span class="post-read-later post-read-later-guest tooltipstered">
+                                        <i class="fa fa-bookmark-o"></i></span>
+                                </h5>
+                            </a>
+                            <div class="post-meta">
+                                <div class="post-meta-content">
+                                    <span class="post-auhor-date">
+                                        <span *ngIf="item.value.author != undefined">
+                                            <a class="post-author" href="https://gillion.shufflehound.com/author/gillionshufflehound/">Gillion</a>,
+                                        </span>
+                                        <a class="post-date" [href]="item.value.url">
+                                            {{ item.value.date_create }}
+                                        </a>
+                                    </span>
+                                    <a class="post-comments" [href]="item.value.url+'#comments'">
+                                        <i class="icon icon-bubble"></i>
+                                        {{item.value.count_comment}}
+                                    </a>
+                                    <span class="responsive-post-read-later">
+                                        <span class="post-read-later post-read-later-guest tooltipstered">
+                                              <i class="fa fa-bookmark-o"></i>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="post-content">
+                                <div [innerHTML]="item.value.preview"></div>
+                            </div>
                         </div>
-                    </div>
-                    <div
-                        class="blog-mini-post blog-mini-post-small blog-mini-post-layout1">
-                        <a class="blog-mini-post-thumb sh-post-review-mini"
-                           href="https://gillion.shufflehound.com/2016/01/31/pair-of-green-sneakers-style-mistake-or-victory/"
-                           style="background-image: url( https://cdn.gillion.shufflehound.com/wp-content/uploads/2017/01/23-220x220.jpg);">
-                            <div class="post-overlay-small"></div>
-                        </a>
-                        <div class="blog-mini-post-content">
-                            <div
-                                class="blog-mini-post-content-container">
-                                <a
-                                    href="https://gillion.shufflehound.com/2016/01/31/pair-of-green-sneakers-style-mistake-or-victory/">
-                                    <h5 class="post-title"> Pair Of
-                                        Green Sneakers, Style Mistake Or
-                                        Victory?&nbsp;<span
-                                            class="post-read-later post-read-later-guest tooltipstered"
-                                            data-id="45"
-                                            data-type="add"
-                                            href="#login-register"><i
-                                            class="fa fa-bookmark-o"></i></span>
-                                    </h5>
-                                </a>
-                                <div class="post-meta">
-                                    <div class="post-meta-content">
+                        <div *ngIf="item.key > 3" class="blog-mini-post blog-mini-post-small blog-mini-post-layout1">
+                            <a class="blog-mini-post-thumb sh-post-review-mini"
+                               [href]="item.value.url"
+                               [style]="'background-image: url('+ item.value.main_image +');'">
+                                <div class="post-overlay-small"></div>
+                            </a>
+                            <div class="blog-mini-post-content">
+                                <div
+                                    class="blog-mini-post-content-container">
+                                    <a [href]="item.value.url">
+                                        <h5 class="post-title">
+                                            {{item.value.name}}
+                                            <span class="post-read-later post-read-later-guest tooltipstered">
+                                                <i class="fa fa-bookmark-o"></i></span>
+                                        </h5>
+                                    </a>
+                                    <div class="post-meta">
+                                        <div class="post-meta-content">
                                             <span class="post-auhor-date">
-                                              <span> <a
-                                                  class="post-author"
-                                                  href="https://gillion.shufflehound.com/author/gillionshufflehound/">Gillion</a></span>,
-                                              <a class="post-date"
-                                                 href="https://gillion.shufflehound.com/2016/01/31/pair-of-green-sneakers-style-mistake-or-victory/"> 5
-                                                years ago </a> </span>
-                                        <span class="post-readtime"> <i
-                                            class="icon icon-clock"></i>
-                                              3 min <span>read</span>
-                                            </span> <span
-                                        class="responsive-post-read-later">
-                                              &nbsp;<span
-                                        class="post-read-later post-read-later-guest tooltipstered"
-                                        data-id="45"
-                                        data-type="add"
-                                        href="#login-register"><i
-                                        class="fa fa-bookmark-o"></i></span>
+                                                <span *ngIf="item.value.author != undefined">
+                                                    <a class="post-author" href="https://gillion.shufflehound.com/author/gillionshufflehound/">
+                                                        Gillion
+                                                    </a>,
+                                                </span>
+                                                <a class="post-date" [href]="item.value.url">
+                                                    {{ item.value.date_create }}
+                                                </a>
                                             </span>
+                                            <span class="post-readtime" *ngIf="item.value.time_read != undefined">
+                                                <i class="icon icon-clock"></i>
+                                                3 min <span>read</span>
+                                            </span>
+                                            <span class="responsive-post-read-later">
+                                                <span class="post-read-later post-read-later-guest tooltipstered">
+                                                    <i class="fa fa-bookmark-o"></i>
+                                                </span>
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

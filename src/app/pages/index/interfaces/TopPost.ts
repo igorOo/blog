@@ -14,4 +14,5 @@ export interface TopPost{
     author?: string
     time_read?: string
     count_comment?: 0
+    preview?: string
 }

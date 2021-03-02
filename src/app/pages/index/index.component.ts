@@ -14,9 +14,10 @@ import {TopPost} from "./interfaces/TopPost";
 export class IndexComponent implements OnInit {
 
     public tops: any = null;
-    public gadgets: Array<TopPost> = [];
+    public gadgets: Array<TopPost> = []
     public interandprogs: Array<TopPost> = []
-    public categList: TopCategoriesListInterface[] =[];
+    public categList: TopCategoriesListInterface[] =[]
+    public hardware: Array<TopPost> = []
 
     constructor(private http: HttpClient) {
     }
@@ -32,6 +33,9 @@ export class IndexComponent implements OnInit {
                 }
                 if (result["interandprogs"] != undefined){
                     this.interandprogs = result["interandprogs"]
+                }
+                if (result["hardware"] != undefined){
+                    this.hardware = result["hardware"]
                 }
             })
 

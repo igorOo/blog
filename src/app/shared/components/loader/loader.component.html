@@ -2,7 +2,7 @@
     <div class="loader-image" *ngIf="image" [style]="'height: '+heightImage+'px; width: '+widthImage+'px;'"></div>
     <div class="loader-line-box" *ngIf="lines">
         <div class="loader-line"
-             [style]="'width: '+ (getRandomInRange() | number ) +'%'"
+             [style]="'width: 63%'"
              *ngFor="let item of linesArray"
         ></div>
     </div>

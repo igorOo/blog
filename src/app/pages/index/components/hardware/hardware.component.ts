@@ -10,7 +10,7 @@ export class HardwareComponent implements OnInit {
     @Input() inputData: Array<TopPost> = []
 
     public list: Array<TopPost> = []
-    public loading: boolean = false
+    public loading: boolean = true
 
     constructor() {
     }
@@ -21,6 +21,7 @@ export class HardwareComponent implements OnInit {
     ngOnChanges(changes: SimpleChanges): void {
         if (changes.inputData.currentValue){
             this.list = changes.inputData.currentValue
+            this.loading = false
         }
     }
 

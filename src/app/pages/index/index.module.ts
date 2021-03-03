@@ -16,6 +16,7 @@ import { GadgetsComponent } from './components/gadgets/gadgets.component';
 import { IntandprogsComponent } from './components/intAndProgs/intandprogs/intandprogs.component'
 import FilterForPipe from "../../pipes/filterFor.pipe";
 import { HardwareComponent } from './components/hardware/hardware.component';
+import { ArticlesComponent } from './components/articles/articles.component';
 
 @NgModule({
     declarations: [
@@ -31,6 +32,7 @@ import { HardwareComponent } from './components/hardware/hardware.component';
         IntandprogsComponent,
         FilterForPipe,
         HardwareComponent,
+        ArticlesComponent,
     ],
     imports: [
         IndexRoutingModule,

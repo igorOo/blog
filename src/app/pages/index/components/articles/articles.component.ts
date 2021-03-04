@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ArticlesComponent implements OnInit {
 
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  loadMore():void{
+      alert("Хуй тебе, а не лоад море")
+  }
 }

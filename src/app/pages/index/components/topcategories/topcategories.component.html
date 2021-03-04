@@ -20,8 +20,9 @@
                     (click)="changeTab($event, item.category_id)"
                     [ngClass]="{active: item.category_id == currentTab}"
                 >
-                    <a [href]="'/news/category/'+ item.cat_translit" role="tab"
-                       data-toggle="tab"> {{ item.category }} </a>
+                    <a [href]="'/news/category/'+ item.cat_translit">
+                        {{ item.category }}
+                    </a>
                 </li>
             </ul>
         </div>

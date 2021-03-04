@@ -2,42 +2,41 @@
     class="sh-blog-fancy-title-container sh-blog-fancy-title-container-sides">
     <h2 class="sh-blog-fancy-title">Статьи</h2>
 </div>
-<div class="sh-blog-standard-posts blog-posts-pAgXBLUY7b">
-    <div
-        class="sh-group blog-list blog-style-grid blog-style-grid-element blog-style-columns2 blog-dividing-line-off ">
-        <article id="post-67"
-                 class="post-item post-67 post type-post status-publish format-standard has-post-thumbnail hentry category-people tag-skin tag-tips tag-tricks">
+<div class="sh-blog-standard-posts">
+    <div class="sh-group blog-list blog-style-grid blog-style-grid-element blog-style-columns2 blog-dividing-line-off ">
+        <article *ngFor="let item of list | keyvalue"
+            class="post-item post type-post status-publish format-standard has-post-thumbnail hentry category-people tag-skin tag-tips tag-tricks">
             <div class="post-container">
                 <div class="post-thumbnail">
                     <div class="sh-ratio">
                         <div class="sh-ratio-container">
                             <div class="sh-ratio-content"
-                                 style="background-image: url( https://cdn.gillion.shufflehound.com/wp-content/uploads/2017/01/26-420x265.jpg);">
+                                 [style]="'background-image: url('+ item.value.main_image +');'">
                             </div>
                         </div>
                     </div>
-                    <a
-                        href="https://gillion.shufflehound.com/2018/02/24/tips-trick-for-healthy-glowing-skin/"
+                    <a [href]="item.value.url"
                         class="post-overlay">
                         <div class="post-overlay-content"><span></span>
                             <span></span> <span></span>
                         </div>
                     </a>
                     <div class="post-categories-container">
-                        <div class="post-categories"><a
-                            href="https://gillion.shufflehound.com/category/people/">People</a>
+                        <div class="post-categories">
+                            <a [href]="'/notes/category/'+item.value.cat_translit">
+                                {{ item.value.category }}
+                            </a>
                         </div>
                     </div>
                 </div>
-                <div class="post-content-container"><a
-                    href="https://gillion.shufflehound.com/2018/02/24/tips-trick-for-healthy-glowing-skin/"
+                <div class="post-content-container">
+                    <a href="https://gillion.shufflehound.com/2018/02/24/tips-trick-for-healthy-glowing-skin/"
                     class="post-title">
-                    <h2> Tips &amp; Trick For Healthy Glowing
-                        Skin&nbsp;<span
-                            class="post-read-later post-read-later-guest tooltipstered"
-                            href="#login-register" data-type="add"
-                            data-id="67"><i
-                            class="fa fa-bookmark-o"></i></span>
+                    <h2>
+                        {{ item.value.name }}
+                        <span class="post-read-later post-read-later-guest tooltipstered">
+                            <i class="fa fa-bookmark-o"></i>
+                        </span>
                     </h2>
                 </a>
                     <div class="post-meta">
@@ -63,18 +62,11 @@
                                       </span>
                         </div>
                     </div>
-                    <div class="post-content">
-                        <p>Lorem
-                            ipsum dolor sit amet, consectetur adipiscing
-                            elit. Nam laoreet, nunc et
-                            accumsan cursus, neque eros sodales lectus,
-                            in fermentum…</p>
-                    </div>
+                    <div class="post-content" [innerHTML]="item.value.preview"></div>
                 </div>
             </div>
         </article>
-        <article id="post-61"
-                 class="post-item post-61 post type-post status-publish format-gallery has-post-thumbnail hentry category-health category-review tag-best tag-breakfast tag-health post_format-post-format-gallery">
+        <article class="post-item post type-post status-publish format-gallery has-post-thumbnail hentry category-health category-review tag-best tag-breakfast tag-health post_format-post-format-gallery">
             <div class="post-container">
                 <div class="post-thumbnail">
                     <div class="sh-ratio">
@@ -162,8 +154,7 @@
                 </div>
             </div>
         </article>
-        <article id="post-55"
-                 class="post-item post-55 post type-post status-publish format-standard has-post-thumbnail hentry category-business category-tech tag-bitcoin tag-crypto tag-finance tag-it">
+        <article class="post-item post type-post status-publish format-standard has-post-thumbnail hentry category-business category-tech tag-bitcoin tag-crypto tag-finance tag-it">
             <div class="post-container">
                 <div class="post-thumbnail">
                     <div class="sh-ratio">
@@ -230,8 +221,7 @@
                 </div>
             </div>
         </article>
-        <article id="post-471"
-                 class="post-item post-471 post type-post status-publish format-quote has-post-thumbnail hentry category-motivation tag-lifestyle tag-motivation post_format-post-format-quote">
+        <article class="post-item post type-post status-publish format-quote has-post-thumbnail hentry category-motivation tag-lifestyle tag-motivation post_format-post-format-quote">
             <div class="post-container">
                 <div class="post-quote-link">
                     <div class="sh-ratio">
@@ -291,8 +281,7 @@
                 </div>
             </div>
         </article>
-        <article id="post-7"
-                 class="post-item post-7 post type-post status-publish format-standard has-post-thumbnail hentry category-health category-people tag-depression tag-fight tag-girl">
+        <article class="post-item post type-post status-publish format-standard has-post-thumbnail hentry category-health category-people tag-depression tag-fight tag-girl">
             <div class="post-container">
                 <div class="post-thumbnail">
                     <div class="sh-ratio">
@@ -359,8 +348,7 @@
                 </div>
             </div>
         </article>
-        <article id="post-493"
-                 class="post-item post-493 post type-post status-publish format-video has-post-thumbnail hentry category-places tag-blue tag-brick tag-building tag-green post_format-post-format-video">
+        <article class="post-item post type-post status-publish format-video has-post-thumbnail hentry category-places tag-blue tag-brick tag-building tag-green post_format-post-format-video">
             <div class="post-container">
                 <div class="post-thumbnail">
                     <div class="sh-ratio">

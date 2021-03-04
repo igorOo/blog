@@ -18,6 +18,7 @@ export class IndexComponent implements OnInit {
     public interandprogs: Array<TopPost> = []
     public categList: TopCategoriesListInterface[] =[]
     public hardware: Array<TopPost> = []
+    public articles: Array<TopPost> = []
 
     constructor(private http: HttpClient) {
     }
@@ -36,6 +37,9 @@ export class IndexComponent implements OnInit {
                 }
                 if (result["hardware"] != undefined){
                     this.hardware = result["hardware"]
+                }
+                if (result["articles"] != undefined){
+                    this.articles = result["articles"]
                 }
             })
 

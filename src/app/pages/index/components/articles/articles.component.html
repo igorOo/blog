@@ -3,69 +3,76 @@
     <h2 class="sh-blog-fancy-title">Статьи</h2>
 </div>
 <div class="sh-blog-standard-posts">
-    <div class="sh-group blog-list blog-style-grid blog-style-grid-element blog-style-columns2 blog-dividing-line-off ">
-        <article *ngFor="let item of list | keyvalue"
-            class="post-item post type-post status-publish format-standard has-post-thumbnail hentry category-people tag-skin tag-tips tag-tricks">
-            <div class="post-container">
-                <div class="post-thumbnail">
-                    <div class="sh-ratio">
-                        <div class="sh-ratio-container">
-                            <div class="sh-ratio-content"
-                                 [style]="'background-image: url('+ item.value.main_image +');'">
+    <div *ngIf="list.length else loadingTmp"
+        class="sh-group blog-list blog-style-grid blog-style-grid-element blog-style-columns2 blog-dividing-line-off">
+        <ng-container *ngFor="let item of list; index as key">
+            <article
+                class="post-item post type-post status-publish format-standard has-post-thumbnail hentry category-people tag-skin tag-tips tag-tricks">
+                <div class="post-container">
+                    <div class="post-thumbnail">
+                        <div class="sh-ratio">
+                            <div class="sh-ratio-container">
+                                <div class="sh-ratio-content"
+                                     [style]="'background-image: url('+ item.main_image +');'">
+                                </div>
+                            </div>
+                        </div>
+                        <a [href]="item.url"
+                            class="post-overlay">
+                            <div class="post-overlay-content"><span></span>
+                                <span></span> <span></span>
+                            </div>
+                        </a>
+                        <div class="post-categories-container">
+                            <div class="post-categories">
+                                <a [href]="'/notes/category/'+ item.cat_translit">
+                                    {{ item.category }}
+                                </a>
                             </div>
                         </div>
                     </div>
-                    <a [href]="item.value.url"
-                        class="post-overlay">
-                        <div class="post-overlay-content"><span></span>
-                            <span></span> <span></span>
+                    <div class="post-content-container">
+                        <a href="https://gillion.shufflehound.com/2018/02/24/tips-trick-for-healthy-glowing-skin/"
+                            class="post-title">
+                            <h2>
+                                {{ item.name }}
+                                <span class="post-read-later post-read-later-guest tooltipstered">
+                                    <i class="fa fa-bookmark-o"></i>
+                                </span>
+                            </h2>
+                        </a>
+                        <div class="post-meta">
+                            <div class="post-meta-content">
+                                <span class="post-auhor-date">
+                                    <span>
+                                        <a href="https://gillion.shufflehound.com/author/gillionshufflehound/" class="post-author">
+                                            Gillion
+                                        </a>,
+                                    </span>
+                                    <a href="https://gillion.shufflehound.com/2018/02/24/tips-trick-for-healthy-glowing-skin/" class="post-date">
+                                        3 years ago
+                                    </a>
+                                </span>
+                                <a href="https://gillion.shufflehound.com/2018/02/24/tips-trick-for-healthy-glowing-skin/#comments" class="post-comments">
+                                    <i class="icon icon-bubble"></i>
+                                    2
+                                </a>
+                                <span class="post-readtime">
+                                    <i class="icon icon-clock"></i>
+                                        3 min <span>read</span>
+                                </span>
+                                <span class="responsive-post-read-later">
+                                    <span class="post-read-later post-read-later-guest tooltipstered">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </span>
+                                </span>
+                            </div>
                         </div>
-                    </a>
-                    <div class="post-categories-container">
-                        <div class="post-categories">
-                            <a [href]="'/notes/category/'+item.value.cat_translit">
-                                {{ item.value.category }}
-                            </a>
-                        </div>
+                        <div class="post-content" [innerHTML]="item.preview"></div>
                     </div>
                 </div>
-                <div class="post-content-container">
-                    <a href="https://gillion.shufflehound.com/2018/02/24/tips-trick-for-healthy-glowing-skin/"
-                    class="post-title">
-                    <h2>
-                        {{ item.value.name }}
-                        <span class="post-read-later post-read-later-guest tooltipstered">
-                            <i class="fa fa-bookmark-o"></i>
-                        </span>
-                    </h2>
-                </a>
-                    <div class="post-meta">
-                        <div class="post-meta-content"> <span
-                            class="post-auhor-date"> <span> <a
-                            href="https://gillion.shufflehound.com/author/gillionshufflehound/"
-                            class="post-author">Gillion</a></span>,
-                                        <a href="https://gillion.shufflehound.com/2018/02/24/tips-trick-for-healthy-glowing-skin/"
-                                           class="post-date"> 3 years ago </a>
-                                      </span> <a
-                            href="https://gillion.shufflehound.com/2018/02/24/tips-trick-for-healthy-glowing-skin/#comments"
-                            class="post-comments"> <i
-                            class="icon icon-bubble"></i> 2 </a>
-                            <span class="post-readtime"> <i
-                                class="icon icon-clock"></i> 3 min
-                                        <span>read</span> </span> <span
-                                class="responsive-post-read-later">
-                                        &nbsp;<span
-                                class="post-read-later post-read-later-guest tooltipstered"
-                                href="#login-register"
-                                data-type="add" data-id="67"><i
-                                class="fa fa-bookmark-o"></i></span>
-                                      </span>
-                        </div>
-                    </div>
-                    <div class="post-content" [innerHTML]="item.value.preview"></div>
-                </div>
-            </div>
-        </article>
+            </article>
+        </ng-container>
         <article class="post-item post type-post status-publish format-gallery has-post-thumbnail hentry category-health category-review tag-best tag-breakfast tag-health post_format-post-format-gallery">
             <div class="post-container">
                 <div class="post-thumbnail">
@@ -419,3 +426,7 @@
     </div>
     <div class="sh-load-more" (click)="loadMore()"> Load more </div>
 </div>
+
+<ng-template #loadingTmp>
+    lkdfjghduhh
+</ng-template>

@@ -11,6 +11,7 @@ export class ArticlesComponent implements OnInit {
 
     public list: Array<TopPost> = []
     public loading: boolean = true
+    Object = Object;
 
     constructor() {
     }
@@ -22,6 +23,8 @@ export class ArticlesComponent implements OnInit {
         if (changes.inputData.currentValue){
             this.list = changes.inputData.currentValue
             this.loading = false
+            console.log(this.list)
+            console.log(typeof this.list)
         }
     }
 

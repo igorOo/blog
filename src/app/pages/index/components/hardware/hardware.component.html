@@ -39,7 +39,7 @@
                                                 Gillion
                                             </a>,
                                         </span>
-                                        <a  [href]="item.url" class="post-date">
+                                        <a [href]="item.url" class="post-date">
                                             {{ item.date_create }}
                                         </a>
                                     </span>
@@ -49,7 +49,7 @@
                                     </a>
                                     <span class="post-readtime" *ngIf="item.time_read != undefined">
                                         <i class="icon icon-clock"></i>
-                                            {{ item.time_read }} <span>чтения</span>
+                                            {{ item.time_read }} мин. <span>чтения</span>
                                     </span>
                                     <span class="responsive-post-read-later">
                                         <span class="post-read-later post-read-later-guest tooltipstered">

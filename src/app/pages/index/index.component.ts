@@ -19,12 +19,15 @@ export class IndexComponent implements OnInit {
     public categList: TopCategoriesListInterface[] =[]
     public hardware: Array<TopPost> = []
     public articles: Array<TopPost> = []
+    public articlesPagionation: object = {}
+
+    public currentPage: number = 1
 
     constructor(private http: HttpClient) {
     }
 
     ngOnInit(): void {
-        this.http.get("http://techno.loc/api/v1/posts/mainpage")
+        this.http.get("http://techno.loc/api/v1/posts/mainpage?page="+this.currentPage)
             .subscribe((result: any) => {
                 if (result["tops"] != undefined) {
                     this.tops = result['tops'];
@@ -39,10 +42,22 @@ export class IndexComponent implements OnInit {
                     this.hardware = result["hardware"]
                 }
                 if (result["articles"] != undefined){
-                    this.articles = result["articles"]
+                    this.articles = result["articles"]["data"]
+                    this.articlesPagionation = result["articles"]["pagination"]
                 }
             })
 
     }
 
+    loadMoreArticles($event: number) {
+        this.http.get("http://techno.loc/api/v1/posts/loadmorearticles")
+            .subscribe((result: any) =>{
+                if (result["articles"] != undefined){
+                    result["articles"].forEach((item:TopPost) => {
+                        this.articles.push(item);
+                    })
+                    this.currentPage = 2
+                }
+            })
+    }
 }

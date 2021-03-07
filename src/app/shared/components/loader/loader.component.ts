@@ -11,6 +11,7 @@ export class LoaderComponent implements OnInit {
     @Input() widthImage: number = 0
     @Input() lines: number = 0
     @Input() inline: boolean = false
+    @Input() lineWidth: number = 63
 
     public linesArray: Array<number> = [1]
 

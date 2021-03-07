@@ -1,5 +1,6 @@
-import {Component, Input, OnInit, OnChanges, SimpleChanges} from '@angular/core';
+import {Component, Input, OnInit, OnChanges, SimpleChanges, Output, EventEmitter} from '@angular/core';
 import {TopPost} from "../../interfaces/TopPost";
+import {Pagination} from "./interfaces/Pagination";
 
 @Component({
     selector: 'app-articles',
@@ -8,9 +9,19 @@ import {TopPost} from "../../interfaces/TopPost";
 })
 export class ArticlesComponent implements OnInit {
     @Input() inputData: Array<TopPost> = []
+    @Input() inputPagination: object = {}
+    @Input() currentPage: number = 1
+
+    @Output() onChanged = new EventEmitter<number>()
 
     public list: Array<TopPost> = []
+    public pagination: Pagination = {
+        totalRows : 0,
+        totalPages: 1,
+        currentPage : 1
+    }
     public loading: boolean = true
+    public loadmore: boolean = false
     Object = Object;
 
     constructor() {
@@ -20,15 +31,21 @@ export class ArticlesComponent implements OnInit {
     }
 
     ngOnChanges(changes: SimpleChanges): void{
-        if (changes.inputData.currentValue){
+        if (changes.inputData != undefined && changes.inputData.currentValue){
             this.list = changes.inputData.currentValue
+            this.pagination = changes.inputPagination.currentValue
+            this.currentPage = this.pagination.currentPage
             this.loading = false
-            console.log(this.list)
-            console.log(typeof this.list)
+        }
+        if (changes.currentPage != undefined && changes.currentPage.currentValue > 1){
+            this.loadmore = false
         }
     }
 
     loadMore(): void {
-        alert("Хуй тебе, а не лоад море")
+        if (this.currentPage == 1){
+            this.onChanged.emit(this.currentPage+1)
+            this.loadmore = true
+        }
     }
 }

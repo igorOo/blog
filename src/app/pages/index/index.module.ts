@@ -17,6 +17,7 @@ import { IntandprogsComponent } from './components/intAndProgs/intandprogs/intan
 import FilterForPipe from "../../pipes/filterFor.pipe";
 import { HardwareComponent } from './components/hardware/hardware.component';
 import { ArticlesComponent } from './components/articles/articles.component';
+import { GamesComponent } from './components/games/games.component';
 
 @NgModule({
     declarations: [
@@ -33,6 +34,7 @@ import { ArticlesComponent } from './components/articles/articles.component';
         FilterForPipe,
         HardwareComponent,
         ArticlesComponent,
+        GamesComponent,
     ],
     imports: [
         IndexRoutingModule,

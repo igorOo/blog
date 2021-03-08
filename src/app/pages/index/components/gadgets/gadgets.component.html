@@ -3,7 +3,7 @@
         <h2 class="sh-blog-fancy-title">
             Гаджеты </h2>
     </div>
-    <div *ngIf="!loading">
+    <div *ngIf="list.length">
         <ngx-slick-carousel class="carousel blog-fancy-carousel-title slider-arrows-sides blog-style-mini1 columns3 blog-posts-disable-carousel"
                                  #slickModal="slick-carousel"
                                  [config]="slideConfig"
@@ -90,7 +90,7 @@
             </button>
         </div>
     </div>
-    <div *ngIf="loading">
+    <div *ngIf="list.length == 0">
         <div class="carousel slider-arrows-sides blog-style-mini1 columns3 blog-posts-disable-carousel">
             <app-loader
                 class="slider-item-loader"

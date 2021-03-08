@@ -26,9 +26,7 @@ export class GadgetsComponent implements OnInit {
     ngOnChanges(changes: SimpleChanges): void{
         if (changes.list.currentValue){
             this.list = changes.list.currentValue
-            if (this.list.length){
-                this.loading = false
-            }
+            this.loading = false
         }
     }
 

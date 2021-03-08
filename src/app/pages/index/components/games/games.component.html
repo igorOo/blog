@@ -1,0 +1,88 @@
+<div id="posts_slider-9"
+     class="widget_facebook widget-item widget_posts_slider">
+    <div class="widget-slide-arrows-container">
+        <div class="sh-widget-title-styling">
+            <h3 class="widget-title">Игры</h3>
+        </div>
+    </div>
+    <div *ngIf="!loading else loadingTmp">
+        <ngx-slick-carousel class="sh-widget-posts-slider sh-widget-posts-slider-init slick-initialized slick-slider"
+                        #slickModal="slick-carousel"
+                        [config]="slideConfig"
+        >
+            <div ngxSlickItem
+                 class="sh-widget-posts-slider-group"
+                 *ngFor="let slider of sliders"
+            >
+                <div *ngFor="let item of slider"
+                     class="sh-widget-posts-slider-item sh-widget-posts-slider-style1">
+                    <a [href]="item.url"
+                       class="sh-widget-posts-slider-thumbnail sh-post-review-mini"
+                       [style]="'background-image: url('+item.main_image+');'" >
+                    </a>
+                    <div class="sh-widget-posts-slider-content">
+                        <a [href]="item.url">
+                            <h5 class="post-title">
+                                {{ item.name }}
+                                <span class="post-read-later post-read-later-guest tooltipstered">
+                                    <i class="fa fa-bookmark-o"></i>
+                                </span>
+                            </h5>
+                        </a>
+                        <div class="post-meta">
+                            <div class="post-meta-content">
+                                <a href="https://gillion.shufflehound.com/2018/01/31/healthy-breakfast-meals-for-energy-boost/#comments"
+                                   class="post-comments"
+                                   tabindex="0">
+                                    <i class="icon icon-bubble"></i>
+                                    0
+                                </a>
+                                <span class="post-views">
+                                    <i class="icon icon-eye"></i>
+                                    7315
+                                </span>
+                                <span class="responsive-post-read-later">
+                                    <span class="post-read-later post-read-later-guest tooltipstered">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </ngx-slick-carousel>
+
+        <div class="widget-slide-arrows sh-carousel-buttons-styling">
+            <button type="button"
+                    class="slick-prev slick-arrow" style="display: inline-block;"
+                    (click)="slickModal.slickPrev()"
+            >
+                <i class="icon icon-arrow-left-circle"></i></button>
+            <button type="button"
+                    class="slick-next slick-arrow" style="display: inline-block;"
+                    (click)="slickModal.slickNext()"
+            >
+                <i class="icon icon-arrow-right-circle"></i></button>
+        </div>
+    </div>
+</div>
+
+
+<ng-template #loadingTmp>
+    <div class="sh-widget-posts-slider sh-widget-posts-slider-init slick-initialized slick-slider">
+        <div class="sh-widget-posts-slider-group">
+            <div class="sh-widget-posts-slider-item sh-widget-posts-slider-style1" *ngFor="let item of [1,2,3]">
+                <app-loader
+                    [image]="true"
+                    [heightImage]="70"
+                    [widthImage]="70"
+                    [inline]="true"
+                    [lines]="3"
+                    [lineWidth]="80"
+                ></app-loader>
+            </div>
+        </div>
+    </div>
+</ng-template>

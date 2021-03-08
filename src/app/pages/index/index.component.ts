@@ -20,6 +20,7 @@ export class IndexComponent implements OnInit {
     public hardware: Array<TopPost> = []
     public articles: Array<TopPost> = []
     public articlesPagionation: object = {}
+    public games: any
 
     public currentPage: number = 1
 
@@ -44,6 +45,9 @@ export class IndexComponent implements OnInit {
                 if (result["articles"] != undefined){
                     this.articles = result["articles"]["data"]
                     this.articlesPagionation = result["articles"]["pagination"]
+                }
+                if (result["games"] != undefined){
+                    this.games = result["games"]
                 }
             })
 

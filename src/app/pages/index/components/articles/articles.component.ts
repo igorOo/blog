@@ -22,7 +22,6 @@ export class ArticlesComponent implements OnInit {
     }
     public loading: boolean = true
     public loadmore: boolean = false
-    Object = Object;
 
     constructor() {
     }

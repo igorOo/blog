@@ -6,7 +6,7 @@
         </div>
     </div>
     <div *ngIf="!loading else loadingTmp">
-        <ngx-slick-carousel class="sh-widget-posts-slider sh-widget-posts-slider-init slick-initialized slick-slider"
+        <ngx-slick-carousel class="carousel sh-widget-posts-slider sh-widget-posts-slider-init"
                         #slickModal="slick-carousel"
                         [config]="slideConfig"
         >
@@ -31,21 +31,9 @@
                         </a>
                         <div class="post-meta">
                             <div class="post-meta-content">
-                                <a href="https://gillion.shufflehound.com/2018/01/31/healthy-breakfast-meals-for-energy-boost/#comments"
-                                   class="post-comments"
-                                   tabindex="0">
-                                    <i class="icon icon-bubble"></i>
-                                    0
+                                <a [href]="item.url" class="post-date">
+                                    {{ item.date_create }}
                                 </a>
-                                <span class="post-views">
-                                    <i class="icon icon-eye"></i>
-                                    7315
-                                </span>
-                                <span class="responsive-post-read-later">
-                                    <span class="post-read-later post-read-later-guest tooltipstered">
-                                        <i class="fa fa-bookmark-o"></i>
-                                    </span>
-                                </span>
                             </div>
                         </div>
                     </div>

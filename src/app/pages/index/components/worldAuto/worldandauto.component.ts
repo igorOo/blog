@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'app-worldandauto',
-  templateUrl: './worldandauto.component.html',
-  styleUrls: ['./worldandauto.component.scss']
+    selector: 'app-worldandauto',
+    templateUrl: './worldandauto.component.html',
+    styleUrls: ['./worldandauto.component.scss']
 })
 export class WorldandautoComponent implements OnInit {
 
-  constructor() { }
+    @Input() data: any
 
-  ngOnInit(): void {
-  }
+    constructor() {
+    }
+
+    ngOnInit(): void {
+    }
 
 }

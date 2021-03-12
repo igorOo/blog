@@ -5,6 +5,9 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {AuthInterceptor} from "./auth.interceptor";
 import {BrowserModule} from "@angular/platform-browser";
+import {SharedModule} from "./shared/modules/shared-module/shared.module";
+
+
 
 const httpInterceptorHandlers: Provider = [
     {
@@ -20,7 +23,9 @@ const httpInterceptorHandlers: Provider = [
     imports: [
         BrowserModule.withServerTransition({appId: 'serverApp'}),
         AppRoutingModule,
-        HttpClientModule
+        HttpClientModule,
+    ],
+    exports: [
     ],
     providers: [httpInterceptorHandlers],
     bootstrap: [AppComponent]

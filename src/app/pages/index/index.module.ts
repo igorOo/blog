@@ -19,6 +19,8 @@ import { HardwareComponent } from './components/hardware/hardware.component';
 import { ArticlesComponent } from './components/articles/articles.component';
 import { GamesComponent } from './components/games/games.component';
 import { WorldandautoComponent } from './components/worldAuto/worldandauto.component';
+import {SharedModule} from "../../shared/modules/shared-module/shared.module";
+import {SubscribeComponent} from "../../shared/components/subscribe/subscribe.component";
 
 @NgModule({
     declarations: [
@@ -37,13 +39,17 @@ import { WorldandautoComponent } from './components/worldAuto/worldandauto.compo
         ArticlesComponent,
         GamesComponent,
         WorldandautoComponent,
+        SubscribeComponent,
     ],
     imports: [
         IndexRoutingModule,
         SlickCarouselModule,
         CommonModule,
+        SharedModule,
     ],
-    exports: [IndexRoutingModule],
+    exports: [
+        IndexRoutingModule,
+    ],
     providers: [],
     bootstrap: [IndexComponent],
     schemas: [

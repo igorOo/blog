@@ -20,7 +20,6 @@ import { ArticlesComponent } from './components/articles/articles.component';
 import { GamesComponent } from './components/games/games.component';
 import { WorldandautoComponent } from './components/worldAuto/worldandauto.component';
 import {SharedModule} from "../../shared/modules/shared-module/shared.module";
-import {SubscribeComponent} from "../../shared/components/subscribe/subscribe.component";
 
 @NgModule({
     declarations: [
@@ -39,7 +38,6 @@ import {SubscribeComponent} from "../../shared/components/subscribe/subscribe.co
         ArticlesComponent,
         GamesComponent,
         WorldandautoComponent,
-        SubscribeComponent,
     ],
     imports: [
         IndexRoutingModule,

@@ -8,7 +8,6 @@ import {BrowserModule} from "@angular/platform-browser";
 import {SharedModule} from "./shared/modules/shared-module/shared.module";
 
 
-
 const httpInterceptorHandlers: Provider = [
     {
         provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true
@@ -24,6 +23,7 @@ const httpInterceptorHandlers: Provider = [
         BrowserModule.withServerTransition({appId: 'serverApp'}),
         AppRoutingModule,
         HttpClientModule,
+        SharedModule,
     ],
     exports: [
     ],

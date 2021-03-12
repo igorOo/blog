@@ -1,28 +1,29 @@
 <div class="sh-widget-title-styling">
-    <h3 class="widget-title">Subscribe</h3>
+    <h3 class="widget-title">Подписка</h3>
 </div>
-<form id="mc4wp-form-2"
-      class="mc4wp-form mc4wp-form-848" method="post"
-      data-id="848" data-name="">
+<form class="mc4wp-form mc4wp-form-848" id="mc4wp-form-2" method="post" [formGroup]="form" (ngSubmit)="submitForm()">
     <div class="mc4wp-form-fields">
-        <p><input type="email" name="EMAIL"
-                  placeholder="Your email address"
-                  required=""></p>
-        <p><input type="submit" value="Sign up"></p>
+        <p>
+            <input name="EMAIL" placeholder="Ваша электронная почта"
+                   required=""
+                   type="email"
+                   formControlName="email"
+                   (input)="clearError()"
+                   [class.invalid-state]="invalidState"
+            >
+        </p>
+        <p>
+            <input type="submit" value="Отправить">
+        </p>
     </div>
-    <label style="display: none !important;">Leave
-        this field empty if you're human: <input
-            type="text" name="_mc4wp_honeypot"
+    <label style="display: none !important;">
+        Тест на бота:
+        <input autocomplete="off" name="honeypot"
             tabindex="-1"
-            autocomplete="off"></label><input
-    type="hidden" name="_mc4wp_timestamp"
-    value="1610124384"><input type="hidden"
-                              name="_mc4wp_form_id"
-                              value="848"><input
-    type="hidden" name="_mc4wp_form_element_id"
-    value="mc4wp-form-2">
-    <div class="mc4wp-response"></div>
+            type="text"
+            formControlName="fuckingBot"
+        >
+    </label>
+    <div class="mc4wp-response" #subscribeError></div>
 </form>
-<p class="widget-quote-description">* You will receive
-    the latest news and updates on
-    your favorite celebrities!</p>
+<p class="widget-quote-description">* Вы будете получать последние новости</p>

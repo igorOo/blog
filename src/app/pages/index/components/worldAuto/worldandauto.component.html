@@ -9,33 +9,26 @@
                 </div>
                 <div class="sh-table-cell">
                     <div class="sh-widget-poststab-title">
-                        <ul class="nav nav-tabs sh-tabs-stying"
-                            role="tablist">
-                            <li role="presentation"
-                                class=" active"><a
-                                href="#tab-Pm49UTLDvJuyiIphECqO-1"
-                                role="tab"
-                                data-toggle="tab"> Авто
-                            </a></li>
-                            <li role="presentation"
-                                class=""><a
-                                href="#tab-Pm49UTLDvJuyiIphECqO-2"
-                                role="tab"
-                                data-toggle="tab"> В мире
-                            </a></li>
+                        <ul class="nav nav-tabs sh-tabs-stying" role="tablist">
+                            <li role="presentation" *ngFor="let category of categories"
+                                (click)="changeTab($event, category.category_id)"
+                                [ngClass]="{active: category.category_id == currentTab}"
+                            >
+                                <a [href]="'/news/category/'+category.cat_translit"> {{category.category}} </a>
+                            </li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="tab-content">
-            <div  *ngFor="let item of list | keyvalue"
-            role="tabpanel" class="tab-pane active" id="tab-Pm49UTLDvJuyiIphECqO-1">
-                <ngx-slick-carousel class="carousel sh-widget-posts-slider sh-widget-posts-slider-init"
-                    #slickModal="slick-carousel"
-                    [config]="slideConfig"
-                >
-                    <div class="sh-widget-posts-slider-init">
+        <ng-container *ngIf="!loading else loadingTmp">
+            <div class="tab-content">
+                <div  *ngFor="let item of list | keyvalue"
+                role="tabpanel" class="tab-pane" [class]="item.key == currentTab ? 'active' : '' " [id]="'tab-Pm49UTLDvJuyiIphECqO-'+item.key">
+                    <ngx-slick-carousel class="carousel sh-widget-posts-slider sh-widget-posts-slider-init"
+                        #slickModal="slick-carousel"
+                        [config]="slideConfig"
+                    >
                         <div ngxSlickItem *ngFor="let slider of item.value"
                             class="sh-widget-posts-slider-item sh-widget-posts-slider-item-large sh-widget-posts-slider-style1 sh-widget-posts-categories-item">
                             <div class="post-thumbnail">
@@ -62,16 +55,16 @@
                             <div class="post-meta">
                                 <div class="post-meta-content">
                                     <span class="post-auhor-date">
-                                        <span>
+                                        <span *ngIf="slider.author != undefined">
                                             <a class="post-author" href="https://gillion.shufflehound.com/author/gillionshufflehound/">
                                                 Gillion
                                             </a>,
                                         </span>
-                                        <a class="post-date" href="https://gillion.shufflehound.com/2017/02/09/tips-trick-every-pc-owner-have-to-know/">
-                                            4 years ago
+                                        <a class="post-date" [href]="slider.url">
+                                          {{ slider.date_create }}
                                         </a>
                                     </span>
-                                    <a class="post-comments" href="https://gillion.shufflehound.com/2017/02/09/tips-trick-every-pc-owner-have-to-know/#comments">
+                                    <a *ngIf="false" class="post-comments" href="https://gillion.shufflehound.com/2017/02/09/tips-trick-every-pc-owner-have-to-know/#comments">
                                         <i class="icon icon-bubble"></i>
                                         0
                                     </a>
@@ -84,297 +77,39 @@
                             </div>
                             <div class="post-content" [innerHTML]="slider.preview"></div>
                         </div>
-                    </div>
-                    <div
-                        class="widget-slide-arrows sh-carousel-buttons-styling">
-                        <button type="button"
-                                class="slick-prev slick-arrow slick-disabled"
-                                aria-disabled="true"
-                                style="display: inline-block;"><i
-                            class="icon icon-arrow-left-circle"></i>
+                    </ngx-slick-carousel>
+                    <div class="widget-slide-arrows sh-carousel-buttons-styling">
+                        <button type="button" class="slick-prev slick-arrow"
+                                (click)="slickModal.slickPrev()"
+                        >
+                            <i class="icon icon-arrow-left-circle"></i>
                         </button>
-                        <button
-                            type="button"
-                            class="slick-next slick-arrow"
-                            style="display: inline-block;"
-                            aria-disabled="false"><i
-                            class="icon icon-arrow-right-circle"></i>
+                        <button type="button" class="slick-next slick-arrow"
+                                (click)="slickModal.slickNext()"
+                        >
+                            <i class="icon icon-arrow-right-circle"></i>
                         </button>
                     </div>
-                </ngx-slick-carousel>
+                </div>
+
             </div>
-            <div role="tabpanel" class="tab-pane"
-                 id="tab-Pm49UTLDvJuyiIphECqO-2">
-                <div
-                    class="sh-widget-posts-slider-init slick-initialized slick-slider">
-                    <div aria-live="polite"
-                         class="slick-list draggable">
-                        <div class="slick-track"
-                             style="opacity: 1; width: 1035px; transform: translate3d(0px, 0px, 0px);"
-                             role="listbox">
-                            <div
-                                class="sh-widget-posts-slider-item sh-widget-posts-slider-item-large sh-widget-posts-slider-style1 sh-widget-posts-categories-item slick-slide slick-current slick-active"
-                                data-slick-index="0"
-                                aria-hidden="false"
-                                style="width: 321px;"
-                                tabindex="-1" role="option">
-                                <div
-                                    href="https://gillion.shufflehound.com/2017/01/26/amazing-car-paint-jobs-we-seen-so-far/"
-                                    class="post-thumbnail">
-                                    <img
-                                        src="assets/images/c-3-420x265.jpg"
-                                        class="attachment-gillion-landscape-small size-gillion-landscape-small wp-post-image"
-                                        alt="" width="420"
-                                        height="265"> <a
-                                    href="https://gillion.shufflehound.com/2017/01/26/amazing-car-paint-jobs-we-seen-so-far/"
-                                    class="post-overlay"
-                                    tabindex="0">
-                                    <div
-                                        class="post-overlay-content">
-                                        <span></span>
-                                        <span></span>
-                                        <span></span>
-                                    </div>
-                                </a>
-                                </div>
-                                <a
-                                    href="https://gillion.shufflehound.com/2017/01/26/amazing-car-paint-jobs-we-seen-so-far/"
-                                    tabindex="0">
-                                    <h5 class="post-title">
-                                        Amazing Car Paint
-                                        Jobs We Seen So
-                                        Far&nbsp;<span
-                                        class="post-read-later post-read-later-guest tooltipstered"
-                                        href="#login-register"
-                                        data-type="add"
-                                        data-id="1513"><i
-                                        class="fa fa-bookmark-o"></i></span>
-                                    </h5>
-                                </a>
-                                <div class="post-meta">
-                                    <div
-                                        class="post-meta-content">
-                                                  <span
-                                                      class="post-auhor-date">
-                                                    <span> <a
-                                                        href="https://gillion.shufflehound.com/author/gillionshufflehound/"
-                                                        class="post-author"
-                                                        tabindex="0">Gillion</a></span>,
-                                                    <a href="https://gillion.shufflehound.com/2017/01/26/amazing-car-paint-jobs-we-seen-so-far/"
-                                                       class="post-date"
-                                                       tabindex="0">
-                                                      4 years ago
-                                                    </a> </span> <a
-                                        href="https://gillion.shufflehound.com/2017/01/26/amazing-car-paint-jobs-we-seen-so-far/#comments"
-                                        class="post-comments"
-                                        tabindex="0"> <i
-                                        class="icon icon-bubble"></i>
-                                        0 </a> <span
-                                        class="responsive-post-read-later">
-                                                    &nbsp;<span
-                                        class="post-read-later post-read-later-guest tooltipstered"
-                                        href="#login-register"
-                                        data-type="add"
-                                        data-id="1513"><i
-                                        class="fa fa-bookmark-o"></i></span>
-                                                  </span>
-                                    </div>
-                                </div>
-                                <div class="post-content">
-                                    <p>Lorem
-                                        ipsum dolor sit
-                                        amet, consectetur
-                                        adipiscing elit. Nam
-                                        laoreet, nunc et
-                                        accumsan cursus,
-                                        neque eros sodales
-                                        lectus, in
-                                        fermentum…</p>
-                                </div>
-                            </div>
-                            <div
-                                class="sh-widget-posts-slider-item sh-widget-posts-slider-item-large sh-widget-posts-slider-style1 sh-widget-posts-categories-item slick-slide"
-                                data-slick-index="1"
-                                aria-hidden="true"
-                                style="width: 321px;"
-                                tabindex="-1" role="option">
-                                <div
-                                    href="https://gillion.shufflehound.com/2016/06/04/porsche-cayman-re-style-is-on-the-way/"
-                                    class="post-thumbnail">
-                                    <img
-                                        src="assets/images/c-4-420x265.jpg"
-                                        class="attachment-gillion-landscape-small size-gillion-landscape-small wp-post-image"
-                                        alt="" width="420"
-                                        height="265"> <a
-                                    href="https://gillion.shufflehound.com/2016/06/04/porsche-cayman-re-style-is-on-the-way/"
-                                    class="post-overlay"
-                                    tabindex="-1">
-                                    <div
-                                        class="post-overlay-content">
-                                        <span></span>
-                                        <span></span>
-                                        <span></span>
-                                    </div>
-                                </a>
-                                </div>
-                                <a
-                                    href="https://gillion.shufflehound.com/2016/06/04/porsche-cayman-re-style-is-on-the-way/"
-                                    tabindex="-1">
-                                    <h5 class="post-title">
-                                        Porsche Cayman
-                                        Re-style Is On The
-                                        Way&nbsp;<span
-                                        class="post-read-later post-read-later-guest tooltipstered"
-                                        href="#login-register"
-                                        data-type="add"
-                                        data-id="1516"><i
-                                        class="fa fa-bookmark-o"></i></span>
-                                    </h5>
-                                </a>
-                                <div class="post-meta">
-                                    <div
-                                        class="post-meta-content">
-                                                  <span
-                                                      class="post-auhor-date">
-                                                    <span> <a
-                                                        href="https://gillion.shufflehound.com/author/gillionshufflehound/"
-                                                        class="post-author"
-                                                        tabindex="-1">Gillion</a></span>,
-                                                    <a href="https://gillion.shufflehound.com/2016/06/04/porsche-cayman-re-style-is-on-the-way/"
-                                                       class="post-date"
-                                                       tabindex="-1">
-                                                      5 years ago
-                                                    </a> </span> <a
-                                        href="https://gillion.shufflehound.com/2016/06/04/porsche-cayman-re-style-is-on-the-way/#comments"
-                                        class="post-comments"
-                                        tabindex="-1">
-                                        <i
-                                            class="icon icon-bubble"></i>
-                                        0 </a> <span
-                                        class="responsive-post-read-later">
-                                                    &nbsp;<span
-                                        class="post-read-later post-read-later-guest tooltipstered"
-                                        href="#login-register"
-                                        data-type="add"
-                                        data-id="1516"><i
-                                        class="fa fa-bookmark-o"></i></span>
-                                                  </span>
-                                    </div>
-                                </div>
-                                <div class="post-content">
-                                    <p>Lorem
-                                        ipsum dolor sit
-                                        amet, consectetur
-                                        adipiscing elit. Nam
-                                        laoreet, nunc et
-                                        accumsan cursus,
-                                        neque eros sodales
-                                        lectus, in
-                                        fermentum…</p>
-                                </div>
-                            </div>
-                            <div
-                                class="sh-widget-posts-slider-item sh-widget-posts-slider-item-large sh-widget-posts-slider-style1 sh-widget-posts-categories-item slick-slide"
-                                data-slick-index="2"
-                                aria-hidden="true"
-                                style="width: 321px;"
-                                tabindex="-1" role="option">
-                                <div
-                                    href="https://gillion.shufflehound.com/2016/06/04/what-you-need-to-know-about-new-speed-limit-restrictions/"
-                                    class="post-thumbnail">
-                                    <img
-                                        src="assets/images/c-5-420x265.jpg"
-                                        class="attachment-gillion-landscape-small size-gillion-landscape-small wp-post-image"
-                                        alt="" width="420"
-                                        height="265"> <a
-                                    href="https://gillion.shufflehound.com/2016/06/04/what-you-need-to-know-about-new-speed-limit-restrictions/"
-                                    class="post-overlay"
-                                    tabindex="-1">
-                                    <div
-                                        class="post-overlay-content">
-                                        <span></span>
-                                        <span></span>
-                                        <span></span>
-                                    </div>
-                                </a>
-                                </div>
-                                <a
-                                    href="https://gillion.shufflehound.com/2016/06/04/what-you-need-to-know-about-new-speed-limit-restrictions/"
-                                    tabindex="-1">
-                                    <h5 class="post-title">
-                                        What You Need To
-                                        Know About New Speed
-                                        Limit
-                                        Restrictions&nbsp;<span
-                                        class="post-read-later post-read-later-guest tooltipstered"
-                                        href="#login-register"
-                                        data-type="add"
-                                        data-id="1518"><i
-                                        class="fa fa-bookmark-o"></i></span>
-                                    </h5>
-                                </a>
-                                <div class="post-meta">
-                                    <div
-                                        class="post-meta-content">
-                                                  <span
-                                                      class="post-auhor-date">
-                                                    <span> <a
-                                                        href="https://gillion.shufflehound.com/author/gillionshufflehound/"
-                                                        class="post-author"
-                                                        tabindex="-1">Gillion</a></span>,
-                                                    <a href="https://gillion.shufflehound.com/2016/06/04/what-you-need-to-know-about-new-speed-limit-restrictions/"
-                                                       class="post-date"
-                                                       tabindex="-1">
-                                                      5 years ago
-                                                    </a> </span> <a
-                                        href="https://gillion.shufflehound.com/2016/06/04/what-you-need-to-know-about-new-speed-limit-restrictions/#comments"
-                                        class="post-comments"
-                                        tabindex="-1">
-                                        <i
-                                            class="icon icon-bubble"></i>
-                                        0 </a> <span
-                                        class="responsive-post-read-later">
-                                                    &nbsp;<span
-                                        class="post-read-later post-read-later-guest tooltipstered"
-                                        href="#login-register"
-                                        data-type="add"
-                                        data-id="1518"><i
-                                        class="fa fa-bookmark-o"></i></span>
-                                                  </span>
-                                    </div>
-                                </div>
-                                <div class="post-content">
-                                    <p>Lorem
-                                        ipsum dolor sit
-                                        amet, consectetur
-                                        adipiscing elit. Nam
-                                        laoreet, nunc et
-                                        accumsan cursus,
-                                        neque eros sodales
-                                        lectus, in
-                                        fermentum…</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div
-                    class="widget-slide-arrows sh-carousel-buttons-styling">
-                    <button type="button"
-                            class="slick-prev slick-arrow slick-disabled"
-                            aria-disabled="true"
-                            style="display: inline-block;"><i
-                        class="icon icon-arrow-left-circle"></i>
-                    </button>
-                    <button
-                        type="button"
-                        class="slick-next slick-arrow"
-                        style="display: inline-block;"
-                        aria-disabled="false"><i
-                        class="icon icon-arrow-right-circle"></i>
-                    </button>
-                </div>
+        </ng-container>
+    </div>
+</div>
+
+<ng-template #loadingTmp>
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active">
+            <div class="carousel sh-widget-posts-slider sh-widget-posts-slider-init">
+                <app-loader
+                    [image]="true"
+                    [heightImage]="253"
+                    [widthImage]="420"
+                    [inline]="false"
+                    [lines]="3"
+                    [lineWidth]="80"
+                ></app-loader>
             </div>
         </div>
     </div>
-</div>
+</ng-template>

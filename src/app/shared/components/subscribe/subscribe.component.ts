@@ -1,5 +1,7 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {HttpClient} from "@angular/common/http";
+import {environment} from "../../../../environments/environment";
 
 @Component({
     selector: 'app-subscribe',
@@ -16,7 +18,7 @@ export class SubscribeComponent implements OnInit {
     })
     public invalidState: boolean = false
 
-    constructor() {
+    constructor(private http: HttpClient) {
     }
 
     ngOnInit(): void {
@@ -33,6 +35,10 @@ export class SubscribeComponent implements OnInit {
             this.invalidState = true
             return
         }
+        this.http.post(environment.restUrl, this.form.getRawValue())
+            .subscribe((result: any) => {
+                console.log(result)
+            })
     }
 
     clearError() {

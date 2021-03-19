@@ -4,7 +4,7 @@
 
 export const environment = {
     production: false,
-    restUrl: "https://techno.loc:4554",
+    restUrl: "http://localhost:4554",
 };
 
 /*

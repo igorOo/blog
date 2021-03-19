@@ -4,6 +4,7 @@ import TopCategoriesInterface from "./interfaces/TopCategoriesInterface";
 import {TopCategoriesListInterface} from "./interfaces/TopCategoriesListInterface";
 import { Observable } from 'rxjs';
 import {TopPost} from "./interfaces/TopPost";
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -29,7 +30,7 @@ export class IndexComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.http.get("http://techno.loc/api/v1/posts/mainpage?page="+this.currentPage)
+        this.http.get(environment.restUrl+"/api/v1/mainpage?page="+this.currentPage)
             .subscribe((result: any) => {
                 if (result["tops"] != undefined) {
                     this.tops = result['tops'];

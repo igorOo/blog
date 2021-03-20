@@ -11,7 +11,7 @@ export class AnotherComponent implements OnInit {
 
     @Input() data: any
     public loading: boolean = true
-    public list: Map<number, Array<TopPost>> = new Map<number, Array<TopPost>>()
+    public list: Array<TopPost> = new Array<TopPost>()
     public slideConfig = {
         "slidesToShow": 1,
         "slidesToScroll": 1,
@@ -19,8 +19,6 @@ export class AnotherComponent implements OnInit {
         "prevArrow": '',
         "nextArrow": ''
     };
-    public currentTab: number = 7;
-    public categories: Array<TopCategoriesListInterface> = []
 
     constructor() {
     }
@@ -31,15 +29,10 @@ export class AnotherComponent implements OnInit {
     ngOnChanges(changes: SimpleChanges):void {
         if (changes.data.currentValue && Object.keys(changes.data.currentValue).length){
             Object.keys(changes.data.currentValue).map((key:any) => {
-                this.list.set(key, changes.data.currentValue[key])
-                let cat: TopCategoriesListInterface = {
-                    category: changes.data.currentValue[key][0].category,
-                    category_id: changes.data.currentValue[key][0].category_id,
-                    cat_translit: changes.data.currentValue[key][0].cat_translit,
-                };
-                this.categories.push(cat)
+                this.list.push(changes.data.currentValue[key])
             })
             this.loading = false
+            console.log(this.list)
         }
     }
 

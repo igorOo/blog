@@ -1,7 +1,7 @@
 <div class="sh-widget-title-styling">
     <h3 class="widget-title">Подписка</h3>
 </div>
-<form class="mc4wp-form mc4wp-form-848" id="mc4wp-form-2" method="post" [formGroup]="form" (ngSubmit)="submitForm()">
+<form class="mc4wp-form mc4wp-form-848" id="mc4wp-form-2" method="post" [formGroup]="form" (ngSubmit)="submitForm($event)">
     <div class="mc4wp-form-fields">
         <p>
             <input name="EMAIL" placeholder="Ваша электронная почта"
@@ -25,5 +25,6 @@
         >
     </label>
     <div class="mc4wp-response" #subscribeError></div>
+    <div class="mc4wp-response-success" #subscribeSucces></div>
 </form>
 <p class="widget-quote-description">* Вы будете получать последние новости</p>

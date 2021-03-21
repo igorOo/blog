@@ -6,6 +6,8 @@ import {AppComponent} from './app.component';
 import {AuthInterceptor} from "./auth.interceptor";
 import {BrowserModule} from "@angular/platform-browser";
 import {SharedModule} from "./shared/modules/shared-module/shared.module";
+import {LayoutComponent} from "./layout/layout.component";
+import {MainmenuComponent} from "./layout/common/mainmenu/mainmenu.component";
 
 
 const httpInterceptorHandlers: Provider = [
@@ -18,6 +20,8 @@ const httpInterceptorHandlers: Provider = [
 @NgModule({
     declarations: [
         AppComponent,
+        LayoutComponent,
+        MainmenuComponent,
     ],
     imports: [
         BrowserModule.withServerTransition({appId: 'serverApp'}),
@@ -26,6 +30,8 @@ const httpInterceptorHandlers: Provider = [
         SharedModule,
     ],
     exports: [
+        LayoutComponent,
+        MainmenuComponent,
     ],
     providers: [httpInterceptorHandlers],
     bootstrap: [AppComponent]

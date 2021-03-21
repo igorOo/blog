@@ -1,9 +1,9 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {IndexComponent} from './index.component';
+import {NewComponent} from './new.component';
 
 const routes: Routes = [
-    {path: '', component: IndexComponent}
+    {path: ':translit', component: NewComponent}
 ];
 
 @NgModule({
@@ -12,4 +12,4 @@ const routes: Routes = [
     ],
     exports: [RouterModule]
 })
-export class IndexRoutingModule { }
+export class NewRoutingModule { }

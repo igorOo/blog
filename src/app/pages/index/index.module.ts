@@ -1,32 +1,28 @@
 import {NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
 
 import {IndexRoutingModule} from './index-routing.module';
-import {LayoutComponent} from './../../layout/layout.component';
 import {IndexComponent} from './index.component';
-import {MainmenuComponent} from './../../layout/common/mainmenu/mainmenu.component';
 import {TopsliderComponent} from './components/topslider/topslider.component';
 
 import {SlickCarouselModule} from 'ngx-slick-carousel';
 import {CommonModule} from "@angular/common";
-import { TopcategoriesComponent } from './components/topcategories/topcategories.component';
-import { FirstPostComponent } from './components/topcategories/components/first-post/first-post.component';
+import {TopcategoriesComponent} from './components/topcategories/topcategories.component';
+import {FirstPostComponent} from './components/topcategories/components/first-post/first-post.component';
 import {LoaderComponent} from "../../shared/components/loader/loader.component";
-import { SmallpostComponent } from './components/topcategories/components/smallpost/smallpost.component';
-import { GadgetsComponent } from './components/gadgets/gadgets.component';
-import { IntandprogsComponent } from './components/intAndProgs/intandprogs/intandprogs.component'
+import {SmallpostComponent} from './components/topcategories/components/smallpost/smallpost.component';
+import {GadgetsComponent} from './components/gadgets/gadgets.component';
+import {IntandprogsComponent} from './components/intAndProgs/intandprogs/intandprogs.component'
 import FilterForPipe from "../../pipes/filterFor.pipe";
-import { HardwareComponent } from './components/hardware/hardware.component';
-import { ArticlesComponent } from './components/articles/articles.component';
-import { GamesComponent } from './components/games/games.component';
-import { WorldandautoComponent } from './components/worldAuto/worldandauto.component';
+import {HardwareComponent} from './components/hardware/hardware.component';
+import {ArticlesComponent} from './components/articles/articles.component';
+import {GamesComponent} from './components/games/games.component';
+import {WorldandautoComponent} from './components/worldAuto/worldandauto.component';
 import {SharedModule} from "../../shared/modules/shared-module/shared.module";
-import { AnotherComponent } from './components/another/another/another.component';
+import {AnotherComponent} from './components/another/another/another.component';
 
 @NgModule({
     declarations: [
-        LayoutComponent,
         IndexComponent,
-        MainmenuComponent,
         TopsliderComponent,
         TopcategoriesComponent,
         FirstPostComponent,

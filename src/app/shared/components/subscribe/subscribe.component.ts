@@ -1,6 +1,6 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {environment} from "../../../../environments/environment";
 
 @Component({
@@ -12,6 +12,8 @@ export class SubscribeComponent implements OnInit {
 
     // @ts-ignore
     @ViewChild('subscribeError') errorRef: ElementRef
+    // @ts-ignore
+    @ViewChild('subscribeSucces') successRef: ElementRef
     public form: FormGroup = new FormGroup({
         email: new FormControl('', [Validators.required, Validators.email]),
         fuckingBot: new FormControl('', Validators.maxLength(0))
@@ -24,7 +26,8 @@ export class SubscribeComponent implements OnInit {
     ngOnInit(): void {
     }
 
-    submitForm(): void{
+    submitForm(event: Event): void{
+        event.preventDefault()
         if (this.form.get('email')?.invalid && this.form.get('email')?.touched){
             this.errorRef.nativeElement.innerHTML = "Введите адрес электронной почты"
             this.invalidState = true
@@ -35,9 +38,24 @@ export class SubscribeComponent implements OnInit {
             this.invalidState = true
             return
         }
-        this.http.post(environment.restUrl, this.form.getRawValue())
+
+        let formData: any = new FormData();
+        formData.append("email", this.form.get("email")?.value)
+        formData.append("fuckingBot", this.form.get("fuckingBot")?.value)
+        this.http.post(environment.restUrl+"/api/v1/subscribe/add", formData)
             .subscribe((result: any) => {
-                console.log(result)
+                if (result.status !== undefined && result.status == "success"){
+                    this.successRef.nativeElement.innerHTML = "Вы успешно подписаны на новые новости";
+                }else{
+                    this.errorRef.nativeElement.innerHTML = "Что-то пошло не так :(";
+                }
+                this.form.reset()
+            }, error => {
+                if(error.error !== undefined){
+                    this.errorRef.nativeElement.innerHTML = error.error.message;
+                }else{
+                    this.errorRef.nativeElement.innerHTML = error.message;
+                }
             })
     }
 

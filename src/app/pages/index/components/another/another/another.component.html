@@ -1,0 +1,139 @@
+<div id="posts_slider-8" class="widget_facebook widget-item widget_posts_slider">
+    <div class="widget-slide-arrows-container">
+        <div class="sh-widget-title-styling">
+            <h3 class="widget-title">Разное</h3>
+        </div>
+    </div>
+    <ng-container *ngIf="!loading else loadingTmp">
+        <ngx-slick-carousel class="sh-widget-posts-slider sh-widget-posts-slider-init"
+                            #slickModal="slick-carousel"
+                            [config]="slideConfig"
+        >
+            <div ngxSlickItem *ngFor="let slider of list | keyvalue" class="sh-widget-posts-slider-group slick-slide">
+                <ng-container *ngFor="let slide of slider.value; index as key">
+                    <ng-container *ngIf="key==0">
+                        <div class="sh-widget-posts-slider-item sh-widget-posts-slider-item-large sh-widget-posts-slider-style1">
+                            <div class="post-thumbnail">
+                                <img [src]="slide.main_image"
+                                class="attachment-gillion-landscape-small size-gillion-landscape-small wp-post-image"
+                                alt="" width="420"
+                                height="265">
+                                <a [href]="slide.url" class="post-overlay">
+                                    <div class="post-overlay-content">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </div>
+                                </a>
+                            </div>
+                            <a [href]="slide.url">
+                                <h5 class="post-title">
+                                    {{ slide.name }}
+                                    <span class="post-read-later post-read-later-guest tooltipstered">
+                                        <i class="fa fa-bookmark-o"></i>
+                                    </span>
+                                </h5>
+                            </a>
+                            <div class="post-meta">
+                                <div class="post-meta-content">
+                                    <span class="post-auhor-date">
+                                        <span *ngIf="slide.author != undefined">
+                                            <a href="https://gillion.shufflehound.com/author/gillionshufflehound/" class="post-author">
+                                                Gillion
+                                            </a>,
+                                        </span>
+                                        <a [href]="slide.url" class="post-date">
+                                            {{ slide.date_create }}
+                                        </a>
+                                    </span>
+                                    <a [href]="slide.url+'#comments'" class="post-comments" *ngIf="slide.count_comment">
+                                        <i class="icon icon-bubble"></i>
+                                        {{slide.count_comment }}
+                                    </a>
+                                    <span class="responsive-post-read-later">
+                                        <span class="post-read-later post-read-later-guest tooltipstered">
+                                            <i class="fa fa-bookmark-o"></i>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="post-content" [innerHTML]="slide.preview"></div>
+                        </div>
+                    </ng-container>
+                    <ng-container *ngIf="key>0">
+                        <div class="sh-widget-posts-slider-item sh-widget-posts-slider-style1">
+                            <a [href]="slide.url" class="sh-widget-posts-slider-thumbnail sh-post-review-mini"
+                               [style]="'background-image: url('+ slide.main_image +');'">
+                                <div class="post-overlay-small"></div>
+                            </a>
+                            <div class="sh-widget-posts-slider-content">
+                                <a [href]="slide.url">
+                                    <h5 class="post-title">
+                                        {{ slide.name }}
+                                        <span class="post-read-later post-read-later-guest tooltipstered">
+                                            <i class="fa fa-bookmark-o"></i>
+                                        </span>
+                                    </h5>
+                                </a>
+                                <div class="post-meta">
+                                    <div class="post-meta-content">
+                                        <a [href]="slide.url+'#comments'" class="post-comments" *ngIf="slide.count_comment">
+                                            <i class="icon icon-bubble"></i>
+                                            {{slide.count_comment }}
+                                        </a>
+                                        <a [href]="slide.url" class="post-date">
+                                            {{ slide.date_create }}
+                                        </a>
+                                        <span class="responsive-post-read-later">
+                                            <span class="post-read-later post-read-later-guest tooltipstered">
+                                                <i class="fa fa-bookmark-o"></i>
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-container>
+                </ng-container>
+            </div>
+        </ngx-slick-carousel>
+        <div class="widget-slide-arrows sh-carousel-buttons-styling">
+            <button class="slick-prev slick-arrow" style="display: inline-block;"
+                (click)="slickModal.slickPrev()"
+            >
+                <i class="icon icon-arrow-left-circle"></i>
+            </button>
+            <button class="slick-next slick-arrow" style="display: inline-block;"
+                (click)="slickModal.slickNext()"
+            >
+                <i class="icon icon-arrow-right-circle"></i>
+            </button>
+        </div>
+    </ng-container>
+</div>
+
+<ng-template #loadingTmp>
+    <div class="sh-widget-posts-slider sh-widget-posts-slider-init">
+        <div class="sh-widget-posts-slider-group slick-slide">
+            <app-loader
+                [image]="true"
+                [heightImage]="215"
+                [widthImage]="320"
+                [inline]="false"
+                [lines]="3"
+                [lineWidth]="80"
+            ></app-loader>
+            <div *ngFor="let loadingItem of [1,2]" class="sh-widget-posts-slider-item sh-widget-posts-slider-style1">
+                <app-loader
+                    [image]="true"
+                    [heightImage]="70"
+                    [widthImage]="70"
+                    [inline]="true"
+                    [lines]="3"
+                    [lineWidth]="80"
+                ></app-loader>
+            </div>
+        </div>
+    </div>
+
+</ng-template>

@@ -13,7 +13,7 @@
                                     <li class="menu-item menu-item-type-custom menu-item-object-custom"
                                         *ngFor="let subitem of item.children"
                                     >
-                                        <a [href]="'/'+item.url[0]+'/category/'+subitem.translit">{{subitem.name}}</a>
+                                        <a [href]="item.url[0]+'/category/'+subitem.translit">{{subitem.name}}</a>
                                     </li>
                                 </ul>
                             </li>

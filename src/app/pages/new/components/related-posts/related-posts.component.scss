@@ -1,0 +1,54 @@
+.post-related {
+    padding-top: 22px;
+    position: relative;
+    margin: 0 -15px;
+    display: flex;
+}
+.post-related-title {
+    margin-top: 80px;
+}
+.post-related .post-related-item {
+    padding-top: 8px;
+}
+.post-related .post-related-item .post-title h4 {
+    font-size: 18px !important;
+}
+.sh-categories-position-title .post-related .post-related-item .post-title h4 {
+    font-size: 18px !important;
+    margin-top: 10px !important;
+    margin-bottom: 15px !important;
+}
+.sh-categories-position-image .post-related .post-related-item .post-title h4 {
+    margin-top: 15px !important;
+    margin-bottom: 5px !important;
+}
+.post-related .post-related-item .post-categories-container {
+    margin-top: 15px;
+}
+.post-related .post-related-item .sh-ratio-content {
+    background-color: rgba(36, 36, 36, 0.65);
+}
+h2.post-single-title {
+    position: relative;
+    font-size: 24px;
+    overflow: hidden;
+    margin-bottom: 0;
+    padding-top: 0;
+    margin-top: 0;
+}
+.post-related .post-meta-audio .ratio-container,
+.post-related .post-meta-video .ratio-container {
+    padding-top: 70% !important;
+}
+.post-related .post-quote-link .sh-ratio-container {
+    padding-bottom: 125% !important;
+}
+.post-related .post-quote-link h2 {
+    font-size: 15px !important;
+}
+.post-related .post-quote-link p {
+    font-size: 12px !important;
+}
+.post-related .post-quote-link-meta {
+    display: none;
+}

@@ -7,7 +7,7 @@
             <div class="title-level sh-table-cell">
                 <div id="breadcrumbs" class="breadcrumb-trail breadcrumbs">
                     <span class="item-home">
-                        <a class="bread-link bread-home" href="https://gillion.shufflehound.com/" title="Home">
+                        <a class="bread-link bread-home" href="/" title="Home">
                             Home
                         </a>
                     </span>
@@ -81,8 +81,8 @@
                             <div class="post-single-meta">
                                 <div class="post-categories-container">
                                     <div class="post-categories">
-                                        <a href="https://gillion.shufflehound.com/category/lifestyle/">
-                                            Lifestyle
+                                        <a [href]="post.category.url">
+                                            {{post.category.name}}
                                         </a>
                                     </div>
                                 </div>

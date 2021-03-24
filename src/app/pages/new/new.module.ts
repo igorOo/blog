@@ -4,10 +4,12 @@ import {SharedModule} from "../../shared/modules/shared-module/shared.module";
 import {NewRoutingModule} from "./new-routing.module";
 import {NewComponent} from "./new.component";
 import {CommonModule} from "@angular/common";
+import { RelatedPostsComponent } from './components/related-posts/related-posts.component';
 
 @NgModule({
     declarations: [
-        NewComponent
+        NewComponent,
+        RelatedPostsComponent
     ],
     imports: [
         NewRoutingModule,

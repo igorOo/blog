@@ -97,20 +97,19 @@
                                 <div class="post-meta">
                                     <div class="post-meta-content">
                                         <span class="post-auhor-date post-auhor-date-full">
-                                        <a href="https://gillion.shufflehound.com/author/gillionshufflehound/">
-                                            <img alt="" src="https://secure.gravatar.com/avatar/f88c13d62ba761a92211e266c22dbb1f?s=28&amp;d=mm&amp;r=g"
-                                                 class="avatar avatar-28 photo post-author-image"
-                                                 width="28"
-                                                 height="28">
-                                        </a>
-                                            <span>
-                                                <a href="https://gillion.shufflehound.com/author/gillionshufflehound/" class="post-author">
-                                                    Gillion
-                                                </a>
-                                            </span>,
-                                            <a href="https://gillion.shufflehound.com/2017/01/31/health-tips-and-benefits-of-healthy-lifestyle-you-should-consider/"
-                                                class="post-date">
-                                                4 years ago
+                                            <a href="https://gillion.shufflehound.com/author/gillionshufflehound/" *ngIf="post.author">
+                                                <img alt="" [src]="post.author.avatar"
+                                                     class="avatar avatar-28 photo post-author-image"
+                                                     width="28"
+                                                     height="28">
+                                            </a>
+                                            <span *ngIf="post.author">
+                                                <a href="#" class="post-author">
+                                                    {{ post.author.firstName }} {{ post.author.lastName }}
+                                                </a>,
+                                            </span>
+                                            <a class="post-date">
+                                                {{ post.date_create }}
                                             </a>
                                         </span>
                                         <a href="https://gillion.shufflehound.com/2017/01/31/health-tips-and-benefits-of-healthy-lifestyle-you-should-consider/#comments"
@@ -139,23 +138,20 @@
 
                             </div>
                             <div class="sh-page-links"></div>
-                            <div class="post-tags-container">
-                                <div class="post-tags"><a class="post-tags-item post-tags-item-title"> Tags </a> <a
-                                    href="https://gillion.shufflehound.com/tag/health/" class="post-tags-item">
-                                    #Health </a> <a href="https://gillion.shufflehound.com/tag/lifestyle/"
-                                                    class="post-tags-item"> #Lifestyle </a> <a
-                                    href="https://gillion.shufflehound.com/tag/long-life/" class="post-tags-item">
-                                    #Long-life </a> <a href="https://gillion.shufflehound.com/tag/tips/"
-                                                       class="post-tags-item"> #Tips </a></div>
+                            <div class="post-tags-container" *ngIf="post.tags.length">
+                                <div class="post-tags">
+                                    <a href="#" class="post-tags-item" *ngFor="let tag of post.tags">
+                                        {{ tag.tag }}
+                                    </a>
+                                </div>
                                 <div class="sh-clear"></div>
                             </div>
                             <div class="post-content-share-mobile-contaner">
-                                <div
-                                    class="post-content-share post-content-share-bar post-content-share-mobile jssocials"
+                                <div class="post-content-share post-content-share-bar post-content-share-mobile jssocials"
                                     style="">
                                     <div class="jssocials-shares">
-                                        <div class="jssocials-share jssocials-share-twitter"><a target="_blank"
-                                                                                                href="https://twitter.com/share?url=https%3A%2F%2Fgillion.shufflehound.com%2F2017%2F01%2F31%2Fhealth-tips-and-benefits-of-healthy-lifestyle-you-should-consider%2F&amp;text=Gillion%20is%20a%20powerhouse%20News%2C%20Magazine%2C%20Blog%20or%20Review%20style%20WordPress%20Theme%20packed%20with%20powerful%2C%20easy%20to%20use%20features%2C%20ready%20to%20create%20amazing%20websites.%20Incl%206%20months%20support"
+                                        <div class="jssocials-share jssocials-share-twitter">
+                                            <a target="_blank" href="https://twitter.com/share?url=https%3A%2F%2Fgillion.shufflehound.com%2F2017%2F01%2F31%2Fhealth-tips-and-benefits-of-healthy-lifestyle-you-should-consider%2F&amp;text=Gillion%20is%20a%20powerhouse%20News%2C%20Magazine%2C%20Blog%20or%20Review%20style%20WordPress%20Theme%20packed%20with%20powerful%2C%20easy%20to%20use%20features%2C%20ready%20to%20create%20amazing%20websites.%20Incl%206%20months%20support"
                                                                                                 class="jssocials-share-link"><i
                                             class="fa fa-twitter jssocials-share-logo"></i></a></div>
                                         <div class="jssocials-share jssocials-share-facebook"><a target="_blank"
@@ -178,30 +174,13 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="post-switch post-swtich-style2">
-                            <div class="row">
-                                <div class="col-md-6"><a
-                                    href="https://gillion.shufflehound.com/2017/01/31/how-to-climb-the-career-latter-and-dont-waste-your-youth/"
-                                    class="post-switch-prev text-left">
-                                    <div class="post-switch-type">Previous</div>
-                                    <h4> How To Climb The Career Latter And Don't Waste Your Youth</h4></a></div>
-                                <div class="col-md-6"><a
-                                    href="https://gillion.shufflehound.com/2017/01/31/new-coffee-place-you-have-to-visit/"
-                                    class="post-switch-next text-right">
-                                    <div class="post-switch-type">Next</div>
-                                    <h4> New Coffee Place You Have To Visit</h4></a></div>
+                        <div class="sh-post-author sh-table" *ngIf="false">
+                            <div class="sh-post-author-avatar sh-table-cell-top">
+                                <a href="https://gillion.shufflehound.com/author/gillionshufflehound/">
+                                    <img alt="" src="https://secure.gravatar.com/avatar/f88c13d62ba761a92211e266c22dbb1f?s=185&amp;d=mm&amp;r=g"
+                                         class="avatar avatar-185 photo" width="185" height="185">
+                                </a>
                             </div>
-                        </div>
-                        <div class="sh-post-author sh-table">
-                            <div class="sh-post-author-avatar sh-table-cell-top"><a
-                                href="https://gillion.shufflehound.com/author/gillionshufflehound/"> <img alt=""
-                                                                                                          src="https://secure.gravatar.com/avatar/f88c13d62ba761a92211e266c22dbb1f?s=185&amp;d=mm&amp;r=g"
-                                                                                                          srcset="https://secure.gravatar.com/avatar/f88c13d62ba761a92211e266c22dbb1f?s=370&amp;d=mm&amp;r=g 2x"
-                                                                                                          class="avatar avatar-185 photo"
-                                                                                                          loading="lazy"
-                                                                                                          width="185"
-                                                                                                          height="185">
-                            </a></div>
                             <div class="sh-post-author-info sh-table-cell-top" style="height: 152.5px;">
                                 <div><a href="https://gillion.shufflehound.com/author/gillionshufflehound/"><h4>
                                     Gillion</h4></a>
@@ -222,333 +201,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="post-related-title post-slide-arrows-container"><h2 class="post-single-title">
-                            Related posts</h2></div>
-                        <div class="post-related slick-initialized slick-slider">
-                            <div aria-live="polite" class="slick-list draggable">
-                                <div class="slick-track"
-                                     style="opacity: 1; width: 1740px; transform: translate3d(0px, 0px, 0px);"
-                                     role="listbox">
-                                    <div class="post-related-item slick-slide slick-current slick-active"
-                                         data-slick-index="0" aria-hidden="false" style="width: 290px;" tabindex="-1"
-                                         role="option">
-                                        <article id="post-134"
-                                                 class="post-item post-134 post type-post status-publish format-standard has-post-thumbnail hentry category-lifestyle category-tech tag-guide tag-how-to tag-tech">
-                                            <div class="post-container">
-                                                <div class="post-thumbnail">
-                                                    <div class="sh-ratio">
-                                                        <div class="sh-ratio-container">
-                                                            <div class="sh-ratio-content"
-                                                                 style="background-image: url( https://cdn.gillion.shufflehound.com/wp-content/uploads/2017/01/26_Full-min-420x265.jpg);"></div>
-                                                        </div>
-                                                    </div>
-                                                    <a href="https://gillion.shufflehound.com/2017/01/24/top-10-it-workspace-ergonomics-tips/"
-                                                       class="post-overlay" tabindex="0">
-                                                        <div class="post-overlay-content"><span></span> <span></span>
-                                                            <span></span></div>
-                                                    </a>
-                                                    <div class="post-categories-container">
-                                                        <div class="post-categories"><a
-                                                            href="https://gillion.shufflehound.com/category/lifestyle/"
-                                                            tabindex="0">Lifestyle</a></div>
-                                                    </div>
-                                                </div>
-                                                <div class="post-content-container"><a
-                                                    href="https://gillion.shufflehound.com/2017/01/24/top-10-it-workspace-ergonomics-tips/"
-                                                    class="post-title" tabindex="0"><h4> Top 10 IT Workspace Ergonomics
-                                                    Tips&nbsp;<span
-                                                        class="post-read-later post-read-later-guest tooltipstered"
-                                                        href="#login-register" data-type="add" data-id="134"><i
-                                                        class="fa fa-bookmark-o"></i></span></h4></a>
-                                                    <div class="post-meta">
-                                                        <div class="post-meta-content"><span
-                                                            class="post-auhor-date"> <span> <a
-                                                            href="https://gillion.shufflehound.com/author/gillionshufflehound/"
-                                                            class="post-author" tabindex="0">Gillion</a></span>, <a
-                                                            href="https://gillion.shufflehound.com/2017/01/24/top-10-it-workspace-ergonomics-tips/"
-                                                            class="post-date" tabindex="0"> 4 years ago </a> </span>
-                                                            <span class="post-readtime"> <i class="icon icon-clock"></i> 3 min <span>read</span> </span>
-                                                            <span class="responsive-post-read-later"> &nbsp;<span
-                                                                class="post-read-later post-read-later-guest tooltipstered"
-                                                                href="#login-register" data-type="add" data-id="134"><i
-                                                                class="fa fa-bookmark-o"></i></span> </span></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </article>
-                                    </div>
-                                    <div class="post-related-item slick-slide slick-active" data-slick-index="1"
-                                         aria-hidden="false" style="width: 290px;" tabindex="-1" role="option">
-                                        <article id="post-53"
-                                                 class="post-item post-53 post type-post status-publish format-standard has-post-thumbnail hentry category-lifestyle category-places tag-building tag-stairs tag-travel">
-                                            <div class="post-container">
-                                                <div class="post-thumbnail">
-                                                    <div class="sh-ratio">
-                                                        <div class="sh-ratio-container">
-                                                            <div class="sh-ratio-content"
-                                                                 style="background-image: url( https://cdn.gillion.shufflehound.com/wp-content/uploads/2017/01/5-1-420x265.jpg);"></div>
-                                                        </div>
-                                                    </div>
-                                                    <a href="https://gillion.shufflehound.com/2017/02/08/white-stairway-architectural-marvel/"
-                                                       class="post-overlay" tabindex="0">
-                                                        <div class="post-overlay-content"><span></span> <span></span>
-                                                            <span></span></div>
-                                                    </a>
-                                                    <div class="post-categories-container">
-                                                        <div class="post-categories"><a
-                                                            href="https://gillion.shufflehound.com/category/lifestyle/"
-                                                            tabindex="0">Lifestyle</a></div>
-                                                    </div>
-                                                </div>
-                                                <div class="post-content-container"><a
-                                                    href="https://gillion.shufflehound.com/2017/02/08/white-stairway-architectural-marvel/"
-                                                    class="post-title" tabindex="0"><h4> White Stairway. Architectural
-                                                    marvel!&nbsp;<span
-                                                        class="post-read-later post-read-later-guest tooltipstered"
-                                                        href="#login-register" data-type="add" data-id="53"><i
-                                                        class="fa fa-bookmark-o"></i></span></h4></a>
-                                                    <div class="post-meta">
-                                                        <div class="post-meta-content"><span
-                                                            class="post-auhor-date"> <span> <a
-                                                            href="https://gillion.shufflehound.com/author/gillionshufflehound/"
-                                                            class="post-author" tabindex="0">Gillion</a></span>, <a
-                                                            href="https://gillion.shufflehound.com/2017/02/08/white-stairway-architectural-marvel/"
-                                                            class="post-date" tabindex="0"> 4 years ago </a> </span>
-                                                            <span class="post-readtime"> <i class="icon icon-clock"></i> 3 min <span>read</span> </span>
-                                                            <span class="responsive-post-read-later"> &nbsp;<span
-                                                                class="post-read-later post-read-later-guest tooltipstered"
-                                                                href="#login-register" data-type="add" data-id="53"><i
-                                                                class="fa fa-bookmark-o"></i></span> </span></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </article>
-                                    </div>
-                                    <div class="post-related-item slick-slide slick-active" data-slick-index="2"
-                                         aria-hidden="false" style="width: 290px;" tabindex="-1" role="option">
-                                        <article id="post-406"
-                                                 class="post-item post-406 post type-post status-publish format-standard has-post-thumbnail hentry category-fashion category-food category-lifestyle category-motivation tag-lifestyle tag-success tag-tips">
-                                            <div class="post-container">
-                                                <div class="post-thumbnail">
-                                                    <div class="sh-ratio">
-                                                        <div class="sh-ratio-container">
-                                                            <div class="sh-ratio-content"
-                                                                 style="background-image: url( https://cdn.gillion.shufflehound.com/wp-content/uploads/2017/01/16-1-420x265.jpg);"></div>
-                                                        </div>
-                                                    </div>
-                                                    <a href="https://gillion.shufflehound.com/2017/01/01/the-single-most-important-thing-you-need-to-know-about-success/"
-                                                       class="post-overlay" tabindex="0">
-                                                        <div class="post-overlay-content"><span></span> <span></span>
-                                                            <span></span></div>
-                                                    </a>
-                                                    <div class="post-categories-container">
-                                                        <div class="post-categories"><a
-                                                            href="https://gillion.shufflehound.com/category/fashion/"
-                                                            tabindex="0">Fashion</a></div>
-                                                    </div>
-                                                </div>
-                                                <div class="post-content-container"><a
-                                                    href="https://gillion.shufflehound.com/2017/01/01/the-single-most-important-thing-you-need-to-know-about-success/"
-                                                    class="post-title" tabindex="0"><h4> The Single Most Important Thing
-                                                    You Need To Know About Success&nbsp;<span
-                                                        class="post-read-later post-read-later-guest tooltipstered"
-                                                        href="#login-register" data-type="add" data-id="406"><i
-                                                        class="fa fa-bookmark-o"></i></span></h4></a>
-                                                    <div class="post-meta">
-                                                        <div class="post-meta-content"><span
-                                                            class="post-auhor-date"> <span> <a
-                                                            href="https://gillion.shufflehound.com/author/gillionshufflehound/"
-                                                            class="post-author" tabindex="0">Gillion</a></span>, <a
-                                                            href="https://gillion.shufflehound.com/2017/01/01/the-single-most-important-thing-you-need-to-know-about-success/"
-                                                            class="post-date" tabindex="0"> 4 years ago </a> </span>
-                                                            <span class="post-readtime"> <i class="icon icon-clock"></i> 3 min <span>read</span> </span>
-                                                            <span class="responsive-post-read-later"> &nbsp;<span
-                                                                class="post-read-later post-read-later-guest tooltipstered"
-                                                                href="#login-register" data-type="add" data-id="406"><i
-                                                                class="fa fa-bookmark-o"></i></span> </span></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </article>
-                                    </div>
-                                    <div class="post-related-item slick-slide" data-slick-index="3" aria-hidden="true"
-                                         style="width: 290px;" tabindex="-1" role="option">
-                                        <article id="post-1494"
-                                                 class="post-item post-1494 post type-post status-publish format-standard has-post-thumbnail hentry category-lifestyle category-places tag-chill tag-coffee tag-place">
-                                            <div class="post-container">
-                                                <div class="post-thumbnail">
-                                                    <div class="sh-ratio">
-                                                        <div class="sh-ratio-container">
-                                                            <div class="sh-ratio-content"
-                                                                 style="background-image: url( https://cdn.gillion.shufflehound.com/wp-content/uploads/2017/01/9-1-420x265.jpg);"></div>
-                                                        </div>
-                                                    </div>
-                                                    <a href="https://gillion.shufflehound.com/2017/01/31/new-coffee-place-you-have-to-visit/"
-                                                       class="post-overlay" tabindex="-1">
-                                                        <div class="post-overlay-content"><span></span> <span></span>
-                                                            <span></span></div>
-                                                    </a>
-                                                    <div class="post-categories-container">
-                                                        <div class="post-categories"><a
-                                                            href="https://gillion.shufflehound.com/category/lifestyle/"
-                                                            tabindex="-1">Lifestyle</a></div>
-                                                    </div>
-                                                </div>
-                                                <div class="post-content-container"><a
-                                                    href="https://gillion.shufflehound.com/2017/01/31/new-coffee-place-you-have-to-visit/"
-                                                    class="post-title" tabindex="-1"><h4> New Coffee Place You Have To
-                                                    Visit&nbsp;<span
-                                                        class="post-read-later post-read-later-guest tooltipstered"
-                                                        href="#login-register" data-type="add" data-id="1494"><i
-                                                        class="fa fa-bookmark-o"></i></span></h4></a>
-                                                    <div class="post-meta">
-                                                        <div class="post-meta-content"><span
-                                                            class="post-auhor-date"> <span> <a
-                                                            href="https://gillion.shufflehound.com/author/gillionshufflehound/"
-                                                            class="post-author" tabindex="-1">Gillion</a></span>, <a
-                                                            href="https://gillion.shufflehound.com/2017/01/31/new-coffee-place-you-have-to-visit/"
-                                                            class="post-date" tabindex="-1"> 4 years ago </a> </span>
-                                                            <span class="post-readtime"> <i class="icon icon-clock"></i> 3 min <span>read</span> </span>
-                                                            <span class="responsive-post-read-later"> &nbsp;<span
-                                                                class="post-read-later post-read-later-guest tooltipstered"
-                                                                href="#login-register" data-type="add" data-id="1494"><i
-                                                                class="fa fa-bookmark-o"></i></span> </span></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </article>
-                                    </div>
-                                    <div class="post-related-item slick-slide" data-slick-index="4" aria-hidden="true"
-                                         style="width: 290px;" tabindex="-1" role="option">
-                                        <article id="post-85"
-                                                 class="post-item post-85 post type-post status-publish format-standard has-post-thumbnail hentry category-lifestyle category-people tag-conversation tag-people">
-                                            <div class="post-container">
-                                                <div class="post-thumbnail">
-                                                    <div class="sh-ratio">
-                                                        <div class="sh-ratio-container">
-                                                            <div class="sh-ratio-content"
-                                                                 style="background-image: url( https://cdn.gillion.shufflehound.com/wp-content/uploads/2017/01/8-1-420x265.jpg);"></div>
-                                                        </div>
-                                                    </div>
-                                                    <a href="https://gillion.shufflehound.com/2017/01/27/whatre-people-buzzing-about-your-content-should-join-the-conversation/"
-                                                       class="post-overlay" tabindex="-1">
-                                                        <div class="post-overlay-content"><span></span> <span></span>
-                                                            <span></span></div>
-                                                    </a>
-                                                    <div class="post-review-svg">
-                                                        <div class="sh-pie loaded" data-score="8.1" data-offset="23.56">
-                                                            <svg width="46" height="46" class="sh-pie-svg">
-                                                                <circle r="21" cx="23" cy="23" fill="transparent"
-                                                                        stroke-dasharray="128" stroke-dashoffset="0"
-                                                                        style="stroke: rgba(231, 78, 84, 0.6); stroke-dashoffset: 23.56px;"></circle>
-                                                            </svg>
-                                                        </div>
-                                                    </div>
-                                                    <div class="post-review post-review-standard"
-                                                         style="background-color: #e74e54; background: linear-gradient(to bottom, #e74e54 0%,#e82930 100%);">
-                                                        <div class="post-review-score"> 8<span>.1</span></div>
-                                                    </div>
-                                                    <div class="post-categories-container">
-                                                        <div class="post-categories"><a
-                                                            href="https://gillion.shufflehound.com/category/lifestyle/"
-                                                            tabindex="-1">Lifestyle</a></div>
-                                                    </div>
-                                                </div>
-                                                <div class="post-content-container"><a
-                                                    href="https://gillion.shufflehound.com/2017/01/27/whatre-people-buzzing-about-your-content-should-join-the-conversation/"
-                                                    class="post-title" tabindex="-1"><h4> What’re People Buzzing About?
-                                                    Your Content Should Join The Conversation&nbsp;<span
-                                                        class="post-read-later post-read-later-guest tooltipstered"
-                                                        href="#login-register" data-type="add" data-id="85"><i
-                                                        class="fa fa-bookmark-o"></i></span></h4></a>
-                                                    <div class="post-meta">
-                                                        <div class="post-meta-content"><span
-                                                            class="post-auhor-date"> <span> <a
-                                                            href="https://gillion.shufflehound.com/author/gillionshufflehound/"
-                                                            class="post-author" tabindex="-1">Gillion</a></span>, <a
-                                                            href="https://gillion.shufflehound.com/2017/01/27/whatre-people-buzzing-about-your-content-should-join-the-conversation/"
-                                                            class="post-date" tabindex="-1"> 4 years ago </a> </span>
-                                                            <span class="post-readtime"> <i class="icon icon-clock"></i> 3 min <span>read</span> </span>
-                                                            <span class="responsive-post-read-later"> &nbsp;<span
-                                                                class="post-read-later post-read-later-guest tooltipstered"
-                                                                href="#login-register" data-type="add" data-id="85"><i
-                                                                class="fa fa-bookmark-o"></i></span> </span></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </article>
-                                    </div>
-                                    <div class="post-related-item slick-slide" data-slick-index="5" aria-hidden="true"
-                                         style="width: 290px;" tabindex="-1" role="option">
-                                        <article id="post-59"
-                                                 class="post-item post-59 post type-post status-publish format-standard has-post-thumbnail hentry category-guide category-lifestyle category-review tag-life-hack tag-motivation">
-                                            <div class="post-container">
-                                                <div class="post-thumbnail">
-                                                    <div class="sh-ratio">
-                                                        <div class="sh-ratio-container">
-                                                            <div class="sh-ratio-content"
-                                                                 style="background-image: url( https://cdn.gillion.shufflehound.com/wp-content/uploads/2017/01/6-1-420x265.jpg);"></div>
-                                                        </div>
-                                                    </div>
-                                                    <a href="https://gillion.shufflehound.com/2017/01/31/how-to-climb-the-career-latter-and-dont-waste-your-youth/"
-                                                       class="post-overlay" tabindex="-1">
-                                                        <div class="post-overlay-content"><span></span> <span></span>
-                                                            <span></span></div>
-                                                    </a>
-                                                    <div class="post-review-svg">
-                                                        <div class="sh-pie loaded" data-score="9.0" data-offset="12.4">
-                                                            <svg width="46" height="46" class="sh-pie-svg">
-                                                                <circle r="21" cx="23" cy="23" fill="transparent"
-                                                                        stroke-dasharray="128" stroke-dashoffset="0"
-                                                                        style="stroke: rgba(247, 200, 40, 0.6); stroke-dashoffset: 12.4px;"></circle>
-                                                            </svg>
-                                                        </div>
-                                                    </div>
-                                                    <div class="post-review post-review-standard"
-                                                         style="background-color: #f7c828">
-                                                        <div class="post-review-score"> 9<span>.0</span></div>
-                                                    </div>
-                                                    <div class="post-categories-container">
-                                                        <div class="post-categories"><a
-                                                            href="https://gillion.shufflehound.com/category/guide/"
-                                                            tabindex="-1">Guide</a></div>
-                                                    </div>
-                                                </div>
-                                                <div class="post-content-container"><a
-                                                    href="https://gillion.shufflehound.com/2017/01/31/how-to-climb-the-career-latter-and-dont-waste-your-youth/"
-                                                    class="post-title" tabindex="-1"><h4> How To Climb The Career Latter
-                                                    And Don’t Waste Your Youth&nbsp;<span
-                                                        class="post-read-later post-read-later-guest tooltipstered"
-                                                        href="#login-register" data-type="add" data-id="59"><i
-                                                        class="fa fa-bookmark-o"></i></span></h4></a>
-                                                    <div class="post-meta">
-                                                        <div class="post-meta-content"><span
-                                                            class="post-auhor-date"> <span> <a
-                                                            href="https://gillion.shufflehound.com/author/gillionshufflehound/"
-                                                            class="post-author" tabindex="-1">Gillion</a></span>, <a
-                                                            href="https://gillion.shufflehound.com/2017/01/31/how-to-climb-the-career-latter-and-dont-waste-your-youth/"
-                                                            class="post-date" tabindex="-1"> 4 years ago </a> </span>
-                                                            <span class="post-readtime"> <i class="icon icon-clock"></i> 2 min <span>read</span> </span>
-                                                            <span class="responsive-post-read-later"> &nbsp;<span
-                                                                class="post-read-later post-read-later-guest tooltipstered"
-                                                                href="#login-register" data-type="add" data-id="59"><i
-                                                                class="fa fa-bookmark-o"></i></span> </span></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </article>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="post-related-arrows">
-                            <div class="post-slide-arrows sh-carousel-buttons-styling">
-                                <button type="button" class="slick-prev slick-arrow slick-disabled" aria-disabled="true"
-                                        style=""><i class="icon icon-arrow-left-circle"></i></button>
-                                <button type="button" class="slick-next slick-arrow" style="" aria-disabled="false"><i
-                                    class="icon icon-arrow-right-circle"></i></button>
-                            </div>
-                        </div>
+                        <app-related-posts></app-related-posts>
                     </article>
                     <div class="sh-comments">
                         <div class="sh-comment-form">

@@ -12,6 +12,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 export class NewComponent implements OnInit {
     public post: News | undefined | any
     public loading: boolean = true
+    public document:any = Document
 
     constructor(
         private http: HttpClient,
@@ -28,7 +29,13 @@ export class NewComponent implements OnInit {
                 console.log(response)
                 this.post = response
                 this.loading = false
+
+                let script = document.createElement('script');
+                script.src = "https://yastatic.net/share2/share.js";
+                document.body.append(script);
             })
+
+
     }
 
 }

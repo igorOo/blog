@@ -55326,3 +55326,18 @@ body.woocommerce-edit-address .woocommerce-MyAccount-content p {
 .slick-next{
     right: 0 !important;
 }
+.ya-share2__list {
+    display: flex !important;
+    flex-direction: column;
+
+    .ya-share2__item {
+        width: 45px;
+        height: 45px;
+        border: 1px solid #f0f0f0;
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+        transition: .3s all ease-in-out;
+        margin: 4px 0 !important;
+    }
+}

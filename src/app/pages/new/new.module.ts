@@ -5,11 +5,13 @@ import {NewRoutingModule} from "./new-routing.module";
 import {NewComponent} from "./new.component";
 import {CommonModule} from "@angular/common";
 import { RelatedPostsComponent } from './components/related-posts/related-posts.component';
+import {CommentsComponent} from "../../shared/components/comments/comments.component";
 
 @NgModule({
     declarations: [
         NewComponent,
-        RelatedPostsComponent
+        RelatedPostsComponent,
+        CommentsComponent
     ],
     imports: [
         NewRoutingModule,

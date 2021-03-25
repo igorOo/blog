@@ -2,25 +2,25 @@
     <div class="container">
         <div class="sh-table sh-titlebar-height-small">
             <div class="titlebar-title sh-table-cell">
-                <h2> dfkjghdfkjg </h2>
+                <h2 *ngIf="!loading"> {{ post.name }} </h2>
             </div>
             <div class="title-level sh-table-cell">
                 <div id="breadcrumbs" class="breadcrumb-trail breadcrumbs">
                     <span class="item-home">
-                        <a class="bread-link bread-home" href="/" title="Home">
-                            Home
+                        <a class="bread-link bread-home" href="/" title="Главная">
+                            Главная
                         </a>
                     </span>
                     <span class="separator"> &gt; </span>
-                    <span class="item-cat">
-                        <a href="https://gillion.shufflehound.com/category/lifestyle/">
-                            Lifestyle
+                    <span class="item-cat" *ngIf="!loading">
+                        <a [href]="post.category.url">
+                            {{ post.category.name }}
                         </a>
                     </span>
                     <span class="separator"> &gt; </span>
-                    <span class="item-current item-69">
-                        <span class="bread-current bread-69" title="Health Tips And Benefits Of Healthy Lifestyle You Should Consider">
-                            Health Tips And Benefits Of Healthy Lifestyle You Should Consider
+                    <span class="item-current item-69" *ngIf="!loading">
+                        <span class="bread-current bread-69" [title]="post.name">
+                            {{ post.name }}
                         </span>
                     </span>
                 </div>
@@ -46,36 +46,37 @@
                         <div class="post-item-single-container">
                             <div class="post-content-share post-content-share-bar jssocials">
                                 <div class="jssocials-shares">
-                                    <div class="jssocials-share jssocials-share-twitter">
-                                        <a target="_blank" href="https://twitter.com/share?url=https%3A%2F%2Fgillion.shufflehound.com%2F2017%2F01%2F31%2Fhealth-tips-and-benefits-of-healthy-lifestyle-you-should-consider%2F&amp;text=Gillion%20is%20a%20powerhouse%20News%2C%20Magazine%2C%20Blog%20or%20Review%20style%20WordPress%20Theme%20packed%20with%20powerful%2C%20easy%20to%20use%20features%2C%20ready%20to%20create%20amazing%20websites.%20Incl%206%20months%20support"
-                                           class="jssocials-share-link">
-                                            <i class="fa fa-twitter jssocials-share-logo"></i>
-                                        </a>
-                                    </div>
-                                    <div class="jssocials-share jssocials-share-facebook">
-                                        <a target="_blank" href="https://facebook.com/sharer/sharer.php?u=https%3A%2F%2Fgillion.shufflehound.com%2F2017%2F01%2F31%2Fhealth-tips-and-benefits-of-healthy-lifestyle-you-should-consider%2F"
-                                           class="jssocials-share-link">
-                                            <i class="fa fa-facebook jssocials-share-logo"></i>
-                                        </a>
-                                    </div>
-                                    <div class="jssocials-share jssocials-share-pinterest">
-                                        <a target="_blank" href="https://pinterest.com/pin/create/bookmarklet/?&amp;url=https%3A%2F%2Fgillion.shufflehound.com%2F2017%2F01%2F31%2Fhealth-tips-and-benefits-of-healthy-lifestyle-you-should-consider%2F&amp;description=Gillion%20is%20a%20powerhouse%20News%2C%20Magazine%2C%20Blog%20or%20Review%20style%20WordPress%20Theme%20packed%20with%20powerful%2C%20easy%20to%20use%20features%2C%20ready%20to%20create%20amazing%20websites.%20Incl%206%20months%20support"
-                                           class="jssocials-share-link">
-                                            <i class="fa fa-pinterest jssocials-share-logo"></i>
-                                        </a>
-                                    </div>
-                                    <div class="jssocials-share jssocials-share-whatsapp">
-                                        <a target="_self" href="https://web.whatsapp.com/send?text=Health%20Tips%20And%20Benefits%20Of%20Healthy%20Lifestyle%20You%20Should%20Consider%20%E2%80%93%20Gillion%20Multi-Concept%20Magazine,%20News,%20Review%20WordPress%20Theme%0D%0Ahttps://gillion.shufflehound.com/2017/01/31/health-tips-and-benefits-of-healthy-lifestyle-you-should-consider/"
-                                           class="jssocials-share-link">
-                                            <i class="fa fa-whatsapp jssocials-share-logo"></i>
-                                        </a>
-                                    </div>
-                                    <div class="jssocials-share jssocials-share-messenger">
-                                        <a target="_self" href="fb-messenger://share?link=https%3A%2F%2Fgillion.shufflehound.com%2F2017%2F01%2F31%2Fhealth-tips-and-benefits-of-healthy-lifestyle-you-should-consider%2F"
-                                           class="jssocials-share-link">
-                                            <i class="fa fa-commenting jssocials-share-logo"></i>
-                                        </a>
-                                    </div>
+<!--                                    <div class="jssocials-share jssocials-share-twitter">-->
+<!--                                        <a target="_blank" href="https://twitter.com/share?url=https%3A%2F%2Fgillion.shufflehound.com%2F2017%2F01%2F31%2Fhealth-tips-and-benefits-of-healthy-lifestyle-you-should-consider%2F&amp;text=Gillion%20is%20a%20powerhouse%20News%2C%20Magazine%2C%20Blog%20or%20Review%20style%20WordPress%20Theme%20packed%20with%20powerful%2C%20easy%20to%20use%20features%2C%20ready%20to%20create%20amazing%20websites.%20Incl%206%20months%20support"-->
+<!--                                           class="jssocials-share-link">-->
+<!--                                            <i class="fa fa-twitter jssocials-share-logo"></i>-->
+<!--                                        </a>-->
+<!--                                    </div>-->
+<!--                                    <div class="jssocials-share jssocials-share-facebook">-->
+<!--                                        <a target="_blank" href="https://facebook.com/sharer/sharer.php?u=https%3A%2F%2Fgillion.shufflehound.com%2F2017%2F01%2F31%2Fhealth-tips-and-benefits-of-healthy-lifestyle-you-should-consider%2F"-->
+<!--                                           class="jssocials-share-link">-->
+<!--                                            <i class="fa fa-facebook jssocials-share-logo"></i>-->
+<!--                                        </a>-->
+<!--                                    </div>-->
+<!--                                    <div class="jssocials-share jssocials-share-pinterest">-->
+<!--                                        <a target="_blank" href="https://pinterest.com/pin/create/bookmarklet/?&amp;url=https%3A%2F%2Fgillion.shufflehound.com%2F2017%2F01%2F31%2Fhealth-tips-and-benefits-of-healthy-lifestyle-you-should-consider%2F&amp;description=Gillion%20is%20a%20powerhouse%20News%2C%20Magazine%2C%20Blog%20or%20Review%20style%20WordPress%20Theme%20packed%20with%20powerful%2C%20easy%20to%20use%20features%2C%20ready%20to%20create%20amazing%20websites.%20Incl%206%20months%20support"-->
+<!--                                           class="jssocials-share-link">-->
+<!--                                            <i class="fa fa-pinterest jssocials-share-logo"></i>-->
+<!--                                        </a>-->
+<!--                                    </div>-->
+<!--                                    <div class="jssocials-share jssocials-share-whatsapp">-->
+<!--                                        <a target="_self" href="https://web.whatsapp.com/send?text=Health%20Tips%20And%20Benefits%20Of%20Healthy%20Lifestyle%20You%20Should%20Consider%20%E2%80%93%20Gillion%20Multi-Concept%20Magazine,%20News,%20Review%20WordPress%20Theme%0D%0Ahttps://gillion.shufflehound.com/2017/01/31/health-tips-and-benefits-of-healthy-lifestyle-you-should-consider/"-->
+<!--                                           class="jssocials-share-link">-->
+<!--                                            <i class="fa fa-whatsapp jssocials-share-logo"></i>-->
+<!--                                        </a>-->
+<!--                                    </div>-->
+<!--                                    <div class="jssocials-share jssocials-share-messenger">-->
+<!--                                        <a target="_self" href="fb-messenger://share?link=https%3A%2F%2Fgillion.shufflehound.com%2F2017%2F01%2F31%2Fhealth-tips-and-benefits-of-healthy-lifestyle-you-should-consider%2F"-->
+<!--                                           class="jssocials-share-link">-->
+<!--                                            <i class="fa fa-commenting jssocials-share-logo"></i>-->
+<!--                                        </a>-->
+<!--                                    </div>-->
+                                    <div class="ya-share2" data-curtain data-color-scheme="whiteblack" data-limit="5" data-services="vkontakte,odnoklassniki,telegram,twitter,viber,whatsapp"></div>
                                 </div>
                             </div>
                             <div class="post-single-meta">
@@ -203,38 +204,7 @@
                         </div>
                         <app-related-posts></app-related-posts>
                     </article>
-                    <div class="sh-comments">
-                        <div class="sh-comment-form">
-                            <div id="respond" class="comment-respond"><h3 id="reply-title" class="comment-reply-title">
-                                Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link"
-                                                        href="/2017/01/31/health-tips-and-benefits-of-healthy-lifestyle-you-should-consider/#respond"
-                                                        style="display:none;">Cancel reply</a></small></h3>
-                                <form action="https://gillion.shufflehound.com/wp-comments-post.php" method="post"
-                                      id="commentform" class="comment-form" novalidate=""><label>Your comment
-                                    <span>*</span></label>
-                                    <p class="comment-form-comment"><textarea id="comment" name="comment" cols="45"
-                                                                              rows="8" required=""></textarea></p>
-                                    <div class="sh-comment-form-column"><label>Name <span>*</span></label>
-                                        <p class="comment-form-author"><input id="author" name="author" type="text"
-                                                                              value="" required=""></p></div>
-                                    <div class="sh-comment-form-column"><label>Email <span>*</span></label>
-                                        <p class="comment-form-email"><input id="email" name="email" type="text"
-                                                                             value="" required=""></p></div>
-                                    <div class="sh-comment-form-column"><label>Website <span>*</span></label>
-                                        <p class="comment-form-url"><input id="url" name="url" type="text" value=""></p>
-                                    </div>
-                                    <div class="sh-comments-required-notice">Required fields are marked <span>*</span>
-                                    </div>
-                                    <p class="form-submit"><input name="submit" type="submit" id="submit" class="submit"
-                                                                  value="Send a comment"> <input type="hidden"
-                                                                                                 name="comment_post_ID"
-                                                                                                 value="69"
-                                                                                                 id="comment_post_ID">
-                                        <input type="hidden" name="comment_parent" id="comment_parent" value="0"></p>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
+                    <app-comments></app-comments>
                 </div>
             </div>
             <div id="sidebar" class="sidebar-right"

@@ -3,10 +3,12 @@ import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 import {SubscribeComponent} from "../../components/subscribe/subscribe.component";
+import {LoaderComponent} from "../../components/loader/loader.component";
 
 @NgModule({
     declarations: [
         SubscribeComponent,
+        LoaderComponent,
     ],
     imports: [
         CommonModule,
@@ -15,6 +17,7 @@ import {SubscribeComponent} from "../../components/subscribe/subscribe.component
     ],
     exports: [
         SubscribeComponent,
+        LoaderComponent,
     ]
 })
 export class SharedModule {

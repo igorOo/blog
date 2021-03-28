@@ -26,13 +26,20 @@ export class NewComponent implements OnInit {
                 headers: {'Content-Type':'application/json'}
             })
             .subscribe(response => {
-                console.log(response)
                 this.post = response
                 this.loading = false
 
                 let script = document.createElement('script');
                 script.src = "https://yastatic.net/share2/share.js";
                 document.body.append(script);
+
+                let links = document.getElementsByTagName("a")
+                for (let i=0; i<links.length; i++){
+                    links[i].addEventListener("click", function (e){
+                        e.preventDefault()
+                        alert("jkhjhjkh")
+                    })
+                }
             })
 
 

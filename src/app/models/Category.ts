@@ -5,4 +5,5 @@ export interface Category{
     parentCategory: Category | number;
     sort: number;
     translit: string;
+    url: string
 }

@@ -8,7 +8,6 @@ import {SlickCarouselModule} from 'ngx-slick-carousel';
 import {CommonModule} from "@angular/common";
 import {TopcategoriesComponent} from './components/topcategories/topcategories.component';
 import {FirstPostComponent} from './components/topcategories/components/first-post/first-post.component';
-import {LoaderComponent} from "../../shared/components/loader/loader.component";
 import {SmallpostComponent} from './components/topcategories/components/smallpost/smallpost.component';
 import {GadgetsComponent} from './components/gadgets/gadgets.component';
 import {IntandprogsComponent} from './components/intAndProgs/intandprogs/intandprogs.component'
@@ -26,7 +25,6 @@ import {AnotherComponent} from './components/another/another/another.component';
         TopsliderComponent,
         TopcategoriesComponent,
         FirstPostComponent,
-        LoaderComponent,
         SmallpostComponent,
         GadgetsComponent,
         IntandprogsComponent,

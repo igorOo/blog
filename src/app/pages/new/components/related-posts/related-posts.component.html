@@ -1,147 +1,81 @@
 <div class="post-related-title post-slide-arrows-container">
     <h2 class="post-single-title"> Похожие статьи </h2>
 </div>
-<div class="post-related">
-    <div class="post-related-item"
-         data-slick-index="0" aria-hidden="false" style="width: 290px;" tabindex="-1"
-         role="option">
-        <article id="post-134"
-                 class="post-item post-134 post type-post status-publish format-standard has-post-thumbnail hentry category-lifestyle category-tech tag-guide tag-how-to tag-tech">
+<div class="post-related" *ngIf="!loading else loadingTmpl">
+    <div class="post-related-item" *ngFor="let item of list">
+        <article class="post-item post type-post status-publish format-standard has-post-thumbnail hentry category-lifestyle category-tech tag-guide tag-how-to tag-tech">
             <div class="post-container">
                 <div class="post-thumbnail">
                     <div class="sh-ratio">
                         <div class="sh-ratio-container">
                             <div class="sh-ratio-content"
-                                 style="background-image: url( https://cdn.gillion.shufflehound.com/wp-content/uploads/2017/01/26_Full-min-420x265.jpg);"></div>
+                                 [style]="'background-image: url('+ item.main_image +');'"></div>
                         </div>
                     </div>
-                    <a href="https://gillion.shufflehound.com/2017/01/24/top-10-it-workspace-ergonomics-tips/"
-                       class="post-overlay" tabindex="0">
-                        <div class="post-overlay-content"><span></span> <span></span>
-                            <span></span></div>
+                    <a [href]="item.url" class="post-overlay">
+                        <div class="post-overlay-content">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
                     </a>
                     <div class="post-categories-container">
-                        <div class="post-categories"><a
-                            href="https://gillion.shufflehound.com/category/lifestyle/"
-                            tabindex="0">Lifestyle</a></div>
-                    </div>
-                </div>
-                <div class="post-content-container"><a
-                    href="https://gillion.shufflehound.com/2017/01/24/top-10-it-workspace-ergonomics-tips/"
-                    class="post-title" tabindex="0"><h4> Top 10 IT Workspace Ergonomics
-                    Tips&nbsp;<span
-                        class="post-read-later post-read-later-guest tooltipstered"
-                        href="#login-register" data-type="add" data-id="134"><i
-                        class="fa fa-bookmark-o"></i></span></h4></a>
-                    <div class="post-meta">
-                        <div class="post-meta-content"><span
-                            class="post-auhor-date"> <span> <a
-                            href="https://gillion.shufflehound.com/author/gillionshufflehound/"
-                            class="post-author" tabindex="0">Gillion</a></span>, <a
-                            href="https://gillion.shufflehound.com/2017/01/24/top-10-it-workspace-ergonomics-tips/"
-                            class="post-date" tabindex="0"> 4 years ago </a> </span>
-                            <span class="post-readtime"> <i class="icon icon-clock"></i> 3 min <span>read</span> </span>
-                            <span class="responsive-post-read-later"> &nbsp;<span
-                                class="post-read-later post-read-later-guest tooltipstered"
-                                href="#login-register" data-type="add" data-id="134"><i
-                                class="fa fa-bookmark-o"></i></span> </span></div>
-                    </div>
-                </div>
-            </div>
-        </article>
-    </div>
-    <div class="post-related-item" data-slick-index="1"
-         aria-hidden="false" style="width: 290px;" tabindex="-1" role="option">
-        <article id="post-53"
-                 class="post-item post-53 post type-post status-publish format-standard has-post-thumbnail hentry category-lifestyle category-places tag-building tag-stairs tag-travel">
-            <div class="post-container">
-                <div class="post-thumbnail">
-                    <div class="sh-ratio">
-                        <div class="sh-ratio-container">
-                            <div class="sh-ratio-content"
-                                 style="background-image: url( https://cdn.gillion.shufflehound.com/wp-content/uploads/2017/01/5-1-420x265.jpg);"></div>
+                        <div class="post-categories">
+                            <a [href]="'/news/category/'+item.cat_translit">
+                                {{item.category}}
+                            </a>
                         </div>
                     </div>
-                    <a href="https://gillion.shufflehound.com/2017/02/08/white-stairway-architectural-marvel/"
-                       class="post-overlay" tabindex="0">
-                        <div class="post-overlay-content"><span></span> <span></span>
-                            <span></span></div>
+                </div>
+                <div class="post-content-container">
+                    <a [href]="item.url" class="post-title">
+                        <h4>
+                            {{item.name}}
+                            <span class="post-read-later post-read-later-guest tooltipstered">
+                                <i class="fa fa-bookmark-o"></i>
+                            </span>
+                        </h4>
                     </a>
-                    <div class="post-categories-container">
-                        <div class="post-categories"><a
-                            href="https://gillion.shufflehound.com/category/lifestyle/"
-                            tabindex="0">Lifestyle</a></div>
-                    </div>
-                </div>
-                <div class="post-content-container"><a
-                    href="https://gillion.shufflehound.com/2017/02/08/white-stairway-architectural-marvel/"
-                    class="post-title" tabindex="0"><h4> White Stairway. Architectural
-                    marvel!&nbsp;<span
-                        class="post-read-later post-read-later-guest tooltipstered"
-                        href="#login-register" data-type="add" data-id="53"><i
-                        class="fa fa-bookmark-o"></i></span></h4></a>
                     <div class="post-meta">
-                        <div class="post-meta-content"><span
-                            class="post-auhor-date"> <span> <a
-                            href="https://gillion.shufflehound.com/author/gillionshufflehound/"
-                            class="post-author" tabindex="0">Gillion</a></span>, <a
-                            href="https://gillion.shufflehound.com/2017/02/08/white-stairway-architectural-marvel/"
-                            class="post-date" tabindex="0"> 4 years ago </a> </span>
-                            <span class="post-readtime"> <i class="icon icon-clock"></i> 3 min <span>read</span> </span>
-                            <span class="responsive-post-read-later"> &nbsp;<span
-                                class="post-read-later post-read-later-guest tooltipstered"
-                                href="#login-register" data-type="add" data-id="53"><i
-                                class="fa fa-bookmark-o"></i></span> </span></div>
-                    </div>
-                </div>
-            </div>
-        </article>
-    </div>
-    <div class="post-related-item" data-slick-index="2"
-         aria-hidden="false" style="width: 290px;" tabindex="-1" role="option">
-        <article id="post-406"
-                 class="post-item post-406 post type-post status-publish format-standard has-post-thumbnail hentry category-fashion category-food category-lifestyle category-motivation tag-lifestyle tag-success tag-tips">
-            <div class="post-container">
-                <div class="post-thumbnail">
-                    <div class="sh-ratio">
-                        <div class="sh-ratio-container">
-                            <div class="sh-ratio-content"
-                                 style="background-image: url( https://cdn.gillion.shufflehound.com/wp-content/uploads/2017/01/16-1-420x265.jpg);"></div>
+                        <div class="post-meta-content">
+                            <span class="post-auhor-date">
+                                <span *ngIf="item.author != undefined">
+                                    <a href="https://gillion.shufflehound.com/author/gillionshufflehound/" class="post-author">
+                                        Gillion
+                                    </a>,
+                                </span>
+                                <a [href]="item.url" class="post-date">
+                                    {{item.date_create}}
+                                </a>
+                            </span>
+                            <span class="post-readtime" *ngIf="false">
+                                <i class="icon icon-clock"></i>
+                                3 min <span>read</span>
+                            </span>
+                            <span class="responsive-post-read-later">
+                                <span class="post-read-later post-read-later-guest tooltipstered">
+                                    <i class="fa fa-bookmark-o"></i>
+                                </span>
+                            </span>
                         </div>
-                    </div>
-                    <a href="https://gillion.shufflehound.com/2017/01/01/the-single-most-important-thing-you-need-to-know-about-success/"
-                       class="post-overlay" tabindex="0">
-                        <div class="post-overlay-content"><span></span> <span></span>
-                            <span></span></div>
-                    </a>
-                    <div class="post-categories-container">
-                        <div class="post-categories"><a
-                            href="https://gillion.shufflehound.com/category/fashion/"
-                            tabindex="0">Fashion</a></div>
-                    </div>
-                </div>
-                <div class="post-content-container"><a
-                    href="https://gillion.shufflehound.com/2017/01/01/the-single-most-important-thing-you-need-to-know-about-success/"
-                    class="post-title" tabindex="0"><h4> The Single Most Important Thing
-                    You Need To Know About Success&nbsp;<span
-                        class="post-read-later post-read-later-guest tooltipstered"
-                        href="#login-register" data-type="add" data-id="406"><i
-                        class="fa fa-bookmark-o"></i></span></h4></a>
-                    <div class="post-meta">
-                        <div class="post-meta-content"><span
-                            class="post-auhor-date"> <span> <a
-                            href="https://gillion.shufflehound.com/author/gillionshufflehound/"
-                            class="post-author" tabindex="0">Gillion</a></span>, <a
-                            href="https://gillion.shufflehound.com/2017/01/01/the-single-most-important-thing-you-need-to-know-about-success/"
-                            class="post-date" tabindex="0"> 4 years ago </a> </span>
-                            <span class="post-readtime"> <i class="icon icon-clock"></i> 3 min <span>read</span> </span>
-                            <span class="responsive-post-read-later"> &nbsp;<span
-                                class="post-read-later post-read-later-guest tooltipstered"
-                                href="#login-register" data-type="add" data-id="406"><i
-                                class="fa fa-bookmark-o"></i></span> </span></div>
                     </div>
                 </div>
             </div>
         </article>
     </div>
 </div>
+
+<ng-template #loadingTmpl>
+    <div class="post-related">
+        <div class="post-related-item" *ngFor="let item of [1,2,3]">
+            <app-loader
+                [image]="true"
+                [heightImage]="182"
+                [widthImage]="260"
+                [inline]="false"
+                [lines]="3"
+                [lineWidth]="80"
+            ></app-loader>
+        </div>
+    </div>
+</ng-template>

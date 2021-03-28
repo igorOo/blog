@@ -9,7 +9,9 @@
         width: 100%;
     }
 }
-
+.loader-line-box{
+    margin-left: 10px;
+}
 .loader-image{
     background: linear-gradient(100deg, #eceff1 30%, #f6f7f8 50%, #eceff1 70%);
     animation: loading 1.2s ease-in-out infinite;
@@ -34,6 +36,7 @@
         flex-direction: column;
         justify-content: space-around;
         padding-left: 20px;
+        margin-left: 0;
     }
 }
 

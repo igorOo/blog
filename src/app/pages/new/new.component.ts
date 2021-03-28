@@ -42,17 +42,17 @@ export class NewComponent implements OnInit {
                             e.preventDefault()
                             e.stopPropagation()
                             self.http.post(environment.restUrl+"/api/v1/metrika/add-time-read-post", {
-                                post: self.post.id,
+                                post_id: self.post.id,
                                 timeRead: Date.now() - self.time
                             }).subscribe(result => {
 
                             })
-                            // // @ts-ignore
-                            // let url = e.currentTarget.href
-                            // window.location.href = url;
+                            // @ts-ignore
+                            let url = e.currentTarget.href
+                            window.location.href = url;
                         })
                     }
-                }, 500)
+                }, 1000)
             })
 
 

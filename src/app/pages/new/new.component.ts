@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {News} from "../../models/News";
 import {environment} from "../../../environments/environment";
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
     selector: 'app-new',
@@ -12,7 +12,8 @@ import {ActivatedRoute, Router} from "@angular/router";
 export class NewComponent implements OnInit {
     public post: News | undefined | any
     public loading: boolean = true
-    public document:any = Document
+    public document: any = Document
+    public time: number = Date.now()
 
     constructor(
         private http: HttpClient,
@@ -21,9 +22,9 @@ export class NewComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.http.get(environment.restUrl+"/api/v1/new/"+this.router.snapshot.params["translit"],
+        this.http.get(environment.restUrl + "/api/v1/new/" + this.router.snapshot.params["translit"],
             {
-                headers: {'Content-Type':'application/json'}
+                headers: {'Content-Type': 'application/json'}
             })
             .subscribe(response => {
                 this.post = response
@@ -33,16 +34,30 @@ export class NewComponent implements OnInit {
                 script.src = "https://yastatic.net/share2/share.js";
                 document.body.append(script);
 
-                let links = document.getElementsByTagName("a")
-                for (let i=0; i<links.length; i++){
-                    links[i].addEventListener("click", function (e){
-                        e.preventDefault()
-                        alert("jkhjhjkh")
-                    })
-                }
+                let self = this
+                setTimeout(function () {
+                    let links = document.querySelectorAll("a")
+                    for (let i = 0; i < links.length; i++) {
+                        links[i].addEventListener("click", function (e) {
+                            e.preventDefault()
+                            e.stopPropagation()
+                            self.http.post(environment.restUrl+"/api/v1/metrika/add-time-read-post", {
+                                post: self.post.id,
+                                timeRead: Date.now() - self.time
+                            }).subscribe(result => {
+
+                            })
+                            // // @ts-ignore
+                            // let url = e.currentTarget.href
+                            // window.location.href = url;
+                        })
+                    }
+                }, 500)
             })
 
 
     }
 
 }
+
+

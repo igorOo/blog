@@ -43,13 +43,17 @@ export class NewComponent implements OnInit {
                             e.stopPropagation()
                             self.http.post(environment.restUrl+"/api/v1/metrika/add-time-read-post", {
                                 post_id: self.post.id,
-                                timeRead: Date.now() - self.time
+                                timeRead: Math.ceil((Date.now() - self.time) / 1000)
                             }).subscribe(result => {
 
                             })
+                            console.log("ok")
                             // @ts-ignore
                             let url = e.currentTarget.href
-                            window.location.href = url;
+                            setTimeout(function (){
+                                window.location.href = url;
+                            },500)
+
                         })
                     }
                 }, 1000)

@@ -29,15 +29,11 @@
     </div>
 </div>
 <div class="content-container sh-page-layout-default" style="transform: none;">
-    <div *ngIf="!loading else loadingTmp" class="container entry-content" style="transform: none;">
+    <div class="container entry-content" style="transform: none;">
         <div id="content-wrapper" class="content-wrapper-with-sidebar" style="transform: none;">
             <div id="content" class="content-layout-sidebar-right content-with-sidebar-right">
-                <div
-                    class="blog-single blog-style-single blog-style-single-share  blog-blockquote-style2  blog-style-post-standard">
-                    <article
-                        class="post-item post-item-single post type-post status-publish format-standard has-post-thumbnail hentry category-lifestyle tag-health tag-lifestyle tag-long-life tag-tips">
-                        <meta content="https://cdn.gillion.shufflehound.com/wp-content/uploads/2017/01/7-1024x768.jpg"
-                              itemprop="image">
+                <div class="blog-single blog-style-single blog-style-single-share  blog-blockquote-style2  blog-style-post-standard">
+                    <article *ngIf="!loading else loadingTmp" class="post-item post-item-single post type-post status-publish format-standard has-post-thumbnail hentry category-lifestyle tag-health tag-lifestyle tag-long-life tag-tips">
                         <div class="post-type-content">
                             <div class="post-thumbnail">
                                 <img [src]="post.main_image" [alt]="post.name">
@@ -536,5 +532,14 @@
 
 
 <ng-template #loadingTmp>
-    loading..
+    <article class="post-item post-item-single post type-post status-publish format-standard has-post-thumbnail hentry category-lifestyle tag-health tag-lifestyle tag-long-life tag-tips">
+        <app-loader
+            [image]="true"
+            [heightImage]="600"
+            [widthImage]="840"
+            [inline]="false"
+            [lines]="25"
+            [lineWidth]="100"
+        ></app-loader>
+    </article>
 </ng-template>

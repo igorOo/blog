@@ -7,6 +7,7 @@ import {CommonModule} from "@angular/common";
 import { RelatedPostsComponent } from './components/related-posts/related-posts.component';
 import {CommentsComponent} from "../../shared/components/comments/comments.component";
 import { TopReadersComponent } from './components/top-readers/top-readers.component';
+import {SlickCarouselModule} from "ngx-slick-carousel";
 
 @NgModule({
     declarations: [
@@ -19,6 +20,7 @@ import { TopReadersComponent } from './components/top-readers/top-readers.compon
         NewRoutingModule,
         CommonModule,
         SharedModule,
+        SlickCarouselModule
     ],
     exports: [
         NewRoutingModule,

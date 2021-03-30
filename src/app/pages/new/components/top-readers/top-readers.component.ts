@@ -1,15 +1,35 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {TopPost} from "../../../index/interfaces/TopPost";
 
 @Component({
-  selector: 'app-top-readers',
-  templateUrl: './top-readers.component.html',
-  styleUrls: ['./top-readers.component.scss']
+    selector: 'app-top-readers',
+    templateUrl: './top-readers.component.html',
+    styleUrls: ['./top-readers.component.scss']
 })
-export class TopReadersComponent implements OnInit {
+export class TopReadersComponent implements OnInit, OnChanges {
 
-  constructor() { }
+    @Input() posts: any | undefined
+    public list : Array<TopPost> | undefined
+    public loading: boolean = true
+    public slideConfig = {
+        "slidesToShow": 1,
+        "slidesToScroll": 1,
+        "autoplay": false,
+        "prevArrow": '',
+        "nextArrow": ''
+    };
 
-  ngOnInit(): void {
-  }
+    constructor() {
+    }
+
+    ngOnInit(): void {
+    }
+
+    ngOnChanges(changes: SimpleChanges): void {
+        if (changes.posts.currentValue){
+            this.list = changes.posts.currentValue
+            this.loading = false
+        }
+    }
 
 }

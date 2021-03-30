@@ -6,12 +6,14 @@ import {NewComponent} from "./new.component";
 import {CommonModule} from "@angular/common";
 import { RelatedPostsComponent } from './components/related-posts/related-posts.component';
 import {CommentsComponent} from "../../shared/components/comments/comments.component";
+import { TopReadersComponent } from './components/top-readers/top-readers.component';
 
 @NgModule({
     declarations: [
         NewComponent,
         RelatedPostsComponent,
-        CommentsComponent
+        CommentsComponent,
+        TopReadersComponent
     ],
     imports: [
         NewRoutingModule,

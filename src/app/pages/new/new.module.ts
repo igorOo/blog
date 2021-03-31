@@ -8,13 +8,15 @@ import { RelatedPostsComponent } from './components/related-posts/related-posts.
 import {CommentsComponent} from "../../shared/components/comments/comments.component";
 import { TopReadersComponent } from './components/top-readers/top-readers.component';
 import {SlickCarouselModule} from "ngx-slick-carousel";
+import { RandomImagePostsComponent } from './components/random-image-posts/random-image-posts.component';
 
 @NgModule({
     declarations: [
         NewComponent,
         RelatedPostsComponent,
         CommentsComponent,
-        TopReadersComponent
+        TopReadersComponent,
+        RandomImagePostsComponent
     ],
     imports: [
         NewRoutingModule,

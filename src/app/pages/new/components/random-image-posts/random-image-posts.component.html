@@ -1,0 +1,12 @@
+<div id="null-instagram-feed-4" class="widget_social_links widget-item null-instagram-feed">
+    <div class="sh-widget-title-styling">
+        <h3 class="widget-title">Instagram</h3>
+    </div>
+    <div id="instagram-feed1" class="sh-widget-instagramv2">
+        <div class="instagram_gallery">
+            <a [href]="item.url" class="instagram-image" target="_blank" *ngFor="let item of list">
+                <img [src]="item.main_image" [alt]="item.name">
+            </a>
+        </div>
+    </div>
+</div>

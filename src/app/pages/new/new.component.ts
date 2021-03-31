@@ -18,6 +18,7 @@ export class NewComponent implements OnInit {
     public time: number = Date.now()
     public similarPosts: Array<TopPost> | undefined
     public topReaderPosts: Array<TopPost> | undefined
+    public randomImagePosts: Array<TopPost> | undefined
 
     constructor(
         private http: HttpClient,
@@ -75,6 +76,9 @@ export class NewComponent implements OnInit {
                     }
                     if (result["top-reader-posts"] != undefined){
                         this.topReaderPosts = result["top-reader-posts"]
+                    }
+                    if (result["random-image-posts"] != undefined){
+                        this.randomImagePosts = result["random-image-posts"]
                     }
                 })
         })

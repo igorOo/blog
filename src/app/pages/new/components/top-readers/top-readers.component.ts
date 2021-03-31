@@ -9,7 +9,7 @@ import {TopPost} from "../../../index/interfaces/TopPost";
 export class TopReadersComponent implements OnInit, OnChanges {
 
     @Input() posts: any | undefined
-    public list : Array<TopPost> | undefined
+    public list : Map<Number, Array<TopPost>> = new Map<number, Array<TopPost>>()
     public loading: boolean = true
     public slideConfig = {
         "slidesToShow": 1,
@@ -27,7 +27,23 @@ export class TopReadersComponent implements OnInit, OnChanges {
 
     ngOnChanges(changes: SimpleChanges): void {
         if (changes.posts.currentValue){
-            this.list = changes.posts.currentValue
+            let slide: Array<TopPost> = new Array<TopPost>()
+            Object.keys(changes.posts.currentValue).map((key:any) => {
+                if (key<3){
+                    slide.push(changes.posts.currentValue[key])
+                }
+                if (key==3){
+                    this.list.set(1, [...slide])
+                    slide.length = 0
+                    slide.push(changes.posts.currentValue[key])
+                }
+                if (key>3){
+                    slide.push(changes.posts.currentValue[key])
+                }
+                if (key==Object.keys(changes.posts.currentValue).length-1){
+                    this.list.set(2, slide)
+                }
+            })
             this.loading = false
         }
     }

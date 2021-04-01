@@ -89,8 +89,7 @@
                                         </a>
                                         <span class="post-readtime">
                                             <i class="icon icon-clock"></i>
-                                            3 min
-                                            <span>read</span>
+                                            {{ post.time_read }}
                                         </span>
                                         <span class="post-views">
                                             <i class="icon icon-eye"></i>
@@ -176,7 +175,7 @@
                         </div>
                         <app-related-posts [posts]="similarPosts"></app-related-posts>
                     </article>
-                    <app-comments></app-comments>
+                    <app-comments [postId]="post.id"></app-comments>
                 </div>
             </div>
             <div id="sidebar" class="sidebar-right"

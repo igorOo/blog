@@ -22,7 +22,6 @@ export class RandomImagePostsComponent implements OnInit, OnChanges {
         if (changes.posts.currentValue){
             this.list = changes.posts.currentValue
             this.loading = false
-            console.log(this.list)
         }
     }
 

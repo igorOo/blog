@@ -2,11 +2,31 @@
     <div class="sh-widget-title-styling">
         <h3 class="widget-title">Instagram</h3>
     </div>
+    <ng-container *ngIf="!loading else loadingTmpl">
+        <div id="instagram-feed1" class="sh-widget-instagramv2">
+            <div class="instagram_gallery">
+                <a [href]="item.url" class="instagram-image" target="_blank" *ngFor="let item of list">
+                    <img [src]="item.main_image" [alt]="item.name">
+                </a>
+            </div>
+        </div>
+    </ng-container>
+</div>
+
+
+<ng-template #loadingTmpl>
     <div id="instagram-feed1" class="sh-widget-instagramv2">
         <div class="instagram_gallery">
-            <a [href]="item.url" class="instagram-image" target="_blank" *ngFor="let item of list">
-                <img [src]="item.main_image" [alt]="item.name">
+            <a class="instagram-image" *ngFor="let i of [1,2,3,4,5,6]">
+                <app-loader
+                    [image]="true"
+                    [heightImage]="110"
+                    [widthImage]="150"
+                    [inline]="true"
+                    [lines]="0"
+                    [lineWidth]="0"
+                ></app-loader>
             </a>
         </div>
     </div>
-</div>
+</ng-template>

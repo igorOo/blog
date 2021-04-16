@@ -8,6 +8,10 @@ import {BrowserModule} from "@angular/platform-browser";
 import {SharedModule} from "./shared/modules/shared-module/shared.module";
 import {LayoutComponent} from "./layout/layout.component";
 import {MainmenuComponent} from "./layout/common/mainmenu/mainmenu.component";
+import {AuthService} from "./services/auth-service.service";
+import {Users} from "./models/Users";
+import {Router} from "@angular/router";
+import {Role} from "./models/Role";
 
 
 const httpInterceptorHandlers: Provider = [
@@ -33,8 +37,15 @@ const httpInterceptorHandlers: Provider = [
         LayoutComponent,
         MainmenuComponent,
     ],
-    providers: [httpInterceptorHandlers],
+    providers: [httpInterceptorHandlers, AuthService],
     bootstrap: [AppComponent]
 })
 export class AppModule {
+
+    constructor(
+        private router: Router,
+        private authService: AuthService
+    ) {
+    }
+
 }

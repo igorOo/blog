@@ -1,0 +1,28 @@
+.login-form-page{
+    margin-bottom: 100px;
+}
+.login-form{
+    max-width: 60%;
+    margin: auto;
+}
+.form-button-row{
+    display: flex;
+    justify-content: space-between;
+
+    &:before,
+    &:after{
+        display: unset !important;
+        content: unset !important;
+    }
+
+    .woocommerce-button.button.woocommerce-form-login__submit{
+        margin-right: 0;
+    }
+}
+.form-error{
+    border-color: #f63a4c;
+}
+.alert-error{
+    color: #f63a4c;
+    font-size: 12px;
+}

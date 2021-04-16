@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../../environments/environment";
+import {Comments} from "../../../models/Comments";
 
 @Component({
     selector: 'app-comments',
@@ -10,15 +11,22 @@ import {environment} from "../../../../environments/environment";
 export class CommentsComponent implements OnInit {
 
     @Input() postId: number | undefined
+    public comments: Array<Comments> | undefined
+    public count_comments: number | undefined
+    public page: number = 1
+    public replyCommentId: number = 0
 
     constructor(private httpClient: HttpClient) {
     }
 
     ngOnInit(): void {
         if (this.postId != undefined){
-            this.httpClient.get(environment.restUrl+"/api/v1/comments/"+this.postId)
-                .subscribe(result => {
-                    console.log(result)
+            this.httpClient.get(environment.restUrl+"/api/v1/comments/"+this.postId+"/"+this.page)
+                .subscribe((result:any) => {
+                    if (result.comments != undefined){
+                        this.comments = result.comments
+                        this.count_comments = result.count_comments
+                    }
                 })
         }
     }

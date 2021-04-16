@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {Users} from "../models/Users";
 
 @Component({
     selector: 'app-layout',
@@ -13,5 +14,4 @@ export class LayoutComponent implements OnInit {
 
     ngOnInit(): void {
     }
-
 }

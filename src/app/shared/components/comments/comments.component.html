@@ -1,8 +1,12 @@
-<div class="sh-comments"><h3 class="sh-comments-position" id="comments"></h3>
-    <div class="sh-blog-fancy-title-container"><h2 class="post-single-title"> 2 Comments</h2></div>
+<div class="sh-comments">
+    <h3 class="sh-comments-position" id="comments"></h3>
+    <div class="sh-blog-fancy-title-container">
+        <h2 class="post-single-title"> {{count_comments}} Комментария</h2>
+    </div>
     <ol class="sh-comment-list">
-        <li class="comment even thread-even depth-1"><h6 class="sh-comment-position" id="comment-7"></h6>
-            <div id="div-comment-7" class="comment-body">
+        <li class="comment even thread-even depth-1" *ngFor="let comment of comments">
+            <h6 class="sh-comment-position" [id]="'comment-'+comment.id"></h6>
+            <div [id]="'div-comment-'+comment.id" class="comment-body">
                 <div class="comment-column-left">
                     <div class="comment-thumb">
                         <img alt="" src="https://secure.gravatar.com/avatar/f88c13d62ba761a92211e266c22dbb1f?s=70&amp;d=mm&amp;r=g"
@@ -10,76 +14,65 @@
                                                     class="avatar avatar-70 photo" loading="lazy" width="70"
                                                     height="70"></div>
                 </div>
-                <div class="comment-column-right"><span class="sh-comment-author"><a
-                    href="http://cdn.gillion.shufflehound.com" rel="external nofollow ugc" class="url">Shufflehound</a></span>
-                    <div class="sh-comment-content"><p>Didn\’t even think about it that way, but – wow, real eye
-                        opener!</p></div>
-                    <div class="reply post-meta"><span class="sh-comment-date"> <a
-                        href="https://gillion.shufflehound.com/magazine/2017/01/31/5-ways-animals-will-help-you-get-more-business/#comment-7"> 4 years ago </a> </span>
-                        <i class="icon icon-action-redo sh-reply-link"></i> <span class="sh-reply-edit"> </span> <i
-                            class="icon icon-note sh-reply-link sh-comment-date-reply"></i> <span
-                            class="sh-reply-link-button"> <a rel="nofollow" class="comment-reply-link"
-                                                             href="https://gillion.shufflehound.com/magazine/2017/01/31/5-ways-animals-will-help-you-get-more-business/?replytocom=7#respond"
-                                                             data-commentid="7" data-postid="43"
-                                                             data-belowelement="div-comment-7"
-                                                             data-respondelement="respond"
-                                                             data-replyto="Reply to Shufflehound"
-                                                             aria-label="Reply to Shufflehound">Reply</a> </span></div>
-                </div>
-            </div>
-        </li>
-        <li class="comment odd alt thread-odd thread-alt depth-1"><h6 class="sh-comment-position" id="comment-8"></h6>
-            <div id="div-comment-8" class="comment-body">
-                <div class="comment-column-left">
-                    <div class="comment-thumb"><img alt=""
-                                                    src="https://secure.gravatar.com/avatar/f88c13d62ba761a92211e266c22dbb1f?s=70&amp;d=mm&amp;r=g"
-                                                    srcset="https://secure.gravatar.com/avatar/f88c13d62ba761a92211e266c22dbb1f?s=140&amp;d=mm&amp;r=g 2x"
-                                                    class="avatar avatar-70 photo" loading="lazy" width="70"
-                                                    height="70"></div>
-                </div>
-                <div class="comment-column-right"><span class="sh-comment-author"><a
-                    href="http://cdn.gillion.shufflehound.com" rel="external nofollow ugc" class="url">Shufflehound</a></span>
-                    <div class="sh-comment-content"><p>Love this post! <img draggable="false" role="img" class="emoji"
-                                                                            alt="🙂"
-                                                                            src="https://s.w.org/images/core/emoji/13.0.1/svg/1f642.svg">
-                    </p></div>
-                    <div class="reply post-meta"><span class="sh-comment-date"> <a
-                        href="https://gillion.shufflehound.com/magazine/2017/01/31/5-ways-animals-will-help-you-get-more-business/#comment-8"> 4 years ago </a> </span>
-                        <i class="icon icon-action-redo sh-reply-link"></i> <span class="sh-reply-edit"> </span> <i
-                            class="icon icon-note sh-reply-link sh-comment-date-reply"></i> <span
-                            class="sh-reply-link-button"> <a rel="nofollow" class="comment-reply-link"
-                                                             href="https://gillion.shufflehound.com/magazine/2017/01/31/5-ways-animals-will-help-you-get-more-business/?replytocom=8#respond"
-                                                             data-commentid="8" data-postid="43"
-                                                             data-belowelement="div-comment-8"
-                                                             data-respondelement="respond"
-                                                             data-replyto="Reply to Shufflehound"
-                                                             aria-label="Reply to Shufflehound">Reply</a> </span></div>
+                <div class="comment-column-right">
+                    <span class="sh-comment-author">
+                        <a href="http://cdn.gillion.shufflehound.com" rel="external nofollow ugc" class="url">{{comment.author}}</a>
+                    </span>
+                    <div class="sh-comment-content">
+                        <p>{{comment.text}}</p>
+                    </div>
+                    <div class="reply post-meta">
+                        <span class="sh-comment-date">
+                            {{comment.created_at | date :'dd-MM-yyyy h:mm:ss'}}
+                        </span>
+                        <i class="icon icon-note sh-reply-link sh-comment-date-reply"></i>
+                        <span class="sh-reply-edit"> </span>
+                        <i class="icon icon-action-redo sh-reply-link"></i>
+                        <span class="sh-reply-link-button">
+                            <a rel="nofollow" class="comment-reply-link"
+                                 href="https://gillion.shufflehound.com/magazine/2017/01/31/5-ways-animals-will-help-you-get-more-business/?replytocom=7#respond"
+                                 aria-label="Reply to Shufflehound">
+                                Ответить
+                            </a>
+                        </span>
+                    </div>
                 </div>
             </div>
         </li>
     </ol>
     <div class="sh-comment-form">
-        <div id="respond" class="comment-respond"><h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a
-            rel="nofollow" id="cancel-comment-reply-link"
-            href="/magazine/2017/01/31/5-ways-animals-will-help-you-get-more-business/#respond" style="display:none;">Cancel
-            reply</a></small></h3>
+        <div id="respond" class="comment-respond">
+            <h3 id="reply-title" class="comment-reply-title">
+                Свой комментарий
+                <small>
+                    <a rel="nofollow" id="cancel-comment-reply-link" href="">
+                        Отменить
+                    </a>
+                </small>
+            </h3>
             <form action="https://gillion.shufflehound.com/magazine/wp-comments-post.php" method="post" id="commentform"
-                  class="comment-form" novalidate=""><label>Your comment <span>*</span></label>
-                <p class="comment-form-comment"><textarea id="comment" name="comment" cols="45" rows="8"
-                                                          required=""></textarea></p>
-                <div class="sh-comment-form-column"><label>Name <span>*</span></label>
-                    <p class="comment-form-author"><input id="author" name="author" type="text" value="" required="">
-                    </p></div>
-                <div class="sh-comment-form-column"><label>Email <span>*</span></label>
-                    <p class="comment-form-email"><input id="email" name="email" type="text" value="" required=""></p>
+                  class="comment-form" novalidate="">
+                <label>Ваш комментарий <span>*</span></label>
+                <p class="comment-form-comment">
+                    <textarea id="comment" name="comment" cols="45" rows="8" required=""></textarea>
+                </p>
+                <div class="sh-comment-form-column"><label>Ваше имя <span>*</span></label>
+                    <p class="comment-form-author">
+                        <input id="author" name="author" type="text" value="" required="">
+                    </p>
                 </div>
-                <div class="sh-comment-form-column"><label>Website <span>*</span></label>
-                    <p class="comment-form-url"><input id="url" name="url" type="text" value=""></p></div>
-                <div class="sh-comments-required-notice">Required fields are marked <span>*</span></div>
-                <p class="form-submit"><input name="submit" type="submit" id="submit" class="submit"
-                                              value="Send a comment"> <input type="hidden" name="comment_post_ID"
-                                                                             value="43" id="comment_post_ID"> <input
-                    type="hidden" name="comment_parent" id="comment_parent" value="0"></p></form>
+                <div class="sh-comment-form-column"><label>Email <span>*</span></label>
+                    <p class="comment-form-email">
+                        <input id="email" name="email" type="text" value="" required="">
+                    </p>
+                </div>
+                <div class="sh-comments-required-notice">Обязательные поля <span>*</span></div>
+                <p class="form-submit">
+                    <input name="submit" type="submit" id="submit" class="submit" value="Оставить комментарий">
+                    <input type="hidden" name="comment_post_ID" [value]="postId" id="comment_post_ID">
+                    <input type="hidden" name="comment_parent" id="comment_parent" [value]="replyCommentId">
+                </p>
+            </form>
         </div>
     </div>
 </div>

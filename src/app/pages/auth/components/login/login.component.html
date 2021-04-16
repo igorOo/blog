@@ -1,0 +1,69 @@
+<app-breadcrumbs title="Вход в систему" [list]="breadcrumbList"></app-breadcrumbs>
+
+<div class="content-container sh-page-layout-default login-form-page">
+    <div class="container entry-content">
+        <div id="content-wrapper">
+            <div id="content" class="page-content  sh-text-content">
+                <div class="page-content">
+                    <div class="woocommerce login-form">
+                        <div class="woocommerce-notices-wrapper"></div>
+                        <h2>Вход в систему</h2>
+                        <form class="woocommerce-form woocommerce-form-login login" method="post" [formGroup]="form">
+                            <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                                <label for="email">Email
+                                    <span class="required">*</span>
+                                </label>
+                                <input type="email" class="woocommerce-Input woocommerce-Input--text input-text"
+                                       name="email"
+                                       id="email"
+                                       autocomplete="email"
+                                       formControlName="email"
+                                       (input)="inputText()"
+                                       [class.form-error]="emailError!=''"
+                                >
+                                <span class="alert alert-error" *ngIf="emailError!=''">{{ emailError }}</span>
+                            </p>
+                            <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+                                <label for="password">Пароль
+                                    <span class="required">*</span>
+                                </label>
+                                <span class="password-input">
+                                    <input class="woocommerce-Input woocommerce-Input--text input-text"
+                                           type="password"
+                                           name="password"
+                                           id="password"
+                                           autocomplete="current-password"
+                                           formControlName="password"
+                                           (input)="inputText()"
+                                           [class.form-error]="passwordError!=''"
+                                    >
+                                    <span class="alert alert-error" *ngIf="passwordError!=''">{{ passwordError }}</span>
+                                </span>
+                            </p>
+                            <p class="form-row form-button-row">
+                                <label class="woocommerce-form__label woocommerce-form__label-for-checkbox woocommerce-form-login__rememberme">
+                                    <input class="woocommerce-form__input woocommerce-form__input-checkbox"
+                                           name="rememberme"
+                                           type="checkbox"
+                                           id="rememberme"
+                                           formControlName="remember"
+                                    >
+                                    <span>Запомнить меня</span>
+                                </label>
+                                <button type="submit" class="woocommerce-button button woocommerce-form-login__submit" (click)="formSubmit($event)">
+                                    Войти
+                                </button>
+                            </p>
+                            <p class="woocommerce-LostPassword lost_password">
+                                <a href="/reset-password">Восстановить пароль</a>
+                            </p>
+                        </form>
+                    </div>
+                    <div class="sh-clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

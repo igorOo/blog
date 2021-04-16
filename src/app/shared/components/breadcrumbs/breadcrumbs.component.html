@@ -1,0 +1,29 @@
+<div class="sh-titlebar breadcrumb-row">
+    <div class="container">
+        <div class="sh-table sh-titlebar-height-small">
+            <div class="titlebar-title sh-table-cell">
+                <h1>
+                    {{ title }}
+                </h1>
+            </div>
+            <div class="title-level sh-table-cell">
+                <div id="breadcrumbs" class="breadcrumb-trail breadcrumbs">
+                    <span class="item-home">
+                        <a class="bread-link bread-home" href="/" title="Главная">
+                            Главная
+                        </a>
+                    </span>
+                    <span class="separator"> / </span>
+                    <span class="item-current" *ngFor="let item of list">
+                        <a class="bread-link bread-home" [href]="item.url" [title]="item.name" *ngIf="item.url != undefined || item.url != null">
+                            {{ item.name }}
+                        </a>
+                        <span [title]="item.name" *ngIf="item.url == undefined || item.url == null">
+                            {{ item.name }}
+                        </span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

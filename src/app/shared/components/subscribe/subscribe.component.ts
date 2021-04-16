@@ -39,7 +39,7 @@ export class SubscribeComponent implements OnInit {
             return
         }
 
-        let formData: any = new FormData();
+        let formData: any = new FormData()
         formData.append("email", this.form.get("email")?.value)
         formData.append("fuckingBot", this.form.get("fuckingBot")?.value)
         this.http.post(environment.restUrl+"/api/v1/subscribe/add", formData)

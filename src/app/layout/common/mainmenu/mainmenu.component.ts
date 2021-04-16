@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import MenuInterface from "../interfaces/MenuInterface";
+import {AuthService} from "../../../services/auth-service.service";
 
 @Component({
   selector: 'app-mainmenu',
@@ -11,7 +12,7 @@ export class MainmenuComponent implements OnInit {
 
     public menu: MenuInterface[] = [];
 
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient, private authService: AuthService) {}
 
     ngOnInit(): void {
         let menu: any = null
@@ -24,7 +25,6 @@ export class MainmenuComponent implements OnInit {
                     localStorage.setItem("mainMenu", JSON.stringify(result))
                 })
         }
-
     }
 
 }

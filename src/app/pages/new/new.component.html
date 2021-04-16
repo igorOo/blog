@@ -175,7 +175,7 @@
                         </div>
                         <app-related-posts [posts]="similarPosts"></app-related-posts>
                     </article>
-                    <app-comments [postId]="post.id"></app-comments>
+                    <app-comments [postId]="post.id" *ngIf="post != undefined"></app-comments>
                 </div>
             </div>
             <div id="sidebar" class="sidebar-right"

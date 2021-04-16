@@ -4,13 +4,19 @@ import {Users} from "../models/Users";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 import {map} from "rxjs/operators";
+import {Role} from "../models/Role";
 
 @Injectable({
     providedIn: 'root'
 })
 export class AuthService {
-    private currentUserSubject: BehaviorSubject<Users>;
-    public currentUser: Observable<Users>;
+    private currentUserSubject: BehaviorSubject<Users>
+    public currentUser: Observable<Users>
+
+    public isAuthenticated: boolean = false
+    public isAdmin: boolean = false
+    public isUser: boolean = false
+    public isAuthor: boolean = false
 
     constructor(private http: HttpClient) {
         let bean: string | null = localStorage.getItem('bean')
@@ -20,6 +26,21 @@ export class AuthService {
         // @ts-ignore
         this.currentUserSubject = new BehaviorSubject<Users>(bean);
         this.currentUser = this.currentUserSubject.asObservable();
+
+        this.currentUser.subscribe(user => {
+            if (user && user.token) {
+                this.isAuthenticated = true
+            }
+            if (user && user.roles.indexOf("ADMIN") !== -1){
+                this.isAdmin = true
+            }
+            if (user && user.roles.indexOf("USER") !== -1){
+                this.isUser = true
+            }
+            if (user && user.roles.indexOf("AUTHOR") !== -1){
+                this.isAuthor = true
+            }
+        })
     }
 
     public get currentUserValue(): Users {

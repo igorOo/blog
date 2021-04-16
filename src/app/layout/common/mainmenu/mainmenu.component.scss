@@ -1,6 +1,7 @@
 .menu-item.menu-item-has-children > .sub-menu{
     display: none;
 }
-.menu-item.menu-item-has-children:hover > .sub-menu{
+.menu-item.menu-item-has-children:hover > .sub-menu,
+.menu-item.menu-has-children:hover > .sub-menu{
     display: block;
 }

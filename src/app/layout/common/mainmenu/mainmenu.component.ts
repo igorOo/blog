@@ -12,7 +12,7 @@ export class MainmenuComponent implements OnInit {
 
     public menu: MenuInterface[] = [];
 
-    constructor(private http: HttpClient, private authService: AuthService) {}
+    constructor(private http: HttpClient, public authService: AuthService) {}
 
     ngOnInit(): void {
         let menu: any = null

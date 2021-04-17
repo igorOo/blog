@@ -9,10 +9,13 @@
             <div [id]="'div-comment-'+comment.id" class="comment-body">
                 <div class="comment-column-left">
                     <div class="comment-thumb">
-                        <img alt="" src="https://secure.gravatar.com/avatar/f88c13d62ba761a92211e266c22dbb1f?s=70&amp;d=mm&amp;r=g"
-                                                    srcset="https://secure.gravatar.com/avatar/f88c13d62ba761a92211e266c22dbb1f?s=140&amp;d=mm&amp;r=g 2x"
-                                                    class="avatar avatar-70 photo" loading="lazy" width="70"
-                                                    height="70"></div>
+                        <img alt="" [src]="comment.avatar"
+                                class="avatar avatar-70 photo" width="70"
+                                height="70" *ngIf="comment.avatar">
+                        <img alt="" src="assets/images/noavatar.png"
+                                class="avatar avatar-70 photo" width="70"
+                                height="70" *ngIf="!comment.avatar">
+                    </div>
                 </div>
                 <div class="comment-column-right">
                     <span class="sh-comment-author">
@@ -40,7 +43,7 @@
             </div>
         </li>
     </ol>
-    <div class="sh-comment-form">
+    <div class="sh-comment-form" *ngIf="authService.isAuthenticated else Guest">
         <div id="respond" class="comment-respond">
             <h3 id="reply-title" class="comment-reply-title">
                 Свой комментарий
@@ -76,3 +79,10 @@
         </div>
     </div>
 </div>
+
+<ng-template #Guest>
+    <div class="sh-comment-form">
+        <p>Чтобы оставить комментарий нужно <a href="/login">войти</a> под своей учетной записью.</p>
+        <p>Если у вас нет учетной записи, то можете <a href="/register">зарегистрироваться</a>.</p>
+    </div>
+</ng-template>

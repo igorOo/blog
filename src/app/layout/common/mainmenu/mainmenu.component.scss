@@ -5,3 +5,6 @@
 .menu-item.menu-has-children:hover > .sub-menu{
     display: block;
 }
+.sub-menu.user-profile-ul {
+    margin-left: -205px !important;
+}

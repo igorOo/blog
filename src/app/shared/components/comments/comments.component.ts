@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../../environments/environment";
 import {Comments} from "../../../models/Comments";
+import {AuthService} from "../../../services/auth-service.service";
 
 @Component({
     selector: 'app-comments',
@@ -16,7 +17,7 @@ export class CommentsComponent implements OnInit {
     public page: number = 1
     public replyCommentId: number = 0
 
-    constructor(private httpClient: HttpClient) {
+    constructor(private httpClient: HttpClient, public authService: AuthService) {
     }
 
     ngOnInit(): void {

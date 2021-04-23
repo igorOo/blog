@@ -14,6 +14,7 @@ export class SubscribeComponent implements OnInit {
     @ViewChild('subscribeError') errorRef: ElementRef
     // @ts-ignore
     @ViewChild('subscribeSucces') successRef: ElementRef
+
     public form: FormGroup = new FormGroup({
         email: new FormControl('', [Validators.required, Validators.email]),
         fuckingBot: new FormControl('', Validators.maxLength(0))

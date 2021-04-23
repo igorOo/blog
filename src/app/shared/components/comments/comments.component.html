@@ -53,27 +53,13 @@
                     </a>
                 </small>
             </h3>
-            <form action="https://gillion.shufflehound.com/magazine/wp-comments-post.php" method="post" id="commentform"
-                  class="comment-form" novalidate="">
-                <label>Ваш комментарий <span>*</span></label>
+            <form method="post" id="commentform" class="comment-form" [formGroup]="form" (ngSubmit)="submitForm($event)">
+                <label>Ваш комментарий</label>
                 <p class="comment-form-comment">
-                    <textarea id="comment" name="comment" cols="45" rows="8" required=""></textarea>
+                    <textarea id="comment" name="comment" cols="45" rows="8" required="" formControlName="comment"></textarea>
                 </p>
-                <div class="sh-comment-form-column"><label>Ваше имя <span>*</span></label>
-                    <p class="comment-form-author">
-                        <input id="author" name="author" type="text" value="" required="">
-                    </p>
-                </div>
-                <div class="sh-comment-form-column"><label>Email <span>*</span></label>
-                    <p class="comment-form-email">
-                        <input id="email" name="email" type="text" value="" required="">
-                    </p>
-                </div>
-                <div class="sh-comments-required-notice">Обязательные поля <span>*</span></div>
                 <p class="form-submit">
                     <input name="submit" type="submit" id="submit" class="submit" value="Оставить комментарий">
-                    <input type="hidden" name="comment_post_ID" [value]="postId" id="comment_post_ID">
-                    <input type="hidden" name="comment_parent" id="comment_parent" [value]="replyCommentId">
                 </p>
             </form>
         </div>

@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../../environments/environment";
 import {Comments} from "../../../models/Comments";
 import {AuthService} from "../../../services/auth-service.service";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
     selector: 'app-comments',
@@ -17,12 +18,16 @@ export class CommentsComponent implements OnInit {
     public page: number = 1
     public replyCommentId: number = 0
 
-    constructor(private httpClient: HttpClient, public authService: AuthService) {
+    public form: FormGroup = new FormGroup({
+        comment: new FormControl('', [Validators.required]),
+    })
+
+    constructor(private http: HttpClient, public authService: AuthService) {
     }
 
     ngOnInit(): void {
         if (this.postId != undefined){
-            this.httpClient.get(environment.restUrl+"/api/v1/comments/"+this.postId+"/"+this.page)
+            this.http.get(environment.restUrl+"/api/v1/comments/"+this.postId+"/"+this.page)
                 .subscribe((result:any) => {
                     if (result.comments != undefined){
                         this.comments = result.comments
@@ -30,6 +35,20 @@ export class CommentsComponent implements OnInit {
                     }
                 })
         }
+    }
+
+    submitForm(event: Event): void {
+        event.preventDefault()
+        let formData: any = new FormData()
+        formData.append("email", this.form.get("comment")?.value)
+        formData.append("post_id", this.postId)
+        if (this.replyCommentId){
+            formData.append("reply_id", this.replyCommentId)
+        }
+        this.http.post(environment.restUrl+"/api/v1/comments/"+this.postId+"/addcomment", formData)
+            .subscribe(result => {
+                console.log(result)
+            })
     }
 
 }

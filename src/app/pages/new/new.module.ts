@@ -9,6 +9,7 @@ import {CommentsComponent} from "../../shared/components/comments/comments.compo
 import { TopReadersComponent } from './components/top-readers/top-readers.component';
 import {SlickCarouselModule} from "ngx-slick-carousel";
 import { RandomImagePostsComponent } from './components/random-image-posts/random-image-posts.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
     declarations: [
@@ -22,7 +23,8 @@ import { RandomImagePostsComponent } from './components/random-image-posts/rando
         NewRoutingModule,
         CommonModule,
         SharedModule,
-        SlickCarouselModule
+        SlickCarouselModule,
+        ReactiveFormsModule
     ],
     exports: [
         NewRoutingModule,

@@ -6,4 +6,5 @@ export interface Users{
     lastName?: string
     roles: Array<string>
     token: string
+    expires: string
 }

@@ -28,16 +28,17 @@ export class AuthService {
         this.currentUser = this.currentUserSubject.asObservable();
 
         this.currentUser.subscribe(user => {
-            if (user && user.token) {
+            let dateExpire = Date.parse(user.expires)
+            if (user && user.token && dateExpire > new Date().getTime()) {
                 this.isAuthenticated = true
             }
-            if (user && user.roles.indexOf("ADMIN") !== -1){
+            if (user && user.roles.indexOf("ADMIN") !== -1 && dateExpire > new Date().getTime()){
                 this.isAdmin = true
             }
-            if (user && user.roles.indexOf("USER") !== -1){
+            if (user && user.roles.indexOf("USER") !== -1 && dateExpire > new Date().getTime()){
                 this.isUser = true
             }
-            if (user && user.roles.indexOf("AUTHOR") !== -1){
+            if (user && user.roles.indexOf("AUTHOR") !== -1 && dateExpire > new Date().getTime()){
                 this.isAuthor = true
             }
         })

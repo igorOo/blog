@@ -33,7 +33,6 @@ export class LoginComponent implements OnInit {
 
     formSubmit(event: Event) {
         event.preventDefault()
-        console.log(this.form)
         if (this.form.get('email')?.invalid){
             this.emailError = "Email не может быть пустым"
             this.invalidState = true
@@ -53,7 +52,9 @@ export class LoginComponent implements OnInit {
         }
         this.auth.login(this.form.get("email")?.value, this.form.get("password")?.value)
             .subscribe(result => {
-                console.log(result)
+                if (result.token){
+                    this.router.navigate(["/"])
+                }
             })
         // this.router.navigate([`/`])
         // let formData: any = new FormData()

@@ -29,8 +29,17 @@
                         <span class="sh-comment-date">
                             {{comment.created_at | date :'dd-MM-yyyy h:mm:ss'}}
                         </span>
-                        <i class="icon icon-note sh-reply-link sh-comment-date-reply" *ngIf="isAuthor(comment.author_id)"></i>
-                        <span class="sh-reply-edit"> </span>
+                        <i class="icon icon-note sh-reply-link sh-comment-date-reply"
+                           *ngIf="isAuthor(comment.author_id)"
+                        ></i>
+                        <span class="sh-reply-edit">
+                            <a href="#" class="commentreply-edit"
+                               *ngIf="isAuthor(comment.author_id)"
+                               (click)="editComment(comment.id, $event)"
+                            >
+                                Редактировать
+                            </a>
+                        </span>
                         <i class="icon icon-action-redo sh-reply-link"></i>
                         <span class="sh-reply-link-button">
                             <a class="comment-reply-link" href="#" (click)="replyComment(comment.id, comment.author, $event)">

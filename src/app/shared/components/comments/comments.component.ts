@@ -69,9 +69,12 @@ export class CommentsComponent implements OnInit {
                         avatar: this.user?.avatar? this.user.avatar : "",
                         text: this.form.get("comment")?.value,
                         created_at: new Date(),
-                        updated_at: new Date()
+                        updated_at: new Date(),
+                        // @ts-ignore
+                        author_id: this.user?.id
                     }
                     this.comments?.push(comment)
+                    this.form.reset()
                 }
             },
                 error => {
@@ -104,5 +107,16 @@ export class CommentsComponent implements OnInit {
 
     isAuthor(user_id: bigint){
         return this.user?.id === user_id
+    }
+
+    editComment(id: number, event: Event) {
+        event.preventDefault()
+        event.stopImmediatePropagation()
+        this.comments?.map((comment:Comments) => {
+            if (comment.id == id){
+                this.form.get("comment")?.setValue(comment.text)
+                this.commentForm.nativeElement.scrollIntoView({ behavior: 'smooth' })
+            }
+        })
     }
 }

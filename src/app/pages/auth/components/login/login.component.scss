@@ -26,3 +26,10 @@
     color: #f63a4c;
     font-size: 12px;
 }
+
+p.form-row.form-error {
+    color: #f63a4c;
+    background-color: lighten(#f63a4c, 38%);
+    border-radius: 7px;
+    padding: 6px 10px;
+}

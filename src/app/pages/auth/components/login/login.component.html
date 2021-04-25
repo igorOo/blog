@@ -9,6 +9,9 @@
                         <div class="woocommerce-notices-wrapper"></div>
                         <h2>Вход в систему</h2>
                         <form class="woocommerce-form woocommerce-form-login login" method="post" [formGroup]="form">
+                            <p class="form-row form-error" *ngIf="responseError != ''">
+                                {{responseError}}
+                            </p>
                             <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
                                 <label for="email">Email
                                     <span class="required">*</span>
@@ -48,7 +51,7 @@
                                            id="rememberme"
                                            formControlName="remember"
                                     >
-                                    <span>Запомнить меня</span>
+                                    <span> Запомнить меня</span>
                                 </label>
                                 <button type="submit" class="woocommerce-button button woocommerce-form-login__submit" (click)="formSubmit($event)">
                                     Войти

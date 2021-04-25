@@ -19,8 +19,9 @@
                 </div>
                 <div class="comment-column-right">
                     <span class="sh-comment-author">
-                        <a href="http://cdn.gillion.shufflehound.com" rel="external nofollow ugc" class="url">{{comment.author}}</a>
+                        <a href="#" class="url">{{comment.author}}</a>
                     </span>
+                    <span class="comment-reply-id" *ngIf="comment.reply">Ответ на комментарий {{ comment.reply.author }}</span>
                     <div class="sh-comment-content">
                         <p>{{comment.text}}</p>
                     </div>
@@ -28,13 +29,11 @@
                         <span class="sh-comment-date">
                             {{comment.created_at | date :'dd-MM-yyyy h:mm:ss'}}
                         </span>
-                        <i class="icon icon-note sh-reply-link sh-comment-date-reply"></i>
+                        <i class="icon icon-note sh-reply-link sh-comment-date-reply" *ngIf="isAuthor(comment.author_id)"></i>
                         <span class="sh-reply-edit"> </span>
                         <i class="icon icon-action-redo sh-reply-link"></i>
                         <span class="sh-reply-link-button">
-                            <a rel="nofollow" class="comment-reply-link"
-                                 href="https://gillion.shufflehound.com/magazine/2017/01/31/5-ways-animals-will-help-you-get-more-business/?replytocom=7#respond"
-                                 aria-label="Reply to Shufflehound">
+                            <a class="comment-reply-link" href="#" (click)="replyComment(comment.id, comment.author, $event)">
                                 Ответить
                             </a>
                         </span>
@@ -44,15 +43,18 @@
         </li>
     </ol>
     <div class="sh-comment-form" *ngIf="authService.isAuthenticated else Guest">
-        <div id="respond" class="comment-respond">
+        <div id="respond" class="comment-respond" #commentForm>
             <h3 id="reply-title" class="comment-reply-title">
                 Свой комментарий
-                <small>
-                    <a rel="nofollow" id="cancel-comment-reply-link" href="">
+                <small *ngIf="replyCommentId != 0">
+                    <a rel="nofollow" id="cancel-comment-reply-link" href="" (click)="cancelReply($event)">
                         Отменить
                     </a>
                 </small>
             </h3>
+            <p class="comment-reply-info" *ngIf="replyCommentId != 0">
+                Ответ на комментарий {{ replyUserName }}
+            </p>
             <form method="post" id="commentform" class="comment-form" [formGroup]="form" (ngSubmit)="submitForm($event)">
                 <label>Ваш комментарий</label>
                 <p class="comment-form-comment">

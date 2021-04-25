@@ -53,6 +53,7 @@ export class AuthService {
             .pipe(map(user => {
                 // пользователь залогинился и получил токен
                 if (user && user.token) {
+                    localStorage.removeItem("bean")
                     // сохраняем всю полученную инфу от сервера
                     localStorage.setItem('bean', btoa(JSON.stringify(user)));
                     this.currentUserSubject.next(user);

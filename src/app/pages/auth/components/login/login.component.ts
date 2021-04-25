@@ -23,6 +23,7 @@ export class LoginComponent implements OnInit {
     emailError: string = ""
     passwordError: string = ""
     public invalidState: boolean = false
+    responseError: string = ""
 
     constructor(private  http: HttpClient, private router: Router, private auth: AuthService) {
     }
@@ -54,6 +55,10 @@ export class LoginComponent implements OnInit {
             .subscribe(result => {
                 if (result.token){
                     this.router.navigate(["/"])
+                }
+            }, error => {
+                if (error.status == 401){
+                    this.responseError = 'Такие имя пользователя и пароль не найдены'
                 }
             })
         // this.router.navigate([`/`])

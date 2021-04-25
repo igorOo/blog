@@ -4,6 +4,7 @@ import {environment} from "../../../../environments/environment";
 import {Comments} from "../../../models/Comments";
 import {AuthService} from "../../../services/auth-service.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {Users} from "../../../models/Users";
 
 @Component({
     selector: 'app-comments',
@@ -17,12 +18,16 @@ export class CommentsComponent implements OnInit {
     public count_comments: number | undefined
     public page: number = 1
     public replyCommentId: number = 0
+    private user: Users | null = null
 
     public form: FormGroup = new FormGroup({
         comment: new FormControl('', [Validators.required]),
     })
 
     constructor(private http: HttpClient, public authService: AuthService) {
+        authService.currentUser.subscribe(user => {
+            this.user = user
+        })
     }
 
     ngOnInit(): void {
@@ -40,8 +45,9 @@ export class CommentsComponent implements OnInit {
     submitForm(event: Event): void {
         event.preventDefault()
         let formData: any = new FormData()
-        formData.append("email", this.form.get("comment")?.value)
+        formData.append("comment    ", this.form.get("comment")?.value)
         formData.append("post_id", this.postId)
+        formData.append("email", this.user?.email)
         if (this.replyCommentId){
             formData.append("reply_id", this.replyCommentId)
         }

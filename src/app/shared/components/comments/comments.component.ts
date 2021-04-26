@@ -1,7 +1,7 @@
 import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../../environments/environment";
-import {Comments} from "../../../models/Comments";
+import {Comment, Comments} from "../../../models/Comments";
 import {AuthService} from "../../../services/auth-service.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Users} from "../../../models/Users";
@@ -21,6 +21,7 @@ export class CommentsComponent implements OnInit {
     public replyCommentId: number = 0
     public replyUserName: string | undefined
     private user: Users | null = null
+    public error: string = ""
 
     public form: FormGroup = new FormGroup({
         comment: new FormControl('', [Validators.required]),
@@ -53,6 +54,10 @@ export class CommentsComponent implements OnInit {
     submitForm(event: Event): void {
         event.preventDefault()
         event.stopImmediatePropagation()
+        if (this.form.get("comment")?.value.trim() == ""){
+            this.error = "Комментарий не может быть пустым"
+            return;
+        }
         let formData: any = new FormData()
         formData.append("comment    ", this.form.get("comment")?.value)
         formData.append("email", this.user?.email)
@@ -61,21 +66,33 @@ export class CommentsComponent implements OnInit {
         }
         this.http.post(environment.restUrl+"/api/v1/comments/"+this.postId+"/addcomment", formData)
             .subscribe((result:any) => {
-                if (result.id !== undefined){
-                    let username = this.user? this.user.username: "Анноним"
-                    let comment: Comments = {
+                if (result.result !== undefined){
+                    result = result.result
+                }
+                console.log(result)
+                let inserted: boolean = false
+                this.comments?.map(item => {
+                    if (item.id == result.id){
+                        item = result
+                        inserted = true
+                    }
+                })
+                console.log(this.comments)
+                if (!inserted){
+                    let comment: Comment = {
                         id: result.id,
-                        author: (this.user?.firstName || this.user?.lastName) ?  this.user.firstName+" "+this.user?.lastName : username,
-                        avatar: this.user?.avatar? this.user.avatar : "",
-                        text: this.form.get("comment")?.value,
+                        author: result.author,
+                        avatar: result.avatar,
+                        text: result.text,
                         created_at: new Date(),
                         updated_at: new Date(),
                         // @ts-ignore
-                        author_id: this.user?.id
+                        author_id: result.author_id
                     }
                     this.comments?.push(comment)
-                    this.form.reset()
+                    inserted = false
                 }
+                this.form.reset()
             },
                 error => {
                     if (error.status == 401 || error.status == 403){

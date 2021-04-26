@@ -69,6 +69,7 @@
                 <p class="comment-form-comment">
                     <textarea id="comment" name="comment" cols="45" rows="8" required="" formControlName="comment"></textarea>
                 </p>
+                <p class="form-error" *ngIf="error != ''">{{error}}</p>
                 <p class="form-submit">
                     <input name="submit" type="submit" id="submit" class="submit" value="Оставить комментарий">
                 </p>

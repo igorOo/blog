@@ -9,3 +9,18 @@ export interface Comments{
     reply?: Comments
     author_id: bigint
 }
+
+export class Comment implements Comments{
+
+    public author!: string;
+    public author_id!: bigint;
+    public avatar!: string;
+    public created_at!: Date;
+    public email?: string;
+    public id!: number;
+    public reply?: Comments;
+    public text!: string;
+    public updated_at!: Date;
+
+
+}

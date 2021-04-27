@@ -18,6 +18,7 @@ export class CommentsComponent implements OnInit {
     public comments: Array<Comments> | undefined
     public count_comments: number | undefined
     public page: number = 1
+    public lastPage: number = 1
     public replyCommentId: number = 0
     public replyUserName: string | undefined
     private user: Users | null = null
@@ -44,8 +45,10 @@ export class CommentsComponent implements OnInit {
                         this.comments = result.comments
                         this.count_comments = result.count_comments
 
-                        console.log(this.user)
-                        console.log(this.comments)
+                        if(result.pages !== undefined){
+                            this.lastPage = result.pages.lastPage
+                            this.page = result.pages.currentPage
+                        }
                     }
                 })
         }

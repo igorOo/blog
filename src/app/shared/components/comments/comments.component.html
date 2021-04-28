@@ -51,6 +51,9 @@
             </div>
         </li>
     </ol>
+    <div class="comments-pagination">
+        <app-paginaton [currentPage]="page" [lastPage]="lastPage" (changePage)="changePage($event)"></app-paginaton>
+    </div>
     <div class="sh-comment-form" *ngIf="authService.isAuthenticated else Guest">
         <div id="respond" class="comment-respond" #commentForm>
             <h3 id="reply-title" class="comment-reply-title">

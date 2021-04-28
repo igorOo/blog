@@ -5,12 +5,14 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {SubscribeComponent} from "../../components/subscribe/subscribe.component";
 import {LoaderComponent} from "../../components/loader/loader.component";
 import {BreadcrumbsComponent} from "../../components/breadcrumbs/breadcrumbs.component";
+import {PaginatonComponent} from "../../components/paginaton/paginaton.component";
 
 @NgModule({
     declarations: [
         SubscribeComponent,
         LoaderComponent,
-        BreadcrumbsComponent
+        BreadcrumbsComponent,
+        PaginatonComponent
     ],
     imports: [
         CommonModule,
@@ -20,7 +22,8 @@ import {BreadcrumbsComponent} from "../../components/breadcrumbs/breadcrumbs.com
     exports: [
         SubscribeComponent,
         LoaderComponent,
-        BreadcrumbsComponent
+        BreadcrumbsComponent,
+        PaginatonComponent
     ]
 })
 export class SharedModule {

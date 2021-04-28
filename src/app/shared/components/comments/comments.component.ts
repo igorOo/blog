@@ -39,19 +39,23 @@ export class CommentsComponent implements OnInit {
 
     ngOnInit(): void {
         if (this.postId != undefined){
-            this.http.get(environment.restUrl+"/api/v1/comments/"+this.postId+"/"+this.page)
-                .subscribe((result:any) => {
-                    if (result.comments != undefined){
-                        this.comments = result.comments
-                        this.count_comments = result.count_comments
-
-                        if(result.pages !== undefined){
-                            this.lastPage = result.pages.lastPage
-                            this.page = result.pages.currentPage
-                        }
-                    }
-                })
+            this.loadData()
         }
+    }
+
+    loadData():void{
+        this.http.get(environment.restUrl+"/api/v1/comments/"+this.postId+"/"+this.page)
+            .subscribe((result:any) => {
+                if (result.comments != undefined){
+                    this.comments = result.comments
+                    this.count_comments = result.count_comments
+
+                    if(result.pages !== undefined){
+                        this.lastPage = result.pages.lastPage
+                        this.page = result.pages.currentPage
+                    }
+                }
+            })
     }
 
     submitForm(event: Event): void {
@@ -72,7 +76,6 @@ export class CommentsComponent implements OnInit {
                 if (result.result !== undefined){
                     result = result.result
                 }
-                console.log(result)
                 let inserted: boolean = false
                 this.comments?.map(item => {
                     if (item.id == result.id){
@@ -80,7 +83,6 @@ export class CommentsComponent implements OnInit {
                         inserted = true
                     }
                 })
-                console.log(this.comments)
                 if (!inserted){
                     let comment: Comment = {
                         id: result.id,
@@ -138,5 +140,10 @@ export class CommentsComponent implements OnInit {
                 this.commentForm.nativeElement.scrollIntoView({ behavior: 'smooth' })
             }
         })
+    }
+
+    changePage($event: number) {
+        this.page = $event
+        this.loadData()
     }
 }

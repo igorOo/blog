@@ -1,1 +1,10 @@
-<p>paginaton works!</p>
+<div class="sh-pagination sh-default-color">
+    <ul class="page-numbers">
+        <li><a class="prev page-numbers" *ngIf="currentPage>1" (click)="clickPage(currentPage-1, $event)"> Назад </a></li>
+        <li *ngFor="let page of arrayPages">
+            <span aria-current="page" class="page-numbers current" *ngIf="page == currentPage">{{page}}</span>
+            <a class="page-numbers" (click)="clickPage(page, $event)" *ngIf="page != currentPage">{{page}}</a>
+        </li>
+        <li><a class="next page-numbers" (click)="clickPage(currentPage+1, $event)" *ngIf="currentPage<lastPage"> Вперед </a></li>
+    </ul>
+</div>

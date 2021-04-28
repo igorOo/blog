@@ -1,0 +1,66 @@
+ul.page-numbers {
+    display: table;
+    margin: 0;
+    list-style: none;
+    border-radius: 30px;
+    border-width: 0;
+    margin-top: 10px;
+    padding-left: 0;
+}
+ul.page-numbers:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+ul.page-numbers li {
+    display: block;
+    float: left;
+    margin: 0 1px;
+    text-align: center;
+}
+ul.page-numbers a,
+ul.page-numbers span {
+    display: block;
+    width: 34px;
+    height: 34px;
+    line-height: 34px;
+    font-weight: 700;
+    cursor: pointer;
+    padding: 0;
+    text-transform: uppercase;
+    margin-top: 10px;
+}
+ul.page-numbers .prev,
+ul.page-numbers .next {
+    width: auto;
+    padding: 0 10px;
+    border: 1px solid #ededed;
+}
+ul.page-numbers .prev {
+    margin-right: 10px;
+}
+ul.page-numbers .next {
+    margin-left: 10px;
+}
+ul.page-numbers .prev,
+ul.page-numbers .next {
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 100px;
+    font-size: 11px;
+}
+ul.page-numbers a span {
+    padding: 0;
+}
+ul.page-numbers a:hover {
+    color: #f63a4c;
+}
+ul.page-numbers .current {
+    font-weight: 700;
+}
+ul.page-numbers .current,
+ul.page-numbers .current:hover {
+    color: #fff;
+    background-color: #f63a4c;
+    border-radius: 30px;
+}

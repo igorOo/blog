@@ -8,6 +8,7 @@ const routes: Routes = [{
         {path: '', redirectTo: '/', pathMatch: 'full'},
         {path: '', loadChildren: () => import('./pages/index/index.module').then(module => module.IndexModule)},
         {path: 'new', loadChildren: () => import("./pages/new/new.module").then(module => module.NewModule)},
+        {path: 'note', loadChildren: () => import("./pages/note/note.module").then(module => module.NoteModule)},
         {path: '', loadChildren: () => import("./pages/auth/auth.module").then(module=>module.AuthModule)}
     ]
 }];

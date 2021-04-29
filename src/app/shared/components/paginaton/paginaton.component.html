@@ -1,5 +1,5 @@
 <div class="sh-pagination sh-default-color">
-    <ul class="page-numbers">
+    <ul class="page-numbers" *ngIf="lastPage>1">
         <li><a class="prev page-numbers" *ngIf="currentPage>1" (click)="clickPage(currentPage-1, $event)"> Назад </a></li>
         <li *ngFor="let page of arrayPages">
             <span aria-current="page" class="page-numbers current" *ngIf="page == currentPage">{{page}}</span>

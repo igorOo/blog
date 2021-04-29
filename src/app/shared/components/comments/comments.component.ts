@@ -15,14 +15,15 @@ import {Router} from "@angular/router";
 export class CommentsComponent implements OnInit {
 
     @Input() postId: number | undefined
-    public comments: Array<Comments> | undefined
-    public count_comments: number | undefined
+    public comments: Array<Comments> = new Array<Comments>()
+    public count_comments: number = 0
     public page: number = 1
     public lastPage: number = 1
     public replyCommentId: number = 0
     public replyUserName: string | undefined
     private user: Users | null = null
     public error: string = ""
+    public loading: boolean = true
 
     public form: FormGroup = new FormGroup({
         comment: new FormControl('', [Validators.required]),
@@ -44,6 +45,7 @@ export class CommentsComponent implements OnInit {
     }
 
     loadData():void{
+        this.loading = true
         this.http.get(environment.restUrl+"/api/v1/comments/"+this.postId+"/"+this.page)
             .subscribe((result:any) => {
                 if (result.comments != undefined){
@@ -56,6 +58,7 @@ export class CommentsComponent implements OnInit {
                     }
                 }
             })
+        this.loading=false
     }
 
     submitForm(event: Event): void {
@@ -145,5 +148,19 @@ export class CommentsComponent implements OnInit {
     changePage($event: number) {
         this.page = $event
         this.loadData()
+    }
+
+    formatCommentText(count_comments: number):string{
+        switch (count_comments){
+            case 1:
+                return count_comments+" комментарий"
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+                return count_comments+" комментария"
+            default:
+                return count_comments+" комментариев"
+        }
     }
 }

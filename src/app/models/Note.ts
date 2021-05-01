@@ -19,5 +19,5 @@ export class Note implements Post{
     translit!: string;
     type!: number;
     url!: string;
-
+    tags?: Array<any>;
 }

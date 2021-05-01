@@ -4,7 +4,7 @@
         <div id="content-wrapper">
             <div id="content" class="content-layout-standard ">
                 <div class="blog-single blog-style-single blog-style-single-share  blog-blockquote-style2  blog-style-post-toptitle">
-                    <article [id]="'post-'+note.id" class="post-item post-item-single post-43 post type-post status-publish format-standard has-post-thumbnail hentry category-animals category-guide tag-animal tag-deer tag-epic">
+                    <article [id]="'post-'+note.id" class="post-item post-item-single post type-post status-publish format-standard has-post-thumbnail hentry">
                         <div class="post-item-single-container">
                             <div class="post-content-share post-content-share-bar jssocials">
                                 <div class="jssocials-shares">
@@ -16,12 +16,12 @@
                             <div class="post-single-meta">
                                 <div class="post-categories-container">
                                     <div class="post-categories">
-                                        <a href="#">{{ note.category.name }}</a>
+                                        <a [href]="note.category.url">{{ note.category.name }}</a>
                                     </div>
                                 </div>
                                 <a class="post-title">
                                     <h2> {{ note.name }}
-                                        <span class="post-read-later post-read-later-guest tooltipstered" href="#login-register">
+                                        <span class="post-read-later post-read-later-guest tooltipstered">
                                             <i class="fa fa-bookmark-o"></i>
                                         </span>
                                     </h2>
@@ -29,19 +29,20 @@
                                 <div class="post-meta">
                                     <div class="post-meta-content">
                                         <span class="post-auhor-date post-auhor-date-full">
-                                            <a href="https://gillion.shufflehound.com/author/gillionshufflehound/">
-                                                <img alt="" src="https://secure.gravatar.com/avatar/f88c13d62ba761a92211e266c22dbb1f?s=28&amp;d=mm&amp;r=g"
+                                            <a href="https://gillion.shufflehound.com/author/gillionshufflehound/"
+                                               *ngIf="note.author">
+                                                <img alt="" [src]="note.author.avatar"
                                                       class="avatar avatar-28 photo post-author-image"
                                                       width="28"
                                                       height="28">
                                             </a>
-                                            <span>
+                                            <span *ngIf="note.author">
                                                 <a href="https://gillion.shufflehound.com/author/gillionshufflehound/" class="post-author">
-                                                    Gillion
+                                                    {{ note.author.firstName }} {{ note.author.lastName }}
                                                 </a>,
                                             </span>
-                                            <a href="https://gillion.shufflehound.com/2017/01/31/5-ways-animals-will-help-you-get-more-business/" class="post-date">
-                                                4 years ago
+                                            <a class="post-date">
+                                                {{ note.date_create }}
                                             </a>
                                         </span>
                                         <a href="https://gillion.shufflehound.com/2017/01/31/5-ways-animals-will-help-you-get-more-business/#comments" class="post-comments">
@@ -50,7 +51,7 @@
                                         </a>
                                         <span class="post-readtime">
                                             <i class="icon icon-clock"></i>
-                                            3 min <span>read</span>
+                                            {{ note.time_read }}
                                         </span>
                                         <span class="post-views">
                                             <i class="icon icon-eye"></i> 7518 </span>
@@ -71,10 +72,12 @@
                             <div class="sh-page-links"></div>
                             <div class="post-tags-container">
                                 <div class="post-tags">
-                                    <a class="post-tags-item post-tags-item-title"> Tags </a>
-                                    <a href="https://gillion.shufflehound.com/tag/animal/" class="post-tags-item">#Animal</a>
-                                    <a href="https://gillion.shufflehound.com/tag/deer/" class="post-tags-item">#Deer</a>
-                                    <a href="https://gillion.shufflehound.com/tag/epic/" class="post-tags-item">#Epic</a>
+                                    <a class="post-tags-item post-tags-item-title"> Теги </a>
+                                    <a href="#" class="post-tags-item"
+                                        *ngFor="let tag of note.tags"
+                                    >
+                                        {{tag.tag}}
+                                    </a>
                                 </div>
                                 <div class="sh-clear"></div>
                             </div>

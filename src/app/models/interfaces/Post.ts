@@ -18,4 +18,5 @@ export interface Post{
     time_read?: string
     count_comment?: number
     preview?: string
+    tags?: Array<any>
 }

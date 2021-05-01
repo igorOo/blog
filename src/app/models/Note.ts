@@ -3,7 +3,7 @@ import {Users} from "./Users";
 import {Category} from "./Category";
 
 export class Note implements Post{
-    author!: Users | string;
+    author!: Users;
     cat_translit!: string;
     category!: Category;
     category_id!: number;
@@ -16,6 +16,7 @@ export class Note implements Post{
     name!: string;
     text!: string;
     time_read!: string;
+    count_read!: number;
     translit!: string;
     type!: number;
     url!: string;

@@ -17,6 +17,7 @@ export class NoteComponent implements OnInit {
     public document: any = Document
     public time: number = Date.now()
     public similarPosts: Array<TopPost> | undefined
+    public nextPrevPosts: Array<any> | undefined
 
     constructor(
         private http: HttpClient,
@@ -35,7 +36,6 @@ export class NoteComponent implements OnInit {
                     sub.next({category: this.note.category.translit, post: this.note.id})
                     sub.complete()
                     this.loading = false
-                    console.log(this.note)
 
                     let script = document.createElement('script');
                     script.src = "https://yastatic.net/share2/share.js";
@@ -70,6 +70,9 @@ export class NoteComponent implements OnInit {
                 .subscribe((result:any) => {
                     if (result["similar-posts"] != undefined) {
                         this.similarPosts = result["similar-posts"]
+                    }
+                    if (result["next-prev"] != undefined){
+                        this.nextPrevPosts = result["next-prev"]
                     }
                 })
         })

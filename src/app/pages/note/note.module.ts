@@ -6,7 +6,9 @@ import {SharedModule} from "../../shared/modules/shared-module/shared.module";
 
 
 @NgModule({
-    declarations: [NoteComponent],
+    declarations: [
+        NoteComponent,
+    ],
     imports: [
         CommonModule,
         NoteRoutingModule,

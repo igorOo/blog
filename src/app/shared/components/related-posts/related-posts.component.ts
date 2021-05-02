@@ -1,7 +1,7 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {News} from "../../../../models/News";
-import {environment} from "../../../../../environments/environment";
+import {News} from "../../../models/News";
+import {environment} from "../../../../environments/environment";
 
 @Component({
     selector: 'app-related-posts',

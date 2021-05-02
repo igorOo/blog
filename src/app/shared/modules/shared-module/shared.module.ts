@@ -6,13 +6,20 @@ import {SubscribeComponent} from "../../components/subscribe/subscribe.component
 import {LoaderComponent} from "../../components/loader/loader.component";
 import {BreadcrumbsComponent} from "../../components/breadcrumbs/breadcrumbs.component";
 import {PaginatonComponent} from "../../components/paginaton/paginaton.component";
+import {RelatedPostsComponent} from "../../components/related-posts/related-posts.component";
+import {CommentsComponent} from "../../components/comments/comments.component";
+import {NextprevComponent} from "../../components/nextprev/nextprev.component";
+
 
 @NgModule({
     declarations: [
         SubscribeComponent,
         LoaderComponent,
         BreadcrumbsComponent,
-        PaginatonComponent
+        PaginatonComponent,
+        RelatedPostsComponent,
+        CommentsComponent,
+        NextprevComponent,
     ],
     imports: [
         CommonModule,
@@ -23,7 +30,10 @@ import {PaginatonComponent} from "../../components/paginaton/paginaton.component
         SubscribeComponent,
         LoaderComponent,
         BreadcrumbsComponent,
-        PaginatonComponent
+        PaginatonComponent,
+        RelatedPostsComponent,
+        CommentsComponent,
+        NextprevComponent,
     ]
 })
 export class SharedModule {

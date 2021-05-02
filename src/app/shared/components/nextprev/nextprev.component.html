@@ -1,0 +1,16 @@
+<div class="post-switch post-swtich-style2" *ngIf="list !== undefined">
+    <div class="row">
+        <div class="col-md-6">
+            <a [href]="list[0].url" class="post-switch-prev text-left">
+                <div class="post-switch-type">Назад</div>
+                <h4>{{ list[0].name }}</h4>
+            </a>
+        </div>
+        <div class="col-md-6">
+            <a [href]="list[1].url" class="post-switch-next text-right">
+                <div class="post-switch-type">Вперед</div>
+                <h4>{{ list[1].name }}</h4>
+            </a>
+        </div>
+    </div>
+</div>

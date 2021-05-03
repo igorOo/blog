@@ -6,7 +6,7 @@
                     {{ title }}
                 </h1>
             </div>
-            <div class="title-level sh-table-cell">
+            <div class="title-level sh-table-cell" *ngIf="list !== undefined">
                 <div id="breadcrumbs" class="breadcrumb-trail breadcrumbs">
                     <span class="item-home">
                         <a class="bread-link bread-home" href="/" title="Главная">
@@ -14,13 +14,14 @@
                         </a>
                     </span>
                     <span class="separator"> / </span>
-                    <span class="item-current" *ngFor="let item of list">
+                    <span class="item-current" *ngFor="let item of list; index as key">
                         <a class="bread-link bread-home" [href]="item.url" [title]="item.name" *ngIf="item.url != undefined || item.url != null">
                             {{ item.name }}
                         </a>
                         <span [title]="item.name" *ngIf="item.url == undefined || item.url == null">
                             {{ item.name }}
                         </span>
+                        <span class="separator" *ngIf="list.length > key+1"> / </span>
                     </span>
                 </div>
             </div>

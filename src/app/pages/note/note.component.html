@@ -1,10 +1,16 @@
-<app-breadcrumbs [title]="'Трах-тиби-дох'"></app-breadcrumbs>
+<app-breadcrumbs
+    [title]="note.name"
+    [list]="[{name:note.category.name, url:note.category.url}, {name:note.name, url:null}]"
+></app-breadcrumbs>
 <div class="content-container sh-page-layout-default">
     <div class="container entry-content">
         <div id="content-wrapper">
             <div id="content" class="content-layout-standard ">
                 <div class="blog-single blog-style-single blog-style-single-share  blog-blockquote-style2  blog-style-post-toptitle">
-                    <article [id]="'post-'+note.id" class="post-item post-item-single post type-post status-publish format-standard has-post-thumbnail hentry">
+                    <article [id]="'post-'+note.id"
+                        class="post-item post-item-single post type-post status-publish format-standard has-post-thumbnail hentry"
+                        *ngIf="!loading else loadingTmp"
+                    >
                         <div class="post-item-single-container">
                             <div class="post-content-share post-content-share-bar jssocials">
                                 <div class="jssocials-shares">
@@ -45,9 +51,9 @@
                                                 {{ note.date_create }}
                                             </a>
                                         </span>
-                                        <a href="https://gillion.shufflehound.com/2017/01/31/5-ways-animals-will-help-you-get-more-business/#comments" class="post-comments">
+                                        <a href="#" class="post-comments">
                                             <i class="icon icon-bubble"></i>
-                                            2
+                                            {{countComment}}
                                         </a>
                                         <span class="post-readtime">
                                             <i class="icon icon-clock"></i>
@@ -152,9 +158,24 @@
                         </div>
                         <app-related-posts [posts]="similarPosts"></app-related-posts>
                     </article>
-                    <app-comments [postId]="note.id" *ngIf="note != undefined"></app-comments>
+                    <app-comments [postId]="note.id" *ngIf="note != undefined"
+                        (changeCount)="changeCountComment($event)"
+                    ></app-comments>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<ng-template #loadingTmp>
+    <article class="post-item post-item-single post type-post status-publish format-standard has-post-thumbnail hentry">
+        <app-loader
+            [image]="true"
+            [heightImage]="600"
+            [widthImage]="840"
+            [inline]="false"
+            [lines]="25"
+            [lineWidth]="100"
+        ></app-loader>
+    </article>
+</ng-template>

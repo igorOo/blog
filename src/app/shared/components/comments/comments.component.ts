@@ -1,4 +1,4 @@
-import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../../environments/environment";
 import {Comment, Comments} from "../../../models/Comments";
@@ -31,6 +31,10 @@ export class CommentsComponent implements OnInit {
     // @ts-ignore
     @ViewChild('commentForm') commentForm: ElementRef
 
+    @Output() changeCount = new EventEmitter<number>();
+    change(increased:number) {
+        this.changeCount.emit(increased);
+    }
 
     constructor(private http: HttpClient, public authService: AuthService, private router: Router) {
         authService.currentUser.subscribe(user => {
@@ -51,6 +55,7 @@ export class CommentsComponent implements OnInit {
                 if (result.comments != undefined){
                     this.comments = result.comments
                     this.count_comments = result.count_comments
+                    this.change(this.count_comments)
 
                     if(result.pages !== undefined){
                         this.lastPage = result.pages.lastPage

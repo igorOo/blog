@@ -19,6 +19,7 @@ export class NewComponent implements OnInit {
     public similarPosts: Array<TopPost> | undefined
     public topReaderPosts: Array<TopPost> | undefined
     public randomImagePosts: Array<TopPost> | undefined
+    public countComment: number = 0
 
     constructor(
         private http: HttpClient,
@@ -82,6 +83,10 @@ export class NewComponent implements OnInit {
                     }
                 })
         })
+    }
+
+    changeCountComment(countComment: number) {
+        this.countComment = countComment
     }
 
 }

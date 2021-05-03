@@ -6,7 +6,7 @@ import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core'
     styleUrls: ['./nextprev.component.scss']
 })
 export class NextprevComponent implements OnInit, OnChanges {
-    @Input() list!: Array<any>
+    @Input() list: Array<any> | undefined
 
     constructor() {
     }

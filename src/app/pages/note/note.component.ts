@@ -18,6 +18,7 @@ export class NoteComponent implements OnInit {
     public time: number = Date.now()
     public similarPosts: Array<TopPost> | undefined
     public nextPrevPosts: Array<any> | undefined
+    public countComment: number = 0
 
     constructor(
         private http: HttpClient,
@@ -78,4 +79,7 @@ export class NoteComponent implements OnInit {
         })
     }
 
+    changeCountComment(countComment: number) {
+        this.countComment = countComment
+    }
 }

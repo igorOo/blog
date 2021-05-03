@@ -17,6 +17,7 @@ export class News implements Post{
     url!: string
     author?: Users | string
     time_read?: string
+    count_read!: number;
     count_comment?: number = 0
     preview?: string
 }

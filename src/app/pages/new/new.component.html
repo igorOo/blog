@@ -1,33 +1,7 @@
-<div class="sh-titlebar">
-    <div class="container">
-        <div class="sh-table sh-titlebar-height-small">
-            <div class="titlebar-title sh-table-cell">
-                <h2 *ngIf="!loading"> {{ post.name }} </h2>
-            </div>
-            <div class="title-level sh-table-cell">
-                <div id="breadcrumbs" class="breadcrumb-trail breadcrumbs">
-                    <span class="item-home">
-                        <a class="bread-link bread-home" href="/" title="Главная">
-                            Главная
-                        </a>
-                    </span>
-                    <span class="separator"> &gt; </span>
-                    <span class="item-cat" *ngIf="!loading">
-                        <a [href]="post.category.url">
-                            {{ post.category.name }}
-                        </a>
-                    </span>
-                    <span class="separator"> &gt; </span>
-                    <span class="item-current item-69" *ngIf="!loading">
-                        <span class="bread-current bread-69" [title]="post.name">
-                            {{ post.name }}
-                        </span>
-                    </span>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<app-breadcrumbs
+    [title]="post.name"
+    [list]="[{name:post.category.name, url:post.category.url}, {name:post.name, url:null}]"
+></app-breadcrumbs>
 <div class="content-container sh-page-layout-default" style="transform: none;">
     <div class="container entry-content" style="transform: none;">
         <div id="content-wrapper" class="content-wrapper-with-sidebar" style="transform: none;">
@@ -82,10 +56,10 @@
                                                 {{ post.date_create }}
                                             </a>
                                         </span>
-                                        <a href="https://gillion.shufflehound.com/2017/01/31/health-tips-and-benefits-of-healthy-lifestyle-you-should-consider/#comments"
+                                        <a href="#"
                                            class="post-comments">
                                             <i class="icon icon-bubble"></i>
-                                            0
+                                            {{countComment}}
                                         </a>
                                         <span class="post-readtime">
                                             <i class="icon icon-clock"></i>
@@ -93,7 +67,7 @@
                                         </span>
                                         <span class="post-views">
                                             <i class="icon icon-eye"></i>
-                                            5928
+                                            {{post.count_read}}
                                         </span>
                                         <span class="responsive-post-read-later">
                                             <span class="post-read-later post-read-later-guest tooltipstered">
@@ -175,7 +149,9 @@
                         </div>
                         <app-related-posts [posts]="similarPosts"></app-related-posts>
                     </article>
-                    <app-comments [postId]="post.id" *ngIf="post != undefined"></app-comments>
+                    <app-comments [postId]="post.id" *ngIf="post != undefined"
+                                  (changeCount)="changeCountComment($event)"
+                    ></app-comments>
                 </div>
             </div>
             <div id="sidebar" class="sidebar-right"

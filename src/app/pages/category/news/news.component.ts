@@ -23,8 +23,13 @@ export class NewsComponent implements OnInit {
             {
                 headers: {'Content-Type': 'application/json'}
             })
-            .subscribe(result => {
-                console.log(result)
+            .subscribe((result:any) => {
+                if (result["posts"] !== undefined){
+                    this.list = result["posts"]
+                    console.log(this.list)
+                }
+
+                this.loading = false
             })
     }
 

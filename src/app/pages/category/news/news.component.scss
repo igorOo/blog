@@ -1,0 +1,9 @@
+.blog-style-masonry{
+    column-count: 2;
+
+    article {
+        width:  unset;
+        float: unset;
+        display: inline-block;
+    }
+}

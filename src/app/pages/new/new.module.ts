@@ -4,14 +4,11 @@ import {SharedModule} from "../../shared/modules/shared-module/shared.module";
 import {NewRoutingModule} from "./new-routing.module";
 import {NewComponent} from "./new.component";
 import {CommonModule} from "@angular/common";
-import {RandomImagePostsComponent} from './components/random-image-posts/random-image-posts.component';
 import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
     declarations: [
         NewComponent,
-
-        RandomImagePostsComponent
     ],
     imports: [
         NewRoutingModule,

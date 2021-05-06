@@ -70,7 +70,7 @@ export class NewComponent implements OnInit {
 
         //запрос на менее важный контент после получения данных статьи. (похожие статьи, топ читаемых, коммментарии и т.д.)
         obs.subscribe((data:any) => {
-            this.http.get(environment.restUrl+"/api/v1/new/get-other-posts/"+data.category+"/"+data.post)
+            this.http.get(environment.restUrl+"/api/v1/new/get-other-posts/"+data.category)
                 .subscribe((result:any) => {
                     if (result["similar-posts"] != undefined) {
                         this.similarPosts = result["similar-posts"]

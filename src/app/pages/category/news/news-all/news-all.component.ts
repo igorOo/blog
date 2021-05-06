@@ -1,17 +1,17 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {News} from "../../../../models/News";
+import {TopPost} from "../../../index/interfaces/TopPost";
 import {HttpClient} from "@angular/common/http";
-import {News} from "../../../models/News";
-import {environment} from "../../../../environments/environment";
 import {ActivatedRoute, Params, Router} from "@angular/router";
 import {Observable} from "rxjs";
-import {TopPost} from "../../index/interfaces/TopPost";
+import {environment} from "../../../../../environments/environment";
 
 @Component({
-    selector: 'app-news',
-    templateUrl: './news.component.html',
-    styleUrls: ['./news.component.scss']
+    selector: 'app-news-all',
+    templateUrl: './news-all.component.html',
+    styleUrls: ['./news-all.component.scss']
 })
-export class NewsComponent implements OnInit {
+export class NewsAllComponent implements OnInit {
 
     public list!: Array<News>
     public categoryName: string = ''
@@ -24,7 +24,7 @@ export class NewsComponent implements OnInit {
     @ViewChild("lineposts") lineposts: ElementRef
 
     constructor(
-        private  http: HttpClient,
+        private http: HttpClient,
         private router: ActivatedRoute,
         private thisRouter: Router
     ) {
@@ -39,35 +39,16 @@ export class NewsComponent implements OnInit {
         this.loadData(false)
     }
 
-
-    changePage($event: number) {
-        this.page = $event
-
-        //смена параметра pgae в строке адреса браузера
-        const queryParams: Params = { page: this.page };
-        this.thisRouter.navigate(
-            [],
-            {
-                relativeTo: this.router,
-                queryParams: queryParams,
-                queryParamsHandling: 'merge'
-            }
-        )
-        this.loadData(true)
-
-    }
-
     private loadData(update: boolean) {
         this.loading = true
         let obs = new Observable(sub => {
-            this.http.get(environment.restUrl + "/api/v1/news/category/" + this.router.snapshot.params["translit"] + "?page=" + this.page,
+            this.http.get(environment.restUrl + "/api/v1/news"+ "?page=" + this.page,
                 {
                     headers: {'Content-Type': 'application/json'}
                 })
                 .subscribe((result: any) => {
                     if (result["posts"] !== undefined) {
                         this.list = result["posts"]
-                        this.categoryName = result["posts"][0].category
                     }
 
                     if (result.pages !== undefined) {
@@ -106,7 +87,24 @@ export class NewsComponent implements OnInit {
         this.loading = false
     }
 
-    titlePage(){
-        return this.page > 1 ? ' страница '+ this.page : ''
+    changePage($event: number) {
+        this.page = $event
+
+        //смена параметра pgae в строке адреса браузера
+        const queryParams: Params = { page: this.page };
+        this.thisRouter.navigate(
+            [],
+            {
+                relativeTo: this.router,
+                queryParams: queryParams,
+                queryParamsHandling: 'merge'
+            }
+        )
+        this.loadData(true)
+
+    }
+
+    titlePage() {
+        return this.page > 1 ? ' страница ' + this.page : ''
     }
 }

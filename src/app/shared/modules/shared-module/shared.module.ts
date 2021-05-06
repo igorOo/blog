@@ -11,6 +11,7 @@ import {CommentsComponent} from "../../components/comments/comments.component";
 import {NextprevComponent} from "../../components/nextprev/nextprev.component";
 import {TopReadersComponent} from "../../components/top-readers/top-readers.component";
 import {SlickCarouselModule} from "ngx-slick-carousel";
+import {RandomImagePostsComponent} from "../../components/random-image-posts/random-image-posts.component";
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import {SlickCarouselModule} from "ngx-slick-carousel";
         CommentsComponent,
         NextprevComponent,
         TopReadersComponent,
+        RandomImagePostsComponent,
     ],
     imports: [
         CommonModule,
@@ -39,6 +41,7 @@ import {SlickCarouselModule} from "ngx-slick-carousel";
         CommentsComponent,
         NextprevComponent,
         TopReadersComponent,
+        RandomImagePostsComponent,
     ]
 })
 export class SharedModule {

@@ -1,5 +1,6 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
-import {TopPost} from "../../../index/interfaces/TopPost";
+import {TopPost} from "../../../pages/index/interfaces/TopPost";
+
 
 @Component({
     selector: 'app-top-readers',

@@ -1,10 +1,51 @@
 <div class="sh-pagination sh-default-color">
     <ul class="page-numbers" *ngIf="lastPage>1">
         <li><a class="prev page-numbers" *ngIf="currentPage>1" (click)="clickPage(currentPage-1, $event)"> Назад </a></li>
-        <li *ngFor="let page of arrayPages">
-            <span aria-current="page" class="page-numbers current" *ngIf="page == currentPage">{{page}}</span>
-            <a class="page-numbers" (click)="clickPage(page, $event)" *ngIf="page != currentPage">{{page}}</a>
-        </li>
+        <ng-container *ngFor="let page of arrayPages; index as key">
+            <ng-container *ngIf="currentPage<5">
+                <ng-container *ngIf="key<5">
+                    <li>
+                        <span aria-current="page" class="page-numbers current" *ngIf="page == currentPage">{{page}}</span>
+                        <a class="page-numbers" (click)="clickPage(page, $event)" *ngIf="page != currentPage">{{page}}</a>
+                    </li>
+                </ng-container>
+                <ng-container *ngIf="key==5">
+                    <li>
+                        <span class="page-numbers">...</span>
+                    </li>
+                </ng-container>
+            </ng-container>
+            <ng-container *ngIf="currentPage>=5">
+                <ng-container *ngIf="key==0">
+                    <li>
+                        <span aria-current="page" class="page-numbers current" *ngIf="page == currentPage">{{page}}</span>
+                        <a class="page-numbers" (click)="clickPage(page, $event)" *ngIf="page != currentPage">{{page}}</a>
+                    </li>
+                </ng-container>
+                <ng-container *ngIf="key==1">
+                    <li>
+                        <span class="page-numbers">...</span>
+                    </li>
+                </ng-container>
+                <ng-container *ngIf="nearPage(key)">
+                    <li>
+                        <span aria-current="page" class="page-numbers current" *ngIf="page == currentPage">{{page}}</span>
+                        <a class="page-numbers" (click)="clickPage(page, $event)" *ngIf="page != currentPage">{{page}}</a>
+                    </li>
+                </ng-container>
+                <ng-container *ngIf="(key+1)-2 == currentPage && currentPage+3 < lastPage">
+                    <li>
+                        <span class="page-numbers">...</span>
+                    </li>
+                </ng-container>
+            </ng-container>
+            <ng-container *ngIf="key == lastPage-1 && currentPage+2 < lastPage">
+                <li>
+                    <span aria-current="page" class="page-numbers current" *ngIf="page == currentPage">{{page}}</span>
+                    <a class="page-numbers" (click)="clickPage(page, $event)" *ngIf="page != currentPage">{{page}}</a>
+                </li>
+            </ng-container>
+        </ng-container>
         <li><a class="next page-numbers" (click)="clickPage(currentPage+1, $event)" *ngIf="currentPage<lastPage"> Вперед </a></li>
     </ul>
 </div>

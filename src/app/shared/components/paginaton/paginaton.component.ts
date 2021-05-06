@@ -34,4 +34,19 @@ export class PaginatonComponent implements OnInit, OnChanges {
         this.currentPage = page
         this.changePage.emit(page)
     }
+
+    nearPage(key: number):boolean{
+        let index = key+1
+        if(this.currentPage-index == 2)
+            return true
+        if (this.currentPage-index == 1)
+            return true
+        if (this.currentPage-index==-2)
+            return true
+        if (this.currentPage-index==-1)
+            return true
+        if (this.currentPage-index==0)
+            return true
+        return false
+    }
 }

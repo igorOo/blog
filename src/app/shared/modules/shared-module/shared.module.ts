@@ -9,6 +9,8 @@ import {PaginatonComponent} from "../../components/paginaton/paginaton.component
 import {RelatedPostsComponent} from "../../components/related-posts/related-posts.component";
 import {CommentsComponent} from "../../components/comments/comments.component";
 import {NextprevComponent} from "../../components/nextprev/nextprev.component";
+import {TopReadersComponent} from "../../components/top-readers/top-readers.component";
+import {SlickCarouselModule} from "ngx-slick-carousel";
 
 
 @NgModule({
@@ -20,11 +22,13 @@ import {NextprevComponent} from "../../components/nextprev/nextprev.component";
         RelatedPostsComponent,
         CommentsComponent,
         NextprevComponent,
+        TopReadersComponent,
     ],
     imports: [
         CommonModule,
         ReactiveFormsModule,
         FormsModule,
+        SlickCarouselModule,
     ],
     exports: [
         SubscribeComponent,
@@ -34,6 +38,7 @@ import {NextprevComponent} from "../../components/nextprev/nextprev.component";
         RelatedPostsComponent,
         CommentsComponent,
         NextprevComponent,
+        TopReadersComponent,
     ]
 })
 export class SharedModule {

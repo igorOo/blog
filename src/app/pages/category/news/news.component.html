@@ -2,7 +2,8 @@
     <div class="container entry-content" style="transform: none;">
         <div id="content-wrapper" class="content-wrapper-with-sidebar" style="transform: none;">
             <div id="content" class="blog-page-list content-with-sidebar-right sh-pagination-left">
-                <div class="sh-group blog-list blog-style-masonry blog-style-masonry-card blog-dividing-line-on">
+                <div id="top-posts-categoty-line" #lineposts></div>
+                <div class="sh-group blog-list blog-style-masonry blog-style-masonry-card blog-dividing-line-on" *ngIf="!loading else loadingTmp">
                     <ng-container *ngFor="let post of list; index as key">
                         <article [id]="'post-'+post.id"
                                  class="post-item post type-post status-publish format-standard has-post-thumbnail hentry">
@@ -57,19 +58,7 @@
                     </ng-container>
                 </div>
                 <div class="sh-pagination sh-default-color">
-                    <ul class="page-numbers">
-                        <li><span aria-current="page" class="page-numbers current">1</span></li>
-                        <li><a class="page-numbers"
-                               href="https://gillion.shufflehound.com/page-layouts/sidebar-right/page/2/">2</a></li>
-                        <li><a class="page-numbers"
-                               href="https://gillion.shufflehound.com/page-layouts/sidebar-right/page/3/">3</a></li>
-                        <li><a class="page-numbers"
-                               href="https://gillion.shufflehound.com/page-layouts/sidebar-right/page/4/">4</a></li>
-                        <li><a class="page-numbers"
-                               href="https://gillion.shufflehound.com/page-layouts/sidebar-right/page/5/">5</a></li>
-                        <li><a class="next page-numbers"
-                               href="https://gillion.shufflehound.com/page-layouts/sidebar-right/page/2/">Next</a></li>
-                    </ul>
+                    <app-paginaton [currentPage]="page" [lastPage]="lastPage" (changePage)="changePage($event)"></app-paginaton>
                 </div>
             </div>
             <div id="sidebar" class="sidebar-right"
@@ -439,3 +428,18 @@
         </div>
     </div>
 </div>
+
+<ng-template #loadingTmp>
+    <div class="sh-group blog-list blog-style-masonry blog-style-masonry-card blog-dividing-line-on">
+        <article class="post-item post type-post status-publish format-standard has-post-thumbnail hentry" *ngFor="let item of [1,2,3,4,5,6,7,8,9]">
+            <app-loader
+                [image]="true"
+                [heightImage]="265"
+                [widthImage]="398"
+                [inline]="false"
+                [lines]="5"
+                [lineWidth]="90"
+            ></app-loader>
+        </article>
+    </div>
+</ng-template>

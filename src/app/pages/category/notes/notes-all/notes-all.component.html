@@ -1,1 +1,85 @@
-<p>notes-all works!</p>
+<app-breadcrumbs
+    [title]="'Статьи ' + titlePage()"
+    [list]="[{name:'Статьи', url:null}]"
+></app-breadcrumbs>
+<div class="content-container sh-page-layout-default">
+    <div class="container entry-content">
+        <div id="content-wrapper">
+            <div id="content" class="blog-page-list sh-pagination-left">
+                <div id="top-posts-categoty-line" #lineposts></div>
+                <div class="sh-group blog-list blog-style-masonry blog-dividing-line-on">
+                    <ng-container *ngFor="let post of list; index as key">
+                        <article [id]="'post-'+post.id"
+                                 class="post-item post type-post status-publish format-standard has-post-thumbnail hentry">
+                            <div class="post-container">
+                                <div class="post-thumbnail">
+                                    <img [src]="post.main_image" class="attachment-gillion-masonry size-gillion-masonry wp-post-image"
+                                         [alt]="post.name">
+                                    <a [href]="post.url" class="post-overlay">
+                                        <div class="post-overlay-content"><span></span> <span></span> <span></span></div>
+                                    </a>
+                                    <div class="post-categories-container">
+                                        <div class="post-categories">
+                                            <a [href]="post.cat_translit">{{post.category}}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="post-content-container">
+                                    <a [href]="post.url" class="post-title">
+                                        <h2>{{post.name}}
+                                            <span class="post-read-later post-read-later-guest tooltipstered">
+                                                <i class="fa fa-bookmark-o"></i>
+                                            </span>
+                                        </h2>
+                                    </a>
+                                    <div class="post-meta">
+                                        <div class="post-meta-content">
+                                            <span class="post-auhor-date">
+                                                <span *ngIf="post.author != undefined">
+                                                    <a href="https://gillion.shufflehound.com/author/gillionshufflehound/" class="post-author">
+                                                        Gillion
+                                                    </a>,
+                                                </span>
+                                                <a [href]="post.url" class="post-date">
+                                                    {{ post.date_create }}
+                                                </a>
+                                            </span>
+                                            <a [href]="post.url+'#comments'" class="post-comments" *ngIf="post.count_comment">
+                                                <i class="icon icon-bubble"></i>
+                                                {{post.count_comment }}
+                                            </a>
+                                            <span class="responsive-post-read-later">
+                                                <span class="post-read-later post-read-later-guest tooltipstered">
+                                                    <i class="fa fa-bookmark-o"></i>
+                                                </span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="post-content" [innerHTML]="post.preview"></div>
+                                </div>
+                            </div>
+                        </article>
+                    </ng-container>
+                </div>
+                <div class="sh-pagination sh-default-color">
+                    <app-paginaton [currentPage]="page" [lastPage]="lastPage" (changePage)="changePage($event)"></app-paginaton>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #loadingTmp>
+    <div class="sh-group blog-list blog-style-masonry blog-dividing-line-on">
+        <article class="post-item post type-post status-publish format-standard has-post-thumbnail hentry" *ngFor="let item of [1,2,3,4,5,6,7,8,9]">
+            <app-loader
+                [image]="true"
+                [heightImage]="265"
+                [widthImage]="398"
+                [inline]="false"
+                [lines]="5"
+                [lineWidth]="90"
+            ></app-loader>
+        </article>
+    </div>
+</ng-template>

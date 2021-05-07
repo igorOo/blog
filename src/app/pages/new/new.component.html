@@ -1,4 +1,5 @@
 <app-breadcrumbs
+    *ngIf="!loading"
     [title]="post.name"
     [list]="[{name:post.category.name, url:post.category.url}, {name:post.name, url:null}]"
 ></app-breadcrumbs>

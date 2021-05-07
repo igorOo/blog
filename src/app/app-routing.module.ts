@@ -11,6 +11,7 @@ const routes: Routes = [{
         {path: 'note', loadChildren: () => import("./pages/note/note.module").then(module => module.NoteModule)},
         {path: 'news', loadChildren: () => import("./pages/category/news/news.module").then(module => module.NewsModule)},
         {path: 'notes', loadChildren: () => import("./pages/category/notes/notes.module").then(module => module.NotesModule)},
+        {path: 'gallery', loadChildren: () => import("./pages/gallery/gallery.module").then(module => module.GalleryModule)},
         {path: '', loadChildren: () => import("./pages/auth/auth.module").then(module=>module.AuthModule)}
     ]
 }];

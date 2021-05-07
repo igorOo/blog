@@ -1,4 +1,4 @@
-<div class="post-related-title post-slide-arrows-container">
+<div class="post-related-title post-slide-arrows-container" *ngIf="!loading && list.length > 0">
     <h2 class="post-single-title"> Похожие статьи </h2>
 </div>
 <div class="post-related" *ngIf="!loading else loadingTmpl">

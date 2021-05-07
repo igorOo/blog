@@ -1,4 +1,5 @@
 <app-breadcrumbs
+    *ngIf="!loading"
     [title]="note.name"
     [list]="[{name:note.category.name, url:note.category.url}, {name:note.name, url:null}]"
 ></app-breadcrumbs>

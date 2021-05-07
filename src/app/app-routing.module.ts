@@ -10,6 +10,7 @@ const routes: Routes = [{
         {path: 'new', loadChildren: () => import("./pages/new/new.module").then(module => module.NewModule)},
         {path: 'note', loadChildren: () => import("./pages/note/note.module").then(module => module.NoteModule)},
         {path: 'news', loadChildren: () => import("./pages/category/news/news.module").then(module => module.NewsModule)},
+        {path: 'notes', loadChildren: () => import("./pages/category/notes/notes.module").then(module => module.NotesModule)},
         {path: '', loadChildren: () => import("./pages/auth/auth.module").then(module=>module.AuthModule)}
     ]
 }];

@@ -1,0 +1,15 @@
+.blog-style-masonry{
+    column-count: 3;
+
+    article {
+        width:  unset;
+        float: unset;
+        display: inline-block;
+    }
+}
+.sh-pagination{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}

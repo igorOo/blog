@@ -1,18 +1,19 @@
 import {Component, OnInit} from '@angular/core';
-import {Gallery} from "../../models/Gallery";
+import {Gallery} from "../../../models/Gallery";
 import {HttpClient} from "@angular/common/http";
 import {ActivatedRoute, Params, Router} from "@angular/router";
 import {Observable} from "rxjs";
-import {environment} from "../../../environments/environment";
+import {environment} from "../../../../environments/environment";
 
 @Component({
-    selector: 'app-gallery',
-    templateUrl: './gallery.component.html',
-    styleUrls: ['./gallery.component.scss']
+    selector: 'app-gallery-category',
+    templateUrl: './gallery-category.component.html',
+    styleUrls: ['./gallery-category.component.scss']
 })
-export class GalleryComponent implements OnInit {
+export class GalleryCategoryComponent implements OnInit {
 
     public list!: Array<Gallery>
+    public categoryName: string = ''
     public loading: boolean = true
     public page: number = 1
     public lastPage: number = 1
@@ -21,7 +22,7 @@ export class GalleryComponent implements OnInit {
         private  http: HttpClient,
         private router: ActivatedRoute,
         private thisRouter: Router
-    ){
+    ) {
     }
 
     ngOnInit(): void {
@@ -36,7 +37,7 @@ export class GalleryComponent implements OnInit {
     private loadData(update: boolean) {
         this.loading = true
         let obs = new Observable(sub => {
-            this.http.get(environment.restUrl + "/api/v1/gallery" + "?page=" + this.page,
+            this.http.get(environment.restUrl + "/api/v1/gallery/category/"  + this.router.snapshot.params["translit"] + "?page=" + this.page,
                 {
                     headers: {'Content-Type': 'application/json'}
                 })
@@ -47,6 +48,7 @@ export class GalleryComponent implements OnInit {
                         }else{
                             this.list = result["data"]
                         }
+                        this.categoryName = result["posts"][0].category
                     }
 
                     if (result.pages !== undefined) {

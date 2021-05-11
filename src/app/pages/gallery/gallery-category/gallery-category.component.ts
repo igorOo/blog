@@ -48,7 +48,7 @@ export class GalleryCategoryComponent implements OnInit {
                         }else{
                             this.list = result["data"]
                         }
-                        this.categoryName = result["posts"][0].category
+                        this.categoryName = result["data"][0].category
                     }
 
                     if (result.pages !== undefined) {

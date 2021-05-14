@@ -4,11 +4,12 @@ import {GalleryComponent} from './gallery.component';
 import {SharedModule} from "../../shared/modules/shared-module/shared.module";
 import {GalleryRoutingModule} from "./gallery-routing.module";
 import { GalleryCategoryComponent } from './gallery-category/gallery-category.component';
+import { DetailComponent } from './detail/detail.component';
 
 
 @NgModule({
     bootstrap: [GalleryComponent],
-    declarations: [GalleryComponent, GalleryCategoryComponent],
+    declarations: [GalleryComponent, GalleryCategoryComponent, DetailComponent],
     imports: [
         CommonModule,
         SharedModule,

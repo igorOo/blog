@@ -1,0 +1,89 @@
+<app-breadcrumbs
+    *ngIf="!loading"
+    [title]="detail.name"
+    [list]="[{name:'Галерея', url:'/gallery'},{name:detail.category.name, url:detail.category.url}, {name:detail.name, url:null}]"
+></app-breadcrumbs>
+
+<div class="content-container sh-page-layout-default">
+    <div class="container entry-content">
+        <div id="content-wrapper">
+            <div id="content" class="blog-page-list sh-pagination-left">
+                <div *ngIf="!loading else loadingTmp"
+                     class="sh-group blog-list blog-style-masonry blog-style-masonry-card blog-dividing-line-on">
+                    <div class="row">
+                        <div class="image-content col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                            <img [src]="detail.filename" [alt]="detail.alt" class="image-prew">
+                        </div>
+                        <div class="manual-size-box col-lg-3 col-md-3">
+                            <div class="original-box"><p class="original-size">
+                                Скачать оригинал:
+                            </p>
+                                <a target="_blank" href="/download/sobaka-v-pole/1920x1200" class="original-size-link">
+                                {{detail.resolution}}
+                                </a>
+                            </div>
+                            <form action="#" id="resForm" target="_blank" class="form-inline form-change-resolution">
+                                <div class="preset-box-change"><p>Или выберите разрешение для своего устройства</p>
+                                    <div class="preset-dropdown"><select id="selResolution" name="resolution"
+                                                                         class="form-control">
+                                        <option value=""></option>
+                                        <optgroup label="4:3">
+                                            <option value="320x240">320x240</option>
+                                            <option value="640x480">640x480</option>
+                                            <option value="800x600">800x600</option>
+                                            <option value="1024x768">1024x768</option>
+                                        </optgroup>
+                                        <optgroup label="5:4">
+                                            <option value="1280x1024">1280x1024</option>
+                                        </optgroup>
+                                        <optgroup label="16:9">
+                                            <option value="960x540">960x540</option>
+                                            <option value="1280x720">1280x720</option>
+                                            <option value="1600x900">1600x900</option>
+                                        </optgroup>
+                                        <optgroup label="16:10">
+                                            <option value="1140x900">1140x900</option>
+                                            <option value="1680x1050">1680x1050</option>
+                                        </optgroup>
+                                        <optgroup label="смартфоны">
+                                            <option value="480x640">480x640</option>
+                                            <option value="480x800">480x800</option>
+                                            <option value="540x960">540x960</option>
+                                        </optgroup>
+                                    </select></div>
+                                </div>
+                                <div class="manual-box-change"><p>Указать вручную разрешение</p>
+                                    <div class="manual-edit form-group">
+                                        x
+                                        px
+                                    </div>
+                                </div>
+                                <button type="submit" id="downImgBtn" class="btn btn-success" (click)="downloadImage(detail.translit, $event)">Скачать</button>
+                            </form>
+                            <form action="/download/sobaka-v-pole" id="cropForm" target="_blank" method="post">
+                                <div class="image-crop-box">
+                                    <button id="btnCropAccept" class="btn btn-danger">Обрезать</button>
+                                    <br> <br>
+                                    <button id="btnCropCancel" class="btn btn-default" style="display: none;">Отмена
+                                    </button>
+                                </div>
+                                <input type="hidden" value="391" name="resWidth" id="crResWidth">
+                                <input type="hidden" value="349" name="resHeigth" id="crResHeight">
+                                <input type="hidden" value="847.5" name="boxWidth" id="crBoxWidth">
+                                <input type="hidden" value="529.433" name="boxHeight" id="crBoxHeight">
+                                <input type="hidden" value="302" name="x1" id="crX1">
+                                <input type="hidden" value="72" name="y1" id="crY1">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #loadingTmp>
+    <div class="sh-group blog-list blog-style-masonry blog-style-masonry-card blog-dividing-line-on">
+        loading...
+    </div>
+</ng-template>

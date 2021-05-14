@@ -1,0 +1,39 @@
+.post-thumbnail img{
+    max-height: 219px;
+    min-height: 219px;
+    overflow: hidden;
+
+}
+
+.blog-style-masonry-card .post-thumbnail img,
+{
+    border-bottom-left-radius: 8px !important;
+    border-bottom-right-radius: 8px !important;
+}
+.sh-pagination{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+.sh-load-more {
+    padding: 27px;
+    border: 1px solid #ededed;
+    margin-top: 30px;
+    text-align: center;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: 0.2s all ease-in-out;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 700;
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.06);
+}
+.sh-load-more:not(.disabled):hover {
+    opacity: 0.8;
+}
+.sh-load-more.disabled,
+.sh-load-more.infinite {
+    cursor: default;
+    opacity: 0.5;
+}

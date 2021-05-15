@@ -1,10 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Observable} from "rxjs";
 import {environment} from "../../../../environments/environment";
 import {Gallery} from "../../../models/Gallery";
 import { saveAs } from 'file-saver';
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
     selector: 'app-detail',
@@ -17,6 +18,15 @@ export class DetailComponent implements OnInit {
     public detail!: Gallery
     public resolutionHeigth: number = 0
     public resolutionWidth: number = 0
+    public originalHeigth: number = 0
+    public originalWidth: number = 0
+    public customResolution: boolean = false
+
+    public form:FormGroup = new FormGroup({
+        formWidth: new FormControl('', Validators.pattern(/\d+/)),
+        formHeigth: new FormControl('', Validators.pattern(/\d+/)),
+        formSelect: new FormControl("")
+    })
 
     constructor(
         private http: HttpClient,
@@ -27,6 +37,40 @@ export class DetailComponent implements OnInit {
 
     ngOnInit(): void {
         this.loadData(false)
+        this.form.get("formSelect")?.valueChanges.subscribe(item => {
+            if (item !== ''){
+                let resolution: string[] = item.split("x")
+                this.resolutionWidth = Number.parseInt(resolution[0])
+                this.resolutionHeigth = Number.parseInt(resolution[1])
+                this.customResolution = true
+            }else{
+                this.resolutionWidth = 0
+                this.resolutionHeigth = 0
+                this.customResolution = false
+            }
+        })
+        this.form.get("formWidth")?.valueChanges.subscribe(item => {
+            if (item !== ''){
+                this.resolutionWidth = Number.parseInt(item)
+                if (this.resolutionWidth > 0 && this.resolutionHeigth > 0){
+                    this.customResolution = true
+                }
+            }else{
+                this.resolutionWidth = 0
+                this.customResolution = false
+            }
+        })
+        this.form.get("formHeigth")?.valueChanges.subscribe(item => {
+            if (item !== ''){
+                this.resolutionHeigth = Number.parseInt(item)
+                if (this.resolutionWidth > 0 && this.resolutionHeigth > 0){
+                    this.customResolution = true
+                }
+            }else{
+                this.resolutionHeigth = 0
+                this.customResolution = false
+            }
+        })
     }
 
     loadData(update: boolean = false){
@@ -40,8 +84,8 @@ export class DetailComponent implements OnInit {
                     if (result !== undefined) {
                         this.detail = result
                         let resolution = this.detail.resolution.split("x")
-                        this.resolutionWidth = Number.parseInt(resolution[0])
-                        this.resolutionHeigth = Number.parseInt(resolution[1])
+                        this.originalWidth = Number.parseInt(resolution[0])
+                        this.originalHeigth = Number.parseInt(resolution[1])
                     }
                     this.loading = false
 
@@ -61,10 +105,17 @@ export class DetailComponent implements OnInit {
         })
     }
 
-    downloadImage(translit: string, event: Event) {
+    downloadImage(translit: string, event: Event, resolution?: string) {
         event.stopImmediatePropagation()
         event.preventDefault()
-        this.http.get(environment.restUrl+"/api/v1/download/"+translit+"/"+this.resolutionWidth+"x"+this.resolutionHeigth,{
+        var width:number = this.resolutionWidth
+        var heigth:number = this.resolutionHeigth
+        if (resolution !== undefined){
+            let res: string[] = resolution.split("x")
+            width = Number.parseInt(res[0])
+            heigth = Number.parseInt(res[1])
+        }
+        this.http.get(environment.restUrl+"/api/v1/download/"+translit+"/"+width+"x"+heigth,{
             responseType: 'blob'})
             .subscribe(result => {
                 let file = new File([result], this.randomString()+".jpg", {type: "image/jpg"})
@@ -75,4 +126,6 @@ export class DetailComponent implements OnInit {
     randomString(){
         return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
     }
+
+
 }

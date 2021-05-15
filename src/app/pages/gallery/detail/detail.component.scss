@@ -1,0 +1,41 @@
+.original-box {
+    display: flex;
+    align-items: baseline;
+}
+#resForm {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+#selResolution {
+    width: 100%;
+}
+#selResolution {
+    width: 100%;
+}
+.manual-edit.form-group input {
+    width: 40%;
+    margin-right: 6px;
+}
+.manual-edit.form-group input:nth-child(2) {
+    margin-left: 6px;
+}
+#downImgBtn {
+    margin-bottom: 30px;
+}
+#btnCropAccept {
+    width: 100%;
+}
+.image-content img {
+    width: 100%;
+}
+#content {
+    margin-bottom: 150px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.original-size-link {
+    border-bottom: 1px dotted;
+    font-weight: bold;
+}
+

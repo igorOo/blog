@@ -115,7 +115,7 @@ export class DetailComponent implements OnInit {
             width = Number.parseInt(res[0])
             heigth = Number.parseInt(res[1])
         }
-        this.http.get(environment.restUrl+"/api/v1/download/"+translit+"/"+width+"x"+heigth,{
+        this.http.post(environment.restUrl+"/api/v1/download/"+translit+"/"+width+"x"+heigth,{},{
             responseType: 'blob'})
             .subscribe(result => {
                 let file = new File([result], this.randomString()+".jpg", {type: "image/jpg"})

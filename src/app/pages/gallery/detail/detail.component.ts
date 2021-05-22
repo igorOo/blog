@@ -6,6 +6,7 @@ import {environment} from "../../../../environments/environment";
 import {Gallery} from "../../../models/Gallery";
 import { saveAs } from 'file-saver';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import Cropper from 'cropperjs'
 
 @Component({
     selector: 'app-detail',
@@ -21,6 +22,13 @@ export class DetailComponent implements OnInit {
     public originalHeigth: number = 0
     public originalWidth: number = 0
     public customResolution: boolean = false
+
+    public resWidth: number = 0
+    public resHeigth: number = 0
+    public boxWidth: number = 0
+    public boxHeight: number = 0
+    public x1: number = 0
+    public y1: number = 0
 
     public form:FormGroup = new FormGroup({
         formWidth: new FormControl('', Validators.pattern(/\d+/)),
@@ -103,6 +111,28 @@ export class DetailComponent implements OnInit {
             // }
             this.loading = false
         })
+    }
+
+    activateCropMode(event: Event): void {
+        event.stopImmediatePropagation()
+        event.preventDefault()
+
+        const image = document.querySelector(".image-prew")
+        // @ts-ignore
+        const cropper = new Cropper(image, {
+            aspectRatio: 16 / 9,
+            // @ts-ignore
+            crop(event) {
+                console.log(event.detail.x);
+                console.log(event.detail.y);
+                console.log(event.detail.width);
+                console.log(event.detail.height);
+                console.log(event.detail.rotate);
+                console.log(event.detail.scaleX);
+                console.log(event.detail.scaleY);
+            },
+        });
+        console.log(cropper)
     }
 
     downloadImage(translit: string, event: Event, resolution?: string) {

@@ -72,7 +72,7 @@
                             </form>
                             <form action="/download/sobaka-v-pole" id="cropForm" target="_blank" method="post">
                                 <div class="image-crop-box">
-                                    <button id="btnCropAccept" class="btn btn-danger">Обрезать</button>
+                                    <button id="btnCropAccept" class="btn btn-danger" (click)="activateCropMode($event)">Обрезать</button>
                                     <br> <br>
                                     <button id="btnCropCancel" class="btn btn-default" style="display: none;">Отмена
                                     </button>

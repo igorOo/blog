@@ -6,11 +6,12 @@ import {GalleryRoutingModule} from "./gallery-routing.module";
 import { GalleryCategoryComponent } from './gallery-category/gallery-category.component';
 import { DetailComponent } from './detail/detail.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import { ImageCropperComponent } from './components/image-cropper/image-cropper.component';
 
 
 @NgModule({
     bootstrap: [GalleryComponent],
-    declarations: [GalleryComponent, GalleryCategoryComponent, DetailComponent],
+    declarations: [GalleryComponent, GalleryCategoryComponent, DetailComponent, ImageCropperComponent],
     imports: [
         CommonModule,
         SharedModule,

@@ -12,7 +12,7 @@
                      class="sh-group blog-list blog-style-masonry blog-style-masonry-card blog-dividing-line-on">
                     <div class="row">
                         <div class="image-content col-lg-9 col-md-9 col-sm-12 col-xs-12">
-                            <img [src]="detail.filename" [alt]="detail.alt" class="image-prew">
+                            <img [src]="detail.filename" [alt]="detail.alt" class="image-prew" #image crossorigin="">
                         </div>
                         <div class="manual-size-box col-lg-3 col-md-3">
                             <div class="original-box">
@@ -28,28 +28,8 @@
                                     <div class="preset-dropdown">
                                         <select id="selResolution" name="resolution" class="form-control" formControlName="formSelect">
                                             <option value=""></option>
-                                            <optgroup label="4:3">
-                                                <option value="320x240">320x240</option>
-                                                <option value="640x480">640x480</option>
-                                                <option value="800x600">800x600</option>
-                                                <option value="1024x768">1024x768</option>
-                                            </optgroup>
-                                            <optgroup label="5:4">
-                                                <option value="1280x1024">1280x1024</option>
-                                            </optgroup>
-                                            <optgroup label="16:9">
-                                                <option value="960x540">960x540</option>
-                                                <option value="1280x720">1280x720</option>
-                                                <option value="1600x900">1600x900</option>
-                                            </optgroup>
-                                            <optgroup label="16:10">
-                                                <option value="1140x900">1140x900</option>
-                                                <option value="1680x1050">1680x1050</option>
-                                            </optgroup>
-                                            <optgroup label="смартфоны">
-                                                <option value="480x640">480x640</option>
-                                                <option value="480x800">480x800</option>
-                                                <option value="540x960">540x960</option>
+                                            <optgroup [label]="group.key" *ngFor="let group of resolutionsList | keyvalue">
+                                                <option [value]="item" *ngFor="let item of group.value">{{item}}</option>
                                             </optgroup>
                                         </select>
                                     </div>
@@ -72,17 +52,13 @@
                             </form>
                             <form action="/download/sobaka-v-pole" id="cropForm" target="_blank" method="post">
                                 <div class="image-crop-box">
-                                    <button id="btnCropAccept" class="btn btn-danger" (click)="activateCropMode($event)">Обрезать</button>
-                                    <br> <br>
-                                    <button id="btnCropCancel" class="btn btn-default" style="display: none;">Отмена
+                                    <button id="btnCropAccept" class="btn btn-danger" (click)="activateCropMode($event)" *ngIf="!croppedMode">
+                                        Обрезать
+                                    </button>
+                                    <button id="btnCropCancel" class="btn btn-default" (click)="destroyCrop($event)" *ngIf="croppedMode">
+                                        Отмена
                                     </button>
                                 </div>
-                                <input type="hidden" value="391" name="resWidth" id="crResWidth">
-                                <input type="hidden" value="349" name="resHeigth" id="crResHeight">
-                                <input type="hidden" value="847.5" name="boxWidth" id="crBoxWidth">
-                                <input type="hidden" value="529.433" name="boxHeight" id="crBoxHeight">
-                                <input type="hidden" value="302" name="x1" id="crX1">
-                                <input type="hidden" value="72" name="y1" id="crY1">
                             </form>
                         </div>
                     </div>
@@ -97,3 +73,4 @@
         loading...
     </div>
 </ng-template>
+

@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {LayoutComponent} from './layout/layout.component';
 import {CommonModule} from "@angular/common";
+import {AuthGuardGuard} from "./guards/auth-guard.guard";
 
 const routes: Routes = [{
     path: '', component: LayoutComponent, children: [
@@ -12,6 +13,12 @@ const routes: Routes = [{
         {path: 'news', loadChildren: () => import("./pages/category/news/news.module").then(module => module.NewsModule)},
         {path: 'notes', loadChildren: () => import("./pages/category/notes/notes.module").then(module => module.NotesModule)},
         {path: 'gallery', loadChildren: () => import("./pages/gallery/gallery.module").then(module => module.GalleryModule)},
+        {
+            path: 'profile',
+            loadChildren: () => import("./pages/user/profile/profile.module").then(module => module.ProfileModule),
+            canActivate: [AuthGuardGuard],
+            canActivateChild: [AuthGuardGuard],
+        },
         {path: '', loadChildren: () => import("./pages/auth/auth.module").then(module=>module.AuthModule)}
     ]
 }];

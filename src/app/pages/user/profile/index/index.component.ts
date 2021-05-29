@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {HttpClient} from "@angular/common/http";
+import {environment} from "../../../../../environments/environment";
 
 @Component({
     selector: 'app-index',
@@ -7,10 +9,14 @@ import {Component, OnInit} from '@angular/core';
 })
 export class IndexComponent implements OnInit {
 
-    constructor() {
+    constructor(private http: HttpClient) {
     }
 
     ngOnInit(): void {
+        this.http.get(environment.restUrl+"/api/v1/user/profile")
+            .subscribe(result => {
+                console.log(result)
+            })
     }
 
 }

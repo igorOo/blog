@@ -1,1 +1,116 @@
-<p>index works!</p>
+<div class="content-container sh-page-layout-default">
+    <div class="container entry-content">
+        <div id="content-wrapper">
+            <div id="content" class="content-layout-standard ">
+                <div class="col-md-12">
+                    <div id="change_pass" role="dialog" tabindex="-1" class="fade modal">
+                        <div class="modal-dialog ">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" data-dismiss="modal" aria-hidden="true" class="close">×</button>
+                                    <h2>Смена пароля</h2></div>
+                                <div class="modal-body">
+                                    <form id="w0" action="/profile/changepassword/1" method="post" class="form-horizontal"><input
+                                        type="hidden" name="_csrf"
+                                        value="lKLQ-Rsx9GnN60LM0vADeiUQFuLaY_mAo5HzLrjdHWDF1Z2XUASkXJKINPSwqkY2b2FnmLNXtM_k-cJt3JNpAg==">
+                                        <div class="form-group"><label for="pass_change"
+                                                                       class="col-lg-4 col-md-4 col-sm-4 control-label"> Пароль </label>
+                                            <div class="col-lg-8 col-md-8 col-sm-8"><input type="password" id="pass_change"
+                                                                                           name="password" value=""
+                                                                                           class="form-control"></div>
+                                        </div>
+                                        <div class="form-group"><label for="pass_confirm"
+                                                                       class="col-lg-4 col-md-4 col-sm-4 control-label"> Подтверждение
+                                            пароля</label>
+                                            <div class="col-lg-8 col-md-8 col-sm-8"><input type="password" id="pass_confirm"
+                                                                                           name="password_confirm" value=""
+                                                                                           class="form-control"></div>
+                                            <div class="col-lg-8"><input type="hidden" id="pass_id" name="id" value="1"
+                                                                         class="form-control col-lg-6"></div>
+                                        </div>
+                                        <div class="form-group buttons">
+                                            <div class="pull-right">
+                                                <button type="submit" class="btn btn-primary">Изменить</button>
+                                                <button type="reset" data-dismiss="modal" class="btn btn-default">Отмена</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content-wrap">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="profile">
+                                    <div class="col-sm-12">
+                                        <div class="col-xs-12 col-sm-4 text-center">
+                                            <ul class="list-group">
+                                                <li class="list-group-item text-left"><span class="entypo-user"></span>&nbsp;&nbsp;Профиль
+                                                </li>
+                                                <li class="list-group-item text-center"><img src="/images/profiles/1.png" alt=""
+                                                                                             class="avatar img-circle"></li>
+                                                <li class="list-group-item text-center"><a href="/profile/edit?id=1"><span
+                                                    class="pull-center"><strong>Редактировать</strong></span></a></li>
+                                                <li class="list-group-item text-center"><a href="/profile/index" data-toggle="modal"
+                                                                                           data-target="#change_pass"><span
+                                                    class="pull-center"><strong>Сменить пароль</strong></span></a></li>
+                                                <li class="list-group-item text-center"><span
+                                                    class="pull-center"><strong></strong></span></li>
+                                                <li class="list-group-item text-center"><a href="/profile/delete/1"
+                                                                                           onclick="confirm(&quot;Действительно удалить профиль&quot;)"><span
+                                                    class="pull-center"><strong>Удалить профиль</strong></span></a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-8 profile-name"><h2>Супер Админ</h2>
+                                            <hr>
+                                            <dl class="dl-horizontal-profile">
+                                                <dt>Nickname</dt>
+                                                <dd>admin</dd>
+                                                <dt>Имя</dt>
+                                                <dd>Супер Админ</dd>
+                                                <dt>Email</dt>
+                                                <dd>sidorenko.iv@mail.ru</dd>
+                                                <dt>Рейтинг</dt>
+                                                <dd>0</dd>
+                                                <dt>Дата рождения</dt>
+                                                <dd>05.02.1987</dd>
+                                                <dt>Пол</dt>
+                                                <dd>Мужской</dd>
+                                                <dt>Дата регистрации</dt>
+                                                <dd>1 янв. 1970 г., 03:00:00</dd>
+                                                <dt>Последний визит</dt>
+                                                <dd>29 мая 2021 г., 10:28:17</dd>
+                                            </dl>
+                                            <hr>
+                                            <h5><span class="entypo-arrows-ccw"></span>Привязать профиль к социальным сетям</h5>
+                                            <div class="social-merge-box">
+                                                <div class="social-merge_item">
+                                                    <div class="sitem_image-box"><img src="/images/social/vk.png" alt="vk"></div>
+                                                    <div class="sitem_label">VK</div>
+                                                    <a href="/user/auth?authclient=vkontakte" class="btn btn-social btn-merged">
+                                                        Отключить </a></div>
+                                                <div class="social-merge_item">
+                                                    <div class="sitem_image-box"><img src="/images/social/facebook.png" alt="facebook">
+                                                    </div>
+                                                    <div class="sitem_label">Facebook</div>
+                                                    <a href="/user/auth?authclient=facebook" class="btn btn-social ">
+                                                        Подключить </a></div>
+                                                <div class="social-merge_item">
+                                                    <div class="sitem_image-box"><img src="/images/social/twitter.png" alt="twitter">
+                                                    </div>
+                                                    <div class="sitem_label">Twitter</div>
+                                                    <a href="/user/auth?authclient=twitter" class="btn btn-social ">
+                                                        Подключить </a></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

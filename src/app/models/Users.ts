@@ -8,4 +8,11 @@ export interface Users{
     roles: Array<string>
     token: string
     expires: string
+
+    FirstName?: string
+    LastName?: string
+    birthDate?: Date
+    gender?: string
+    lastVisit?: Date
+    dateCreate?: Date
 }

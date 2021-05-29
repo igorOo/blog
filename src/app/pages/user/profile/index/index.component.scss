@@ -1,0 +1,38 @@
+#change_pass{
+    display: none;
+}
+.profile-wrap{
+    .profile{
+        display: flex;
+        width: 100%;
+
+        .user-avatar.user-left-column {
+            flex-grow: 1;
+
+            .user-left_avatar {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .user-left_buttons {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-top: 30px;
+
+                .btn{
+                    width: 85%;
+                    margin-bottom: 15px;
+                    background-color: #f63a4c;
+                    color: #fff;
+                    border-radius: 100px;
+                }
+            }
+        }
+        .user-profile.user-rigth-column {
+            flex-grow: 4;
+            margin-left: 15px;
+        }
+    }
+}

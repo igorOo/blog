@@ -18,11 +18,15 @@ export class AuthGuardGuard implements CanActivate {
     {
         const currentUser = this.authService.currentUserValue;
         if (currentUser) {
+            if (Date.parse(currentUser.expires) < Date.now()){
+                this.router.navigate(['/login'], { queryParams: { returnUrl: state.url }});
+                return false
+            }
             // check if route is restricted by role
             if (route.data.roles && route.data.roles.indexOf(currentUser.roles) === -1) {
                 // пользователь не авторизован или не соответствует роль
-                this.router.navigate(['/']);
-                return false;
+                this.router.navigate(['/login'], { queryParams: { returnUrl: state.url }});
+                return false
             }
 
             // Пользователь авторизован

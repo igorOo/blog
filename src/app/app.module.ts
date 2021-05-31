@@ -1,4 +1,4 @@
-import {NgModule, NO_ERRORS_SCHEMA, Provider} from '@angular/core';
+import {LOCALE_ID, NgModule, NO_ERRORS_SCHEMA, Provider} from '@angular/core';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 
 import {AppRoutingModule} from './app-routing.module';
@@ -12,7 +12,10 @@ import {AuthService} from "./services/auth-service.service";
 import {Users} from "./models/Users";
 import {Router} from "@angular/router";
 import {Role} from "./models/Role";
+import {registerLocaleData} from "@angular/common";
+import localeRu from '@angular/common/locales/ru';
 
+registerLocaleData(localeRu, 'ru');
 
 const httpInterceptorHandlers: Provider = [
     {
@@ -37,7 +40,11 @@ const httpInterceptorHandlers: Provider = [
         LayoutComponent,
         MainmenuComponent,
     ],
-    providers: [httpInterceptorHandlers, AuthService],
+    providers: [
+        httpInterceptorHandlers,
+        AuthService,
+        { provide: LOCALE_ID, useValue: 'ru' }
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {

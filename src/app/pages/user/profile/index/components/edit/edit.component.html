@@ -1,0 +1,42 @@
+<h3>Редактирование профиля</h3>
+<form [formGroup]="form" (ngSubmit)="submitForm($event)">
+    <div class="form-group field-user-first_name">
+        <label for="user-first_name" class="col-lg-3 control-label">Фамилия:</label>
+        <div class="col-lg-8">
+            <input type="text" id="user-first_name" name="first_name" class="form-control" formControlName="first_name">
+        </div>
+    </div>
+    <div class="form-group field-user-last_name">
+        <label for="user-last_name" class="col-lg-3 control-label">Имя:</label>
+        <div class="col-lg-8">
+            <input type="text" id="user-last_name" name="last_name" class="form-control" formControlName="last_name">
+        </div>
+    </div>
+    <div class="form-group field-user-gender">
+        <label for="user-gender" class="col-lg-3 control-label">Пол</label>
+        <div class="col-lg-8">
+            <select id="user-gender" name="gender" class="form-control" formControlName="gender">
+                <option value="">Не выбрано</option>
+                <option value="1">Мужской</option>
+                <option value="2">Женский</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group field-user-birth"><label for="user-birth" class="col-lg-3 control-label">Дата рождения</label>
+        <div class="col-lg-8">
+            <input type="date" id="user-birth" name="birth" class="form-control krajee-datepicker" formControlName="birth">
+        </div>
+    </div>
+    <div class="form-group field-user-about">
+        <label for="user-about" class="col-lg-3 control-label">О себе:</label>
+        <div class="col-lg-8">
+            <textarea name="about" id="user-about" cols="30" rows="10" class="form-control" formControlName="about"></textarea>
+        </div>
+    </div>
+    <div class="form-group"><label class="col-md-3 control-label"></label>
+        <div class="col-md-8">
+            <button type="submit" class="btn btn-profile">Сохранить</button>
+            <a [routerLink]="['/profile']" class="btn btn-profile">Отмена</a>
+        </div>
+    </div>
+</form>

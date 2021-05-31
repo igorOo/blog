@@ -1,0 +1,42 @@
+
+    <h2>Супер Админ</h2>
+    <hr>
+    <dl class="dl-horizontal-profile" *ngIf="!loading">
+        <dt>Nickname</dt>
+        <dd>{{user.username}}</dd>
+        <dt>Имя</dt>
+        <dd>{{user.firstName}} {{user.lastName}}</dd>
+        <dt>Email</dt>
+        <dd>{{user.email}}</dd>
+        <dt>Рейтинг</dt>
+        <dd>0</dd>
+        <dt>Дата рождения</dt>
+        <dd>{{user.birthDate | date}}</dd>
+        <dt>Пол</dt>
+        <dd>Мужской</dd>
+        <dt>Дата регистрации</dt>
+        <dd>1 янв. 1970 г., 03:00:00</dd>
+        <dt>Последний визит</dt>
+        <dd>29 мая 2021 г., 10:28:17</dd>
+    </dl>
+    <hr>
+    <h5><span class="entypo-arrows-ccw"></span>Привязать профиль к социальным сетям</h5>
+    <div class="social-merge-box">
+        <div class="social-merge_item">
+            <div class="sitem_image-box"><img src="/images/social/vk.png" alt="vk"></div>
+            <div class="sitem_label">VK</div>
+            <a href="/user/auth?authclient=vkontakte" class="btn btn-social btn-merged">
+                Отключить </a></div>
+        <div class="social-merge_item">
+            <div class="sitem_image-box"><img src="/images/social/facebook.png" alt="facebook">
+            </div>
+            <div class="sitem_label">Facebook</div>
+            <a href="/user/auth?authclient=facebook" class="btn btn-social ">
+                Подключить </a></div>
+        <div class="social-merge_item">
+            <div class="sitem_image-box"><img src="/images/social/twitter.png" alt="twitter">
+            </div>
+            <div class="sitem_label">Twitter</div>
+            <a href="/user/auth?authclient=twitter" class="btn btn-social ">
+                Подключить </a></div>
+    </div>

@@ -21,4 +21,5 @@ class User implements Users{
 
 export class ProfileService{
     user = new BehaviorSubject(new User('mail@mail.ru', new Date(), 1, ["ADMIN", "USER"], 'sdkjfhsdgfjhgsdjfhg', 'username'))
+    result = new Subject()
 }

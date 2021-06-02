@@ -17,20 +17,19 @@
         <div class="col-lg-8">
             <select id="user-gender" name="gender" class="form-control" formControlName="gender">
                 <option value="">Не выбрано</option>
-                <option value="1">Мужской</option>
-                <option value="2">Женский</option>
+                <option *ngFor="let item of select | keyvalue" [ngValue]="item.key">{{item.value}}</option>
             </select>
         </div>
     </div>
     <div class="form-group field-user-birth"><label for="user-birth" class="col-lg-3 control-label">Дата рождения</label>
         <div class="col-lg-8">
-            <input type="date" id="user-birth" name="birth" class="form-control krajee-datepicker" formControlName="birth">
+            <input type="date" id="user-birth" name="birth" class="form-control" formControlName="birth" [ngModel]="user.birthDate | date:'yyyy-MM-dd'">
         </div>
     </div>
     <div class="form-group field-user-about">
         <label for="user-about" class="col-lg-3 control-label">О себе:</label>
         <div class="col-lg-8">
-            <textarea name="about" id="user-about" cols="30" rows="10" class="form-control" formControlName="about"></textarea>
+            <textarea name="about" id="user-about" cols="30" rows="10" class="form-control" formControlName="about" [ngModel]="user.about"></textarea>
         </div>
     </div>
     <div class="form-group"><label class="col-md-3 control-label"></label>

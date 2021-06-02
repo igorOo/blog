@@ -15,4 +15,5 @@ export interface Users{
     gender?: string
     lastVisit?: Date
     dateCreate?: Date
+    about?: string
 }

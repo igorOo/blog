@@ -21,7 +21,6 @@ export class MainComponent implements OnInit, OnChanges {
 
     ngOnInit(): void {
         this.profileService.user.subscribe(user => {
-            console.log(user)
             // @ts-ignore
             this.user = user
             this.loading = false

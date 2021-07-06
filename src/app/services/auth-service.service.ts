@@ -28,6 +28,10 @@ export class AuthService {
         this.currentUser = this.currentUserSubject.asObservable();
 
         this.currentUser.subscribe(user => {
+            if (user == null){
+                this.isAuthenticated = false
+                return
+            }
             let dateExpire = Date.parse(user.expires)
             if (user && user.token && dateExpire > new Date().getTime()) {
                 this.isAuthenticated = true

@@ -8,12 +8,12 @@
                             <li class="menu-item menu-item-type-custom menu-item-object-custom"
                                 *ngFor="let item of menu"
                                 [ngClass]="{'menu-item-has-children': item.children != undefined}">
-                                <a [href]="item.url[0]" class="sf-with-ul">{{ item.label }}</a>
+                                <a [href]="item.url" class="sf-with-ul">{{ item.label }}</a>
                                 <ul class="sub-menu" *ngIf="item.children != undefined">
                                     <li class="menu-item menu-item-type-custom menu-item-object-custom"
                                         *ngFor="let subitem of item.children"
                                     >
-                                        <a [href]="item.url[0]+'/category/'+subitem.translit">{{subitem.name}}</a>
+                                        <a [href]="item.url+'/category/'+subitem.translit">{{subitem.name}}</a>
                                     </li>
                                 </ul>
                             </li>

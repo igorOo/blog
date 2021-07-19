@@ -8,35 +8,45 @@
         <div id="content-wrapper">
             <div id="content" class="content-layout-standard ">
                 <div class="profile-wrap" *ngIf="!loading else loadingTmp">
-                    <div id="change_pass">
-                        <div class="modal-dialog ">
+                    <div id="change_pass" [ngClass]="showModal ? 'showed' : 'hidden'" (click)="hideModal()">
+                        <div class="modal-dialog" (click)="clickOnModal($event)">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <button type="button" data-dismiss="modal" aria-hidden="true" class="close">×</button>
+                                    <button type="button" data-dismiss="modal" aria-hidden="true" class="close" (click)="hideModal()">×</button>
                                     <h2>Смена пароля</h2></div>
                                 <div class="modal-body">
-                                    <form id="w0" action="/profile/changepassword/1" method="post" class="form-horizontal"><input
-                                        type="hidden" name="_csrf"
-                                        value="lKLQ-Rsx9GnN60LM0vADeiUQFuLaY_mAo5HzLrjdHWDF1Z2XUASkXJKINPSwqkY2b2FnmLNXtM_k-cJt3JNpAg==">
-                                        <div class="form-group"><label for="pass_change"
-                                                                       class="col-lg-4 col-md-4 col-sm-4 control-label"> Пароль </label>
-                                            <div class="col-lg-8 col-md-8 col-sm-8"><input type="password" id="pass_change"
-                                                                                           name="password" value=""
-                                                                                           class="form-control"></div>
+                                    <form method="post" class="form-horizontal" [formGroup]="form" (ngSubmit)="submitForm($event)">
+                                        <div class="form-group">
+                                            <label for="pass_change" class="col-lg-4 col-md-4 col-sm-4 control-label">
+                                                Пароль
+                                            </label>
+                                            <div class="col-lg-8 col-md-8 col-sm-8">
+                                                <input type="password" id="pass_change"
+                                                       name="password"
+                                                       class="form-control"
+                                                       formControlName="password"
+                                                       (input)="inputPassword()"
+                                                >
+                                            </div>
                                         </div>
-                                        <div class="form-group"><label for="pass_confirm"
-                                                                       class="col-lg-4 col-md-4 col-sm-4 control-label"> Подтверждение
-                                            пароля</label>
-                                            <div class="col-lg-8 col-md-8 col-sm-8"><input type="password" id="pass_confirm"
-                                                                                           name="password_confirm" value=""
-                                                                                           class="form-control"></div>
-                                            <div class="col-lg-8"><input type="hidden" id="pass_id" name="id" value="1"
-                                                                         class="form-control col-lg-6"></div>
+                                        <div class="form-group">
+                                            <label for="pass_confirm" class="col-lg-4 col-md-4 col-sm-4 control-label">
+                                                Подтверждение пароля
+                                            </label>
+                                            <div class="col-lg-8 col-md-8 col-sm-8">
+                                                <input type="password" id="pass_confirm"
+                                                       name="password_confirm"
+                                                       class="form-control"
+                                                       formControlName="confirmPassword"
+                                                       (input)="inputPassword()"
+                                                >
+                                            </div>
                                         </div>
+                                        <div class="alert" #infoPassword></div>
                                         <div class="form-group buttons">
                                             <div class="pull-right">
                                                 <button type="submit" class="btn btn-primary">Изменить</button>
-                                                <button type="reset" data-dismiss="modal" class="btn btn-default">Отмена</button>
+                                                <button type="reset" data-dismiss="modal" class="btn btn-default" (click)="hideModal()">Отмена</button>
                                             </div>
                                         </div>
                                     </form>
@@ -47,10 +57,10 @@
                     <div class="profile">
                         <div class="user-avatar user-left-column">
                             <div class="user-left_avatar">
-                                <img [src]="user.avatar" alt="" class="avatar img-circle">
+                                <img [src]="user.avatar" alt="" class="avatar">
                             </div>
                             <div class="user-left_buttons">
-                                <a [routerLink]="['/profile', 'edit-avatar']" class="btn btn-profile">Изменить аватар</a>
+                                <a (click)="toggleModal()" class="btn btn-profile">Изменить пароль</a>
                                 <a [routerLink]="['/profile', 'edit']" class="btn btn-profile">Редактировать</a>
                                 <a [routerLink]="['/profile', 'favorite']" class="btn btn-profile">Избранное</a>
                             </div>

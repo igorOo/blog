@@ -7,13 +7,13 @@ import {SharedModule} from "../../../shared/modules/shared-module/shared.module"
 import {ProfileRoutingModule} from "./profile-routing.module";
 import { EditComponent } from './index/components/edit/edit.component';
 import { MainComponent } from './index/components/main/main.component';
-import { EditAvatarComponent } from './index/components/edit-avatar/edit-avatar.component';
 import { FavoriteComponent } from './index/components/favorite/favorite.component';
 import {ProfileService} from "./index/components/ProfileService";
+import {AvatarService} from "./index/service/AvatarService/avatar-service.service";
 
 
 @NgModule({
-    declarations: [IndexComponent, EditComponent, MainComponent, EditAvatarComponent, FavoriteComponent],
+    declarations: [IndexComponent, EditComponent, MainComponent, FavoriteComponent],
     imports: [
         CommonModule,
         SharedModule,
@@ -21,7 +21,7 @@ import {ProfileService} from "./index/components/ProfileService";
         ReactiveFormsModule,
         FormsModule
     ],
-    providers: [ProfileService],
+    providers: [ProfileService, AvatarService],
     exports: [IndexComponent],
 })
 export class ProfileModule {

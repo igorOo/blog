@@ -67,6 +67,10 @@ export class AuthService {
             }));
     }
 
+    register():void{
+
+    }
+
     logout() {
         // Удаляем всю сохраненную информацию о пользователе и разлогиниваемся
         localStorage.removeItem('bean');

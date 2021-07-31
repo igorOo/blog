@@ -1,0 +1,40 @@
+.favorite-posts-box {
+    display: flex;
+    flex-direction: column;
+
+    .favorite-post-item {
+        display: flex;
+        width: 100%;
+        margin-bottom: 15px;
+        justify-content: space-between;
+
+        .post-container {
+            display: flex;
+            align-items: flex-start;
+
+            .post-thumbnail {
+                max-width: 170px;
+                margin-right: 30px;
+            }
+
+            .post-title h2{
+                font-size: 18px;
+                white-space: break-spaces;
+            }
+        }
+
+        .favorite-post-action {
+            min-width: 50px;
+            display: flex;
+            align-items: center;
+
+            .favorite-delete-action{
+                img{
+                    height: 50px;
+                    width: 100%;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}

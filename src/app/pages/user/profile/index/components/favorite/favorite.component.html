@@ -1,1 +1,41 @@
-<p>favorite works!</p>
+<h3>Понравившиеся статьи</h3>
+<div class="favorite-posts-box">
+    <div class="favorite-no-posts" *ngIf="!loading && list.length == 0">
+        У вас еще нет статей в избранном
+    </div>
+    <ng-container *ngIf="!loading && list.length > 0">
+        <article class="favorite-post-item post" [id]="'post-'+item.id" *ngFor="let item of list">
+            <div class="post-container">
+                <div class="post-thumbnail">
+                    <img class="attachment-gillion-masonry size-gillion-masonry wp-post-image"
+                         [src]="item.main_image"
+                         [alt]="item.name">
+                    <a class="post-overlay"
+                       [href]="item.url">
+                    </a>
+                </div>
+                <div class="post-content-container">
+                    <a class="post-title"
+                       [href]="item.url">
+                        <h2>{{ item.name }}</h2>
+                    </a>
+                    <div class="post-meta">
+                        <div class="post-meta-content">
+                        <span class="post-auhor-date">
+                            <a class="post-date" [href]="item.url">
+                                {{ item.date_create }}
+                            </a>
+                        </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="favorite-post-action">
+                <div class="favorite-delete-action">
+                    <img src="assets/images/trash.svg" (click)="deleteFromFavorite(item.id)" alt="" height="50px">
+                </div>
+            </div>
+        </article>
+    </ng-container>
+
+</div>

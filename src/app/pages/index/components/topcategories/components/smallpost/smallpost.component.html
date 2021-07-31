@@ -14,9 +14,9 @@
                         [href]="item.url">
                         <h5 class="post-title">
                             {{ item.name }}
-                            <span
-                                class="post-read-later post-read-later-guest tooltipstered"><i
-                                class="fa fa-bookmark-o"></i></span>
+                            <span class="post-read-later post-read-later-guest tooltipstered" (click)="addToFav(item.id, $event)">
+                                <i class="fa fa-bookmark-o"></i>
+                            </span>
                         </h5>
                     </a>
                     <div class="post-meta">
@@ -37,7 +37,7 @@
                                                 2 min <span>read</span>
                                             </span>
                             <span class="responsive-post-read-later">
-                                                <span class="post-read-later post-read-later-guest tooltipstered">
+                                                <span class="post-read-later post-read-later-guest tooltipstered" (click)="addToFav(item.id, $event)">
                                                     <i class="fa fa-bookmark-o"></i>
                                                 </span>
                                             </span>

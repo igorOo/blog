@@ -49,4 +49,7 @@ export class TopReadersComponent implements OnInit, OnChanges {
         }
     }
 
+    addToFav(id: number) {
+        alert("kdfksjdkljflkj")
+    }
 }

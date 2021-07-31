@@ -1,4 +1,4 @@
-import {LOCALE_ID, NgModule, NO_ERRORS_SCHEMA, Provider} from '@angular/core';
+import {LOCALE_ID, NgModule, Provider} from '@angular/core';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 
 import {AppRoutingModule} from './app-routing.module';
@@ -9,11 +9,10 @@ import {SharedModule} from "./shared/modules/shared-module/shared.module";
 import {LayoutComponent} from "./layout/layout.component";
 import {MainmenuComponent} from "./layout/common/mainmenu/mainmenu.component";
 import {AuthService} from "./services/auth-service.service";
-import {Users} from "./models/Users";
 import {Router} from "@angular/router";
-import {Role} from "./models/Role";
 import {registerLocaleData} from "@angular/common";
 import localeRu from '@angular/common/locales/ru';
+import {MiniFavComponent} from "./shared/components/mini-fav/mini-fav.component";
 
 registerLocaleData(localeRu, 'ru');
 
@@ -29,6 +28,7 @@ const httpInterceptorHandlers: Provider = [
         AppComponent,
         LayoutComponent,
         MainmenuComponent,
+        MiniFavComponent
     ],
     imports: [
         BrowserModule.withServerTransition({appId: 'serverApp'}),

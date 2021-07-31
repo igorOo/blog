@@ -1,5 +1,4 @@
 import {Injectable} from '@angular/core';
-import {ProfileModule} from "../../../profile.module";
 import {Observable, Subject} from "rxjs";
 
 @Injectable()

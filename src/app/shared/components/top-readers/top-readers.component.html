@@ -27,7 +27,7 @@
                     <a [href]="slide.url">
                         <h5 class="post-title">
                             {{ slide.name }}
-                            <span class="post-read-later post-read-later-guest tooltipstered">
+                            <span class="post-read-later post-read-later-guest tooltipstered" (click)="addToFav(slide.id)">
                                 <i class="fa fa-bookmark-o"></i>
                             </span>
                         </h5>
@@ -48,7 +48,7 @@
                                 <i class="icon icon-bubble"></i>
                                 {{slide.count_comment }}
                             </a>
-                            <span class="responsive-post-read-later">
+                            <span class="responsive-post-read-later" (click)="addToFav(slide.id)">
                                 <span class="post-read-later post-read-later-guest tooltipstered">
                                     <i class="fa fa-bookmark-o"></i>
                                 </span>
@@ -68,7 +68,7 @@
                             <a [href]="slide.url">
                                 <h5 class="post-title">
                                     {{ slide.name }}
-                                    <span class="post-read-later post-read-later-guest tooltipstered">
+                                    <span class="post-read-later post-read-later-guest tooltipstered" (click)="addToFav(slide.id)">
                                         <i class="fa fa-bookmark-o"></i>
                                     </span>
                                 </h5>
@@ -83,7 +83,7 @@
                                         {{slide.count_comment }}
                                     </a>
                                     <span class="responsive-post-read-later">
-                                        <span class="post-read-later post-read-later-guest tooltipstered">
+                                        <span class="post-read-later post-read-later-guest tooltipstered" (click)="addToFav(slide.id)">
                                             <i class="fa fa-bookmark-o"></i>
                                         </span>
                                     </span>

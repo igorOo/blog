@@ -11,5 +11,13 @@ import {Role} from "./models/Role";
 })
 export class AppComponent {
     title = 'blog';
+    private authService!: AuthService
 
+    constructor(authService: AuthService) {
+        this.authService = authService
+    }
+
+    public logout(): void{
+        this.authService.logout()
+    }
 }

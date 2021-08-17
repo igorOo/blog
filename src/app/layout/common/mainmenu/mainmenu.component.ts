@@ -29,4 +29,10 @@ export class MainmenuComponent implements OnInit {
         // }
     }
 
+    public logout(event: Event): void{
+        event.preventDefault()
+        event.stopImmediatePropagation()
+        window.location.reload()
+        this.authService.logout()
+    }
 }

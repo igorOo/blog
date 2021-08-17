@@ -1,0 +1,16 @@
+#content {
+    max-width: 60%;
+    margin: 0 auto;
+    margin-bottom: 100px;
+}
+.form-button-row {
+    display: flex;
+    justify-content: flex-end;
+}
+.register-form-page .woocommerce-form-register__submit {
+    background-color: #f63a4c;
+    color: #fff;
+    border-radius: 100px;
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.1);
+    padding: 10px 25px;
+}

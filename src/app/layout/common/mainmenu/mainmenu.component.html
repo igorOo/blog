@@ -56,7 +56,7 @@
                                         </a>
                                     </li>
                                     <li class="sh-share-item sh-share-item-pinterest menu-item" *ngIf="authService.isAuthenticated">
-                                        <a href="/logout">
+                                        <a href="" (click)="logout($event)">
                                            Выход
                                         </a>
                                     </li>

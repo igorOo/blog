@@ -17,6 +17,11 @@
 
     .woocommerce-button.button.woocommerce-form-login__submit{
         margin-right: 0;
+        background-color: #f63a4c;
+        color: #fff;
+        border-radius: 100px;
+        box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.1);
+        padding: 10px 25px;
     }
 }
 .form-error{

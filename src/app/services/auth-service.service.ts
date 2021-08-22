@@ -68,7 +68,7 @@ export class AuthService {
     }
 
     register(email: string, password: string, confirmPassword: string){
-        return this.http.post<any>(environment.restUrl+"/api/v1/register", {email,password,confirmPassword})
+        return this.http.post<any>(environment.restUrl+"/api/v1/register", {email:email,password:password,confirmPassword:confirmPassword})
 
     }
 

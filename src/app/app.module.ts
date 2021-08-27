@@ -13,6 +13,7 @@ import {Router} from "@angular/router";
 import {registerLocaleData} from "@angular/common";
 import localeRu from '@angular/common/locales/ru';
 import {MiniFavComponent} from "./shared/components/mini-fav/mini-fav.component";
+import {SearchButtonComponent} from "./shared/components/search-button/search-button.component";
 
 registerLocaleData(localeRu, 'ru');
 
@@ -28,7 +29,8 @@ const httpInterceptorHandlers: Provider = [
         AppComponent,
         LayoutComponent,
         MainmenuComponent,
-        MiniFavComponent
+        MiniFavComponent,
+        SearchButtonComponent,
     ],
     imports: [
         BrowserModule.withServerTransition({appId: 'serverApp'}),

@@ -28,6 +28,7 @@ export class RegisterComponent implements OnInit {
     confirmPasswordError: string = ""
     public invalidState: boolean = false
     responseError: string = ""
+    registerMessageComplete: string = ""
 
     constructor(private auth: AuthService, private router: Router) {
     }
@@ -78,6 +79,9 @@ export class RegisterComponent implements OnInit {
         }
         this.auth.register(this.form.get("email")?.value,this.form.get("password")?.value, this.form.get("confirmPassword")?.value)
             .subscribe(result => {
+                if (result.status == "success"){
+                    this.registerMessageComplete = "Для завершения регистрации на Вашу почту, которую вы указали, отправлено письмо с подтвеждением регистрации."
+                }
                 this.router.navigate(["/user/confirm"])
             })
     }

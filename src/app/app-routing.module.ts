@@ -19,6 +19,7 @@ const routes: Routes = [{
             canActivate: [AuthGuardGuard],
             canActivateChild: [AuthGuardGuard],
         },
+        {path:"search", loadChildren: () => import("./pages/search/search.module").then(module => module.SearchModule)},
         {path: '', loadChildren: () => import("./pages/auth/auth.module").then(module=>module.AuthModule)}
     ]
 }];

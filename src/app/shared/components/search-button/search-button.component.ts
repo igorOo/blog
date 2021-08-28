@@ -1,4 +1,7 @@
 import {Component, OnInit} from '@angular/core';
+import {HttpClient} from "@angular/common/http";
+import {environment} from "../../../../environments/environment";
+import {Router} from "@angular/router";
 
 @Component({
     selector: 'app-search-button',
@@ -6,14 +9,20 @@ import {Component, OnInit} from '@angular/core';
     styleUrls: ['./search-button.component.scss']
 })
 export class SearchButtonComponent implements OnInit {
+    showSearch: boolean = false
+    searchString: string = ""
 
-    constructor() {
+    constructor(private http: HttpClient, private router: Router) {
     }
 
     ngOnInit(): void {
     }
 
     showSearchForm() {
-        alert("dflgkdjfljhl")
+        this.showSearch = !this.showSearch
+    }
+
+    submitForm() {
+        this.router.navigateByUrl("/search?s="+this.searchString)
     }
 }

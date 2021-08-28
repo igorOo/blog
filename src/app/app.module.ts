@@ -14,6 +14,7 @@ import {registerLocaleData} from "@angular/common";
 import localeRu from '@angular/common/locales/ru';
 import {MiniFavComponent} from "./shared/components/mini-fav/mini-fav.component";
 import {SearchButtonComponent} from "./shared/components/search-button/search-button.component";
+import {FormsModule} from "@angular/forms";
 
 registerLocaleData(localeRu, 'ru');
 
@@ -37,6 +38,7 @@ const httpInterceptorHandlers: Provider = [
         AppRoutingModule,
         HttpClientModule,
         SharedModule,
+        FormsModule,
     ],
     exports: [
         LayoutComponent,

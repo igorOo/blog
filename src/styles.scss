@@ -42309,9 +42309,15 @@ body .sh-widget-posts-slider-style2 .post-meta-content > *:after {
     margin: 0 -15px;
     transition: 0.25s all ease;
 }
+.blog-style-masonry {
+    columns: 2;
+}
+.blog-style-masonry .post-item {
+    break-inside: avoid;
+}
 .blog-style-masonry article {
-    width: 33.3%;
-    float: left;
+    //width: 33.3%;
+    //float: left;
     margin-bottom: 40px;
 }
 .blog-style-grid .post-content-container,
@@ -42338,10 +42344,10 @@ body .sh-widget-posts-slider-style2 .post-meta-content > *:after {
     margin-top: 0;
     margin-bottom: 5px;
 }
-.content-with-sidebar-left .blog-style-masonry article,
-.content-with-sidebar-right .blog-style-masonry article {
-    width: 50%;
-}
+//.content-with-sidebar-left .blog-style-masonry article,
+//.content-with-sidebar-right .blog-style-masonry article {
+//    width: 50%;
+//}
 .post-item.format-standard .post-category {
     margin-top: -14px;
 }

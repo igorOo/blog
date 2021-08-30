@@ -6,7 +6,7 @@
     <div class="container entry-content">
         <div id="content-wrapper">
             <div id="content" class="blog-page-list sh-pagination-left">
-                <div *ngIf="!loading else loadingTmp" class="sh-group blog-list blog-style-masonry blog-style-masonry-card blog-dividing-line-on">
+                <div *ngIf="!loading else loadingTmp" class="sh-group blog-list blog-style-gallery blog-style-masonry-card blog-dividing-line-on">
                     <article [id]="'post-'+item.id" *ngFor="let item of list; index as key"
                              class="post-item post type-post status-publish format-gallery has-post-thumbnail hentry">
                         <div class="post-container">

@@ -72,6 +72,20 @@ export class AuthService {
 
     }
 
+    //аутентификация после подтверждения почты
+    loginAfterConfirmEmail(user: Users){
+        if (user !== undefined){
+            if (user.token){
+                localStorage.removeItem("bean")
+                // сохраняем всю полученную инфу от сервера
+                localStorage.setItem('bean', btoa(JSON.stringify(user)));
+                this.currentUserSubject.next(user);
+            }
+        }else{
+            localStorage.removeItem("bean")
+        }
+    }
+
     logout() {
         // Удаляем всю сохраненную информацию о пользователе и разлогиниваемся
         localStorage.removeItem('bean');

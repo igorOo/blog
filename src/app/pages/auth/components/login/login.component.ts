@@ -20,10 +20,10 @@ export class LoginComponent implements OnInit {
         password: new FormControl("", [Validators.required, Validators.minLength(this.minPassword)]),
         remember: new FormControl(false)
     })
-    emailError: string = ""
-    passwordError: string = ""
+    public emailError: string = ""
+    public passwordError: string = ""
     public invalidState: boolean = false
-    responseError: string = ""
+    public responseError: string = ""
 
     constructor(private  http: HttpClient, private router: Router, private auth: AuthService) {
     }
@@ -61,17 +61,6 @@ export class LoginComponent implements OnInit {
                     this.responseError = 'Такие имя пользователя и пароль не найдены'
                 }
             })
-        // this.router.navigate([`/`])
-        // let formData: any = new FormData()
-        // formData.append("email", )
-        // formData.append("password", )
-        // formData.append("remember", this.form.get("remember")?.value)
-        // this.http.post(environment.restUrl+"/api/v1/login", formData)
-        //     .subscribe((result:any) => {
-        //         console.log(result)
-        //         localStorage.setItem('bear', result.token)
-        //         this.router.navigate([`/`])
-        //     })
     }
 
     inputText(){

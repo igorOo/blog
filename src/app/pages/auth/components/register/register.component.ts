@@ -82,7 +82,7 @@ export class RegisterComponent implements OnInit {
                 if (result.status == "success"){
                     this.registerMessageComplete = "Для завершения регистрации на Вашу почту, которую вы указали, отправлено письмо с подтвеждением регистрации."
                 }
-                this.router.navigate(["/user/confirm"])
+                this.router.navigate(["/user/register-message"])
             })
     }
 }

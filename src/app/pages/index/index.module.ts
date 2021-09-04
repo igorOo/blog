@@ -18,6 +18,7 @@ import {GamesComponent} from './components/games/games.component';
 import {WorldandautoComponent} from './components/worldAuto/worldandauto.component';
 import {SharedModule} from "../../shared/modules/shared-module/shared.module";
 import {AnotherComponent} from './components/another/another/another.component';
+import { NewsHourComponent } from './components/news-hour/news-hour.component';
 
 @NgModule({
     declarations: [
@@ -34,6 +35,7 @@ import {AnotherComponent} from './components/another/another/another.component';
         GamesComponent,
         WorldandautoComponent,
         AnotherComponent,
+        NewsHourComponent,
     ],
     imports: [
         IndexRoutingModule,

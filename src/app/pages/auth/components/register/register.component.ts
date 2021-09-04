@@ -54,8 +54,8 @@ export class RegisterComponent implements OnInit {
                 this.invalidState = true
                 return
             }
-            if (this.form.get("password")?.errors?.minLength){
-                this.passwordError = "Минимальная длина пароля "+this.minPassword
+            if (this.form.get("password")?.errors?.minlength){
+                this.passwordError = "Минимальная длина пароля "+this.minPassword + " символов"
                 this.invalidState = true
                 return
             }
@@ -71,8 +71,8 @@ export class RegisterComponent implements OnInit {
                 this.invalidState = true
                 return
             }
-            if (this.form.get("confirmPassword")?.errors?.minLength){
-                this.confirmPasswordError = "Минимальная длина пароля "+this.minPassword
+            if (this.form.get("confirmPassword")?.errors?.minlength){
+                this.confirmPasswordError = "Минимальная длина пароля "+this.minPassword + " символов"
                 this.invalidState = true
                 return
             }

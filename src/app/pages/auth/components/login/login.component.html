@@ -6,7 +6,9 @@
             <div id="content" class="page-content  sh-text-content">
                 <div class="page-content">
                     <div class="woocommerce login-form">
-                        <div class="woocommerce-notices-wrapper"></div>
+                        <div class="woocommerce-notices-wrapper" *ngIf="resetMessage != ''">
+                            {{resetMessage}}
+                        </div>
                         <form class="woocommerce-form woocommerce-form-login login" method="post" [formGroup]="form">
                             <p class="form-row form-error" *ngIf="responseError != ''">
                                 {{responseError}}

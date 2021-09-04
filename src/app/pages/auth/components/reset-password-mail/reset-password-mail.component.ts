@@ -44,7 +44,7 @@ export class ResetPasswordMailComponent implements OnInit {
         formData.append("email", this.form.get("email")?.value)
         this.http.post(environment.restUrl+"/api/v1/reset-password", formData)
             .subscribe((result:any) => {
-                this.responseText = result
+                this.responseText = result.message
             },
             error => {
                 this.responseError = error.error.message

@@ -8,7 +8,8 @@ import {ResetPasswordMailComponent} from "./components/reset-password-mail/reset
 import {ConfirmResetPasswordComponent} from "./components/confirm-reset-password/confirm-reset-password.component";
 
 const routes: Routes = [
-    {path: 'login', component: LoginComponent},
+    {path: 'login', component: LoginComponent, pathMatch: "full"},
+    {path: 'login/:reset', component: LoginComponent},
     {path: 'register', component: RegisterComponent},
     {path: 'user', children: [
             {path: "activate-account/:code", component: ConfirmEmailRegComponent},

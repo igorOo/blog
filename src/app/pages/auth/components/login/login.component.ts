@@ -3,7 +3,7 @@ import {Breadcrumb} from "../../../../models/Breadcrumb"
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../../../environments/environment";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {AuthService} from "../../../../services/auth-service.service";
 
 @Component({
@@ -24,11 +24,16 @@ export class LoginComponent implements OnInit {
     public passwordError: string = ""
     public invalidState: boolean = false
     public responseError: string = ""
+    public resetMessage: string = ""
 
-    constructor(private  http: HttpClient, private router: Router, private auth: AuthService) {
+    constructor(private  http: HttpClient, private router: Router, private auth: AuthService, private currentRoute: ActivatedRoute) {
     }
 
     ngOnInit(): void {
+        let message = this.currentRoute.snapshot.params["reset"]
+        if (message !== undefined){
+            this.resetMessage = "Пароль успешно сброшен"
+        }
         this.breadcrumbList.push({name: "Вход в систему", url: null})
     }
 

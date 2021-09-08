@@ -19,6 +19,7 @@ import {WorldandautoComponent} from './components/worldAuto/worldandauto.compone
 import {SharedModule} from "../../shared/modules/shared-module/shared.module";
 import {AnotherComponent} from './components/another/another/another.component';
 import { NewsHourComponent } from './components/news-hour/news-hour.component';
+import {SwiperModule} from "swiper/angular";
 
 @NgModule({
     declarations: [
@@ -42,6 +43,7 @@ import { NewsHourComponent } from './components/news-hour/news-hour.component';
         SlickCarouselModule,
         CommonModule,
         SharedModule,
+        SwiperModule,
     ],
     exports: [
         IndexRoutingModule,

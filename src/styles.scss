@@ -48312,15 +48312,15 @@ body.vc_editor.compose-mode .vc_empty_space {
     font-weight: 700;
     padding: 15px 0;
 }
-.blog-textslider-posts:not(.sh-carousel-loadedd) .blog-textslider-post:not(:first-child) {
-    display: none;
-}
+//.blog-textslider-posts:not(.sh-carousel-loadedd) .blog-textslider-post:not(:first-child) {
+//    display: none;
+//}
 .blog-textslider-posts:not(.sh-carousel-loadedd) .blog-textslider-post:first-child {
     left: 0;
 }
-.sh-carousel-items .blog-textslider-post {
-    display: none;
-}
+//.sh-carousel-items .blog-textslider-post {
+//    display: none;
+//}
 .sh-active {
     display: block !important;
 }
@@ -52940,4 +52940,16 @@ body.woocommerce-edit-address .woocommerce-MyAccount-content p {
 }
 .cropper-container {
     transform: translateX(-30px);
+}
+.swiper{
+    max-width: 1020px;
+    min-width: 100%;
+}
+.swiper-wrapper {
+    display: flex;
+    align-items: center;
+
+    .swiper-slide{
+        min-width: 100%;
+    }
 }

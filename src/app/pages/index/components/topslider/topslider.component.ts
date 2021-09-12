@@ -1,25 +1,41 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
+import SwiperCore, {Navigation, SwiperOptions} from 'swiper';
+import {TopPost} from "../../interfaces/TopPost";
 
+SwiperCore.use([Navigation])
 
 @Component({
-  selector: 'app-topslider',
-  templateUrl: './topslider.component.html',
-  styleUrls: ['./topslider.component.scss'],
-  encapsulation: ViewEncapsulation.None
+    selector: 'app-topslider',
+    templateUrl: './topslider.component.html',
+    styleUrls: ['./topslider.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
 export class TopsliderComponent implements OnInit {
 
-  slideConfig = {
-    "slidesToShow": 1,
-    "slidesToScroll": 4,
-    "autoplay": true,
-    "prevArrow": '<div class="slick-prev slick-arrow"><i class="fas fa-chevron-left"></i></div>',
-    "nextArrow": '<div class="slick-next slick-arrow"><i class="fas fa-chevron-right"></i></div>'
-  };
+    @Input() list: Map<String, Array<TopPost>> = new Map<String, Array<TopPost>>()
+    public sliders: Map<String, Array<TopPost>> = new Map<String, Array<TopPost>>()
 
-  constructor() { }
+    public config: SwiperOptions = {
+        slidesPerView: 1,
+        spaceBetween: 0,
+        scrollbar: { draggable: true },
+        loop: true,
+        hashNavigation: true,
+        autoplay: {
+            delay: 5000,
+            disableOnInteraction: false
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    };
 
-  ngOnInit(): void {
-  }
+    constructor() {
+    }
+
+    ngOnInit(): void {
+        this.sliders = this.list
+    }
 
 }

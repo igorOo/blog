@@ -1,10 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import TopCategoriesInterface from "./interfaces/TopCategoriesInterface";
 import {TopCategoriesListInterface} from "./interfaces/TopCategoriesListInterface";
-import { Observable } from 'rxjs';
 import {TopPost} from "./interfaces/TopPost";
-import { environment } from 'src/environments/environment';
+import {environment} from 'src/environments/environment';
 
 
 @Component({
@@ -24,6 +22,7 @@ export class IndexComponent implements OnInit {
     public games: any
     public worldcar: any
     public another: any
+    public slider: Map<String, Array<TopPost>> = new Map<String, Array<TopPost>>()
 
     public currentPage: number = 1
 
@@ -38,12 +37,18 @@ export class IndexComponent implements OnInit {
                 }
                 if(result["gadgets"] != undefined){
                     this.gadgets = result["gadgets"]
+                    this.addSliderItem(1, this.gadgets)
+                    this.addSliderItem(2, this.gadgets)
                 }
                 if (result["interandprogs"] != undefined){
                     this.interandprogs = result["interandprogs"]
+                    this.addSliderItem(1, this.interandprogs[10])
+                    this.addSliderItem(2, this.interandprogs[10])
                 }
                 if (result["hardware"] != undefined){
                     this.hardware = result["hardware"]
+                    this.addSliderItem(1, this.hardware)
+                    this.addSliderItem(2, this.hardware)
                 }
                 if (result["articles"] != undefined){
                     this.articles = result["articles"]["data"]
@@ -51,6 +56,8 @@ export class IndexComponent implements OnInit {
                 }
                 if (result["games"] != undefined){
                     this.games = result["games"]
+                    this.addSliderItem(1, this.games[1])
+                    this.addSliderItem(2, this.games[1])
                 }
                 if (result["worldcar"] != undefined){
                     this.worldcar = result["worldcar"]
@@ -72,5 +79,17 @@ export class IndexComponent implements OnInit {
                     this.currentPage = 2
                 }
             })
+    }
+
+    private addSliderItem(slider: number, category: any):void{
+        let sliderItem: Array<TopPost> | undefined = this.slider.get("slider" + slider)
+        if (sliderItem !== undefined){
+            sliderItem.push(category[slider-1])
+            this.slider.set("slider" + slider, sliderItem)
+        }else{
+            let arr: Array<TopPost> = new Array<TopPost>()
+            arr.push(category[slider-1])
+            this.slider.set("slider" + slider, arr)
+        }
     }
 }

@@ -8,6 +8,7 @@ import {News} from "../../../../models/News";
 import {environment} from "../../../../../environments/environment";
 
 SwiperCore.use([Navigation])
+
 @Component({
     selector: 'app-news-hour',
     templateUrl: './news-hour.component.html',
@@ -31,12 +32,26 @@ export class NewsHourComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        let cache = localStorage.getItem("hotNews")
+        if (cache){
+            cache = JSON.parse(cache)
+        }
+        // @ts-ignore
+        if (cache && cache.expire >= Date.now()){
+            // @ts-ignore
+            this.list = cache.list
+        }else{
+            localStorage.removeItem("hotNews")
+            this.http.get(environment.restUrl + "/api/v1/hot-news")
+                .subscribe((result:any) => {
+                    if (result.status == "success"){
+                        this.list = result.data
+                        let date = new Date()
+                        let cache = JSON.stringify({list: this.list, expire: date.setDate(date.getDate() + 7)})
+                        localStorage.setItem("hotNews", cache)
+                    }
+                })
+        }
 
-        this.http.get(environment.restUrl + "/api/v1/hot-news")
-            .subscribe((result:any) => {
-                if (result.status == "success"){
-                    this.list = result.data
-                }
-            })
     }
 }

@@ -20,6 +20,7 @@ const routes: Routes = [{
             canActivateChild: [AuthGuardGuard],
         },
         {path:"search", loadChildren: () => import("./pages/search/search.module").then(module => module.SearchModule)},
+        {path: "add-post", loadChildren: () => import("./pages/add-post/add-post.module").then(module => module.AddPostModule)},
         {path: '', loadChildren: () => import("./pages/auth/auth.module").then(module=>module.AuthModule)}
     ]
 }];

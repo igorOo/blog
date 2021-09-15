@@ -53,9 +53,7 @@ export class NewComponent implements OnInit {
                                 self.http.post(environment.restUrl+"/api/v1/metrika/add-time-read-post", {
                                     post_id: self.post.id,
                                     timeRead: Math.ceil((Date.now() - self.time) / 1000)
-                                }).subscribe(result => {
-
-                                })
+                                }).subscribe(result => {})
                                 // @ts-ignore
                                 let url = e.currentTarget.href
                                 setTimeout(function (){
@@ -82,6 +80,9 @@ export class NewComponent implements OnInit {
                         this.randomImagePosts = result["random-image-posts"]
                     }
                 })
+
+            this.http.get(environment.restUrl+"/api/v1/metrika/view-post/"+this.post.id)
+                .subscribe(result => {})
         })
     }
 

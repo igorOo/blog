@@ -7,13 +7,13 @@
                         <ul id="menu-header" class="sh-nav sf-js-enabled" style="touch-action: pan-y;">
                             <li class="menu-item menu-item-type-custom menu-item-object-custom"
                                 *ngFor="let item of menu"
-                                [ngClass]="{'menu-item-has-children': item.children != undefined}">
-                                <a [href]="item.url" class="sf-with-ul">{{ item.label }}</a>
-                                <ul class="sub-menu" *ngIf="item.children != undefined">
+                                [ngClass]="{'menu-item-has-children': item.childrens != undefined}">
+                                <a [href]="'/'+item.translit" class="sf-with-ul">{{ item.name }}</a>
+                                <ul class="sub-menu" *ngIf="item.childrens != undefined">
                                     <li class="menu-item menu-item-type-custom menu-item-object-custom"
-                                        *ngFor="let subitem of item.children"
+                                        *ngFor="let subitem of item.childrens"
                                     >
-                                        <a [href]="item.url+'/category/'+subitem.translit">{{subitem.name}}</a>
+                                        <a [href]="'/'+item.translit+'/category/'+subitem.translit">{{subitem.name}}</a>
                                     </li>
                                 </ul>
                             </li>

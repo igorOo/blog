@@ -31,7 +31,7 @@ export class MainmenuComponent implements OnInit {
         }else{
             this.getMenu(mainMenu)
         }
-        this.menuService.setMenu(this.menu.filter(item => item.label == "Новости"))
+        this.menuService.setMenu(this.menu.filter(item => item.name == "Новости"))
     }
 
     public logout(event: Event): void{

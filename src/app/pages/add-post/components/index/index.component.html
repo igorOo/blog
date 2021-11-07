@@ -12,11 +12,15 @@
                         <form action="/post/add" method="post" enctype="multipart/form-data">
                             <div class="form-group group-type-post">
                                 <div class="form-radio-group-item">
-                                    <input type="radio" value="news" id="type-posts-news" name="type-post" checked>
+                                    <input type="radio" value="news" id="type-posts-news" name="type-post" checked [ngModel]="form.type"
+                                           (ngModelChange)="typeBehavior.next('news')"
+                                    >
                                     <label for="type-posts-news">Новость</label>
                                 </div>
                                 <div class="form-radio-group-item">
-                                    <input type="radio" value="posts" id="type-posts-posts" name="type-post">
+                                    <input type="radio" value="posts" id="type-posts-posts" name="type-post" [ngModel]="form.type"
+                                           (ngModelChange)="typeBehavior.next('posts')"
+                                    >
                                     <label for="type-posts-posts">Статья</label>
                                 </div>
                             </div>
@@ -26,16 +30,7 @@
                                         <label for="posts-category_id" class="control-label">Категория</label>
                                         <select id="posts-category_id" name="category_id" class="form-control">
                                             <option value=""></option>
-                                            <option value="7">Авто</option>
-                                            <option value="8">Разное</option>
-                                            <option value="10">Программы</option>
-                                            <option value="11">Интернет</option>
-                                            <option value="12">В мире</option>
-                                            <option value="13">Железо</option>
-                                            <option value="18">Игры</option>
-                                            <option value="19">Гаджеты</option>
-                                            <option value="28">WEB</option>
-                                            <option value="29">Администрирование</option>
+                                            <option [value]="item.translit" *ngFor="let item of submenuList">{{ item.name }}</option>
                                         </select>
                                         <div class="help-block"></div>
                                     </div>
@@ -88,25 +83,12 @@
                                 <div class="well"><label>Теги:</label>
                                     <div class="vue-tags-input">
                                         <div class="ti-input">
-                                            <ul class="ti-tags">
-                                                <li class="ti-new-tag-input-wrapper"><input
-                                                    placeholder="'Новый тег'"
-                                                    type="text" size="1"
-                                                    class="ti-new-tag-input ti-valid">
-                                                </li>
-                                            </ul>
+                                            <app-tags-input></app-tags-input>
                                         </div>  <!----></div>
                                     <input type="hidden" name="input_tags"></div>
                             </div>
-                            <div class="row">
-                                <div class="gallery-photos-lightbox"><input
-                                    name="Posts[main_image_orig]"
-                                    type="file"
-                                    id="imgInput"
-                                    accept="image/*">
-                                    <input name="Posts[main_image]" type="hidden" class="img-main-input">
-                                    <div><img alt=" " style="max-width: 100%"></div>
-                                </div>
+                            <div class="image-crop-wrapper">
+                                <app-cropper></app-cropper>
                             </div>
                             <hr>
                             <div class="form-group">

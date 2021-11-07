@@ -20,7 +20,12 @@ const routes: Routes = [{
             canActivateChild: [AuthGuardGuard],
         },
         {path:"search", loadChildren: () => import("./pages/search/search.module").then(module => module.SearchModule)},
-        {path: "add-post", loadChildren: () => import("./pages/add-post/add-post.module").then(module => module.AddPostModule)},
+        {
+            path: "add-post",
+            loadChildren: () => import("./pages/add-post/add-post.module").then(module => module.AddPostModule),
+            canActivate: [AuthGuardGuard],
+            canActivateChild: [AuthGuardGuard],
+        },
         {path: '', loadChildren: () => import("./pages/auth/auth.module").then(module=>module.AuthModule)}
     ]
 }];

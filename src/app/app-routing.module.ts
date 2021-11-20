@@ -26,7 +26,9 @@ const routes: Routes = [{
             canActivate: [AuthGuardGuard],
             canActivateChild: [AuthGuardGuard],
         },
-        {path: '', loadChildren: () => import("./pages/auth/auth.module").then(module=>module.AuthModule)}
+        {path: '', loadChildren: () => import("./pages/auth/auth.module").then(module=>module.AuthModule)},
+        {path: "404", loadChildren: () => import("./pages/notfound/not-found.module").then(module => module.NotFoundModule)},
+        {path: "**", redirectTo: "404", pathMatch: "full"}
     ]
 }];
 

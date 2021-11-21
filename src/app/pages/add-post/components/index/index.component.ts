@@ -21,7 +21,7 @@ export class IndexComponent implements OnInit {
         name: new FormControl("", [Validators.required]),
         preview: new FormControl("", [Validators.required]),
         text: new FormControl("", [Validators.required]),
-        tags: new FormControl(""),
+      //  tags: new FormControl(""),
         image: new FormControl("")
     })
 

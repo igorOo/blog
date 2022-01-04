@@ -1,0 +1,12 @@
+<a href="#" (click)="showSearchForm()">
+    <i class="icon icon-magnifier"></i>
+</a>
+<div class="sh-header-search-side" [class.showed-search]="showSearch">
+    <div class="sh-header-search-side-container">
+        <form method="get" class="sh-header-search-form" action="#">
+            <input type="text" name="s" class="sh-header-search-side-input"
+                   placeholder="Что хотите найти?" [(ngModel)]="searchString" (keyup.enter)="submitForm()">
+            <div class="sh-header-search-side-icon" (click)="submitForm()"> <i class="ti-search"></i></div>
+        </form>
+    </div>
+</div>

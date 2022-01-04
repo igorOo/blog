@@ -1,0 +1,14 @@
+<div class="gallery-photos-lightbox">
+    <input name="main_image_orig" type="file" id="imgInput" accept="image/*" (change)="fileChangeEvent($event)">
+    <input name="main_image" type="hidden" class="img-main-input">
+    <div>
+        <img alt="" id="cropper-image" [src]="croppedImage">
+        <image-cropper
+            [imageChangedEvent]="imageChangedEvent"
+            [maintainAspectRatio]="true"
+            [aspectRatio]="16 / 9"
+            [cropperMinWidth]="400"
+            [cropperMinHeight]="300"
+        ></image-cropper>
+    </div>
+</div>

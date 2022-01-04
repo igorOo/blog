@@ -1,0 +1,15 @@
+<app-breadcrumbs title="Регистрация пользователя" [list]="breadcrumbList"></app-breadcrumbs>
+<div class="content-container sh-page-layout-default register-form-page">
+    <div class="container entry-content">
+        <div id="content-wrapper">
+            <div id="content" class="page-content  sh-text-content">
+                <div class="page-content">
+                    <div class="page-confirm-register-message" [innerHTML]="message"></div>
+                    <div class="page-confirm-register-button" *ngIf="buttonUrl">
+                        <a href="/" class="btn btn-success">На главную</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

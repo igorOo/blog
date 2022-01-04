@@ -1,0 +1,25 @@
+@import "~swiper/swiper.min.css";
+.blog-textslider {
+    display: flex;
+    align-items: center;
+}
+.blog-textslider > .sh-table-cell:nth-child(1) {
+    flex-grow: 1;
+}
+.blog-textslider > .sh-table-cell {
+    display: flex;
+}
+.blog-textslider > .sh-table-cell:nth-child(2) {
+    flex-grow: 20;
+}
+
+.blog-textslider-style5 .blog-textslider-post-thumnail {
+    margin-left: 25px;
+}
+.sh-carousel-buttons-styling {
+    z-index: 99;
+    background-color: #fff;
+}
+.swiper .blog-textslider-post-title {
+    color: red;
+}

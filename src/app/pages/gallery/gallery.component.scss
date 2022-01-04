@@ -4,7 +4,11 @@
     overflow: hidden;
 
 }
-
+.blog-style-gallery {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    row-gap: 25px;
+}
 .blog-style-masonry-card .post-thumbnail img,
 {
     border-bottom-left-radius: 8px !important;

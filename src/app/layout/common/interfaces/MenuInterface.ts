@@ -1,7 +1,7 @@
 interface MenuInterface{
-    label: String,
-    url: Array<String>
-    children?: Array<any>
+    name: String,
+    translit: Array<String>
+    childrens?: Array<any>
 }
 
 export default MenuInterface;

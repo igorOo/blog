@@ -1,0 +1,43 @@
+<div class="vc_row wpb_row vc_row-fluid" *ngIf="list.length > 0">
+    <div class="wpb_column vc_column_container vc_col-sm-12">
+        <div class="vc_column-inner ">
+            <div class="wpb_wrapper">
+                <div class="blog-textslider blog-textslider-style5 sh-table">
+                    <div class="sh-table-cell">
+                        <div class="blog-textslider-title sh-heading-font sh-heading-color sh-heading-weight">
+                            Новость часа
+                        </div>
+                    </div>
+                    <div class="sh-table-cell">
+                        <swiper
+                            [config]="config"
+                        >
+                            <ng-template *ngFor="let item of list; index as key" swiperSlide class="swiper-slide blog-textslider-post sh-heading-font">
+                                    <div class="sh-table">
+                                        <div class="sh-table-cell">
+                                            <div class="blog-textslider-post-thumnail" [ngStyle]="{'background-image': 'url('+ item.main_image +')'}">
+                                            </div>
+                                        </div>
+                                        <div class="sh-table-cell" style="width: 100%;">
+                                            <a href="{{ item.url }}" class="blog-textslider-post-title">
+                                                {{ item.name }}
+                                            </a>
+                                        </div>
+                                    </div>
+                            </ng-template>
+
+                        </swiper>
+                        <span class="sh-carousel-buttons sh-carousel-buttons-styling">
+                            <span class="sh-carousel-prev">
+                                <i class="icon icon-arrow-left-circle"></i>
+                            </span>
+                            <span class="sh-carousel-next">
+                                <i class="icon icon-arrow-right-circle"></i>
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

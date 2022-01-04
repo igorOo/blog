@@ -1,0 +1,115 @@
+<app-breadcrumbs
+    *ngIf="!loading"
+    [title]="'Результаты поиска: '+searchString"
+    [list]="[{name:'Поиск по сайту', url:null}]"
+></app-breadcrumbs>
+<div class="content-container sh-page-layout-default" style="transform: none;">
+    <div class="container entry-content" style="transform: none;">
+        <div id="content-wrapper" class="content-wrapper-with-sidebar" style="transform: none;">
+            <div id="content" class="blog-page-list content-with-sidebar-right sh-pagination-left">
+                <div class="search-error-panel" *ngIf="errorMsg != ''">
+                    {{ errorMsg }}
+                </div>
+                <div id="top-posts-categoty-line" #lineposts></div>
+                <div class="sh-group blog-list blog-style-masonry blog-style-masonry-card blog-dividing-line-on" *ngIf="!loading else loadingTmp">
+                    <ng-container *ngFor="let post of list; index as key">
+                        <article [id]="'post-'+post.id"
+                                 class="post-item post type-post status-publish format-standard has-post-thumbnail hentry">
+                            <div class="post-container">
+                                <div class="post-thumbnail">
+                                    <img [src]="post.main_image" class="attachment-gillion-masonry size-gillion-masonry wp-post-image"
+                                         [alt]="post.name">
+                                    <a [href]="post.url" class="post-overlay">
+                                        <div class="post-overlay-content"><span></span> <span></span> <span></span></div>
+                                    </a>
+                                    <div class="post-categories-container">
+                                        <div class="post-categories">
+                                            <a [href]="post.cat_translit">{{post.category}}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="post-content-container">
+                                    <a [href]="post.url" class="post-title">
+                                        <h2>{{post.name}}
+                                            <span class="post-read-later post-read-later-guest tooltipstered">
+                                                <i class="fa fa-bookmark-o"></i>
+                                            </span>
+                                        </h2>
+                                    </a>
+                                    <div class="post-meta">
+                                        <div class="post-meta-content">
+                                            <span class="post-auhor-date">
+                                                <span *ngIf="post.author != undefined">
+                                                    <a href="https://gillion.shufflehound.com/author/gillionshufflehound/" class="post-author">
+                                                        Gillion
+                                                    </a>,
+                                                </span>
+                                                <a [href]="post.url" class="post-date">
+                                                    {{ post.date_create }}
+                                                </a>
+                                            </span>
+                                            <a [href]="post.url+'#comments'" class="post-comments" *ngIf="post.count_comment">
+                                                <i class="icon icon-bubble"></i>
+                                                {{post.count_comment }}
+                                            </a>
+                                            <span class="responsive-post-read-later">
+                                                <span class="post-read-later post-read-later-guest tooltipstered">
+                                                    <i class="fa fa-bookmark-o"></i>
+                                                </span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="post-content" [innerHTML]="post.preview"></div>
+                                </div>
+                            </div>
+                        </article>
+                    </ng-container>
+                </div>
+                <div class="sh-pagination sh-default-color">
+                    <app-paginaton [currentPage]="page" [lastPage]="lastPage" (changePage)="changePage($event)"></app-paginaton>
+                </div>
+            </div>
+            <div id="sidebar" class="sidebar-right"
+                 style="position: relative; overflow: visible; box-sizing: border-box; min-height: 1px;">
+                <div class="theiaStickySidebar"
+                     style="padding-top: 0px; padding-bottom: 1px; position: static; transform: none; top: 0px; left: 1230.65px;">
+                    <div class="sidebar-container">
+                        <div id="image-1" class="widget_sh_image widget-item widget_image">
+                            <a href=""><img src="assets/images/ban_w2.png"></a>
+                        </div>
+                        <app-random-image-posts [posts]="randomImagePosts"></app-random-image-posts>
+
+                    </div>
+                    <div class="resize-sensor"
+                         style="position: absolute; inset: 0px; overflow: hidden; z-index: -1; visibility: hidden;">
+                        <div class="resize-sensor-expand"
+                             style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; z-index: -1; visibility: hidden;">
+                            <div
+                                style="position: absolute; left: 0px; top: 0px; transition: all 0s ease 0s; width: 371px; height: 1376px;"></div>
+                        </div>
+                        <div class="resize-sensor-shrink"
+                             style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; z-index: -1; visibility: hidden;">
+                            <div
+                                style="position: absolute; left: 0; top: 0; transition: 0s; width: 200%; height: 200%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #loadingTmp>
+    <div class="sh-group blog-list blog-style-masonry blog-style-masonry-card blog-dividing-line-on">
+        <article class="post-item post type-post status-publish format-standard has-post-thumbnail hentry" *ngFor="let item of [1,2,3,4,5,6,7,8,9]">
+            <app-loader
+                [image]="true"
+                [heightImage]="265"
+                [widthImage]="398"
+                [inline]="false"
+                [lines]="5"
+                [lineWidth]="90"
+            ></app-loader>
+        </article>
+    </div>
+</ng-template>

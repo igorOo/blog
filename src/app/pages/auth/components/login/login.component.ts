@@ -3,7 +3,7 @@ import {Breadcrumb} from "../../../../models/Breadcrumb"
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../../../environments/environment";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {AuthService} from "../../../../services/auth-service.service";
 
 @Component({
@@ -20,15 +20,20 @@ export class LoginComponent implements OnInit {
         password: new FormControl("", [Validators.required, Validators.minLength(this.minPassword)]),
         remember: new FormControl(false)
     })
-    emailError: string = ""
-    passwordError: string = ""
+    public emailError: string = ""
+    public passwordError: string = ""
     public invalidState: boolean = false
-    responseError: string = ""
+    public responseError: string = ""
+    public resetMessage: string = ""
 
-    constructor(private  http: HttpClient, private router: Router, private auth: AuthService) {
+    constructor(private  http: HttpClient, private router: Router, private auth: AuthService, private currentRoute: ActivatedRoute) {
     }
 
     ngOnInit(): void {
+        let message = this.currentRoute.snapshot.params["reset"]
+        if (message !== undefined){
+            this.resetMessage = "Пароль успешно сброшен"
+        }
         this.breadcrumbList.push({name: "Вход в систему", url: null})
     }
 
@@ -61,17 +66,6 @@ export class LoginComponent implements OnInit {
                     this.responseError = 'Такие имя пользователя и пароль не найдены'
                 }
             })
-        // this.router.navigate([`/`])
-        // let formData: any = new FormData()
-        // formData.append("email", )
-        // formData.append("password", )
-        // formData.append("remember", this.form.get("remember")?.value)
-        // this.http.post(environment.restUrl+"/api/v1/login", formData)
-        //     .subscribe((result:any) => {
-        //         console.log(result)
-        //         localStorage.setItem('bear', result.token)
-        //         this.router.navigate([`/`])
-        //     })
     }
 
     inputText(){

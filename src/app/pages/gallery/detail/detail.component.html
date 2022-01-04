@@ -9,10 +9,10 @@
         <div id="content-wrapper">
             <div id="content" class="blog-page-list sh-pagination-left">
                 <div *ngIf="!loading else loadingTmp"
-                     class="sh-group blog-list blog-style-masonry blog-style-masonry-card blog-dividing-line-on">
+                     class="sh-group blog-dividing-line-on">
                     <div class="row">
                         <div class="image-content col-lg-9 col-md-9 col-sm-12 col-xs-12">
-                            <img [src]="detail.filename" [alt]="detail.alt" class="image-prew" #image crossorigin="">
+                            <img [src]="detail.filename" [alt]="detail.alt" class="image-prew" #image>
                         </div>
                         <div class="manual-size-box col-lg-3 col-md-3">
                             <div class="original-box">

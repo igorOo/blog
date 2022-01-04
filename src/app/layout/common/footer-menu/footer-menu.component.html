@@ -1,0 +1,12 @@
+<div id="categories-1" class="widget-item widget_categories">
+    <div class="sh-widget-title-styling">
+        <h3 class="widget-title">Категории</h3>
+    </div>
+    <ul>
+        <li class="cat-item cat-item-45" *ngFor="let item of list">
+            <a [href]="'/news/category/'+item.translit">
+                {{ item.name }}
+            </a>
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,34 @@
+<div id="posts_slider-10" class="widget_facebook widget-item widget_posts_slider" *ngIf="showBlock">
+    <div class="widget-slide-arrows-container">
+        <div class="sh-widget-title-styling">
+            <h3 class="widget-title">Просмотренное</h3>
+        </div>
+    </div>
+    <div class="sh-widget-posts-slider sh-widget-posts-slider-init slick-initialized slick-slider">
+        <div class="sh-widget-posts-slider-group" aria-hidden="false" style="width: 370px;" role="option">
+            <div class="sh-widget-posts-slider-item sh-widget-posts-slider-style1" *ngFor="let item of list">
+                <a [href]="item.url" class="sh-widget-posts-slider-thumbnail sh-post-review-mini"
+                   [style]="'background-image: url('+ item.main_image +');'">
+                    <div class="post-overlay-small"></div>
+                </a>
+                <div class="sh-widget-posts-slider-content">
+                    <a [href]="item.url">
+                        <h5 class="post-title">
+                            {{ item.name }}
+                            <span class="post-read-later post-read-later-guest tooltipstered">
+                                <i class="fa fa-bookmark-o"></i>
+                            </span>
+                        </h5>
+                    </a>
+                    <div class="post-meta">
+                        <div class="post-meta-content">
+                            <span class="post-views">
+                                {{ item.date_create }}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

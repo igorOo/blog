@@ -19,7 +19,16 @@ const routes: Routes = [{
             canActivate: [AuthGuardGuard],
             canActivateChild: [AuthGuardGuard],
         },
-        {path: '', loadChildren: () => import("./pages/auth/auth.module").then(module=>module.AuthModule)}
+        {path:"search", loadChildren: () => import("./pages/search/search.module").then(module => module.SearchModule)},
+        {
+            path: "add-post",
+            loadChildren: () => import("./pages/add-post/add-post.module").then(module => module.AddPostModule),
+            canActivate: [AuthGuardGuard],
+            canActivateChild: [AuthGuardGuard],
+        },
+        {path: '', loadChildren: () => import("./pages/auth/auth.module").then(module=>module.AuthModule)},
+        {path: "404", loadChildren: () => import("./pages/notfound/not-found.module").then(module => module.NotFoundModule)},
+        {path: "**", redirectTo: "404", pathMatch: "full"}
     ]
 }];
 

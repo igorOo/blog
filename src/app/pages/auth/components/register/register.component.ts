@@ -28,6 +28,7 @@ export class RegisterComponent implements OnInit {
     confirmPasswordError: string = ""
     public invalidState: boolean = false
     responseError: string = ""
+    registerMessageComplete: string = ""
 
     constructor(private auth: AuthService, private router: Router) {
     }
@@ -53,8 +54,8 @@ export class RegisterComponent implements OnInit {
                 this.invalidState = true
                 return
             }
-            if (this.form.get("password")?.errors?.minLength){
-                this.passwordError = "Минимальная длина пароля "+this.minPassword
+            if (this.form.get("password")?.errors?.minlength){
+                this.passwordError = "Минимальная длина пароля "+this.minPassword + " символов"
                 this.invalidState = true
                 return
             }
@@ -70,15 +71,18 @@ export class RegisterComponent implements OnInit {
                 this.invalidState = true
                 return
             }
-            if (this.form.get("confirmPassword")?.errors?.minLength){
-                this.confirmPasswordError = "Минимальная длина пароля "+this.minPassword
+            if (this.form.get("confirmPassword")?.errors?.minlength){
+                this.confirmPasswordError = "Минимальная длина пароля "+this.minPassword + " символов"
                 this.invalidState = true
                 return
             }
         }
         this.auth.register(this.form.get("email")?.value,this.form.get("password")?.value, this.form.get("confirmPassword")?.value)
             .subscribe(result => {
-                this.router.navigate(["/user/confirm"])
+                if (result.status == "success"){
+                    this.registerMessageComplete = "Для завершения регистрации на Вашу почту, которую вы указали, отправлено письмо с подтвеждением регистрации."
+                }
+                this.router.navigate(["/user/register-message"])
             })
     }
 }
